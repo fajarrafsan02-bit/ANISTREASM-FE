@@ -4,7 +4,7 @@ import { useLocation, useMatch, Route, Routes } from "react-router-dom";
 import Header from "./layout/headers/Header";
 import Footer from "./layout/footer/Footer";
 
-import HomePage from "./Pages/home/HomePage";
+import HomePage from "./pages/home/HomePage";
 import UnauthorizedPage from "./pages/unauthorized/Unauthorizedpage";
 import AniStreamProfilePage from "./pages/AnimeStreamProfilePage";
 import AnimeDetailsPage from "./pages/AnimeDetailsPage";
