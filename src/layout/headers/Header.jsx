@@ -2,7 +2,6 @@
 import { useTheme } from "../../context/ThemeContext";
 import { useState, useEffect, useRef } from "react";
 import useHeader from "./useHeader";
-import useBreakpoint from "../../components/headerActions/hooks/useBreakpoint";
 
 import HeaderLogo from "./HeaderLogo";
 import HeaderDesktopNav from "./HeaderDesktopNav";
@@ -10,6 +9,7 @@ import HeaderMobileMenu from "./HeaderMobileMenu";
 import HeaderBottomGradient from "./HeaderBottomGradient";
 import HeaderProgressBar from "./HeaderProgressBar";
 import HeaderActions from "./HeaderActions";
+import useBreakpoint from "../../components/headerActions/hooks/useBreakpoint";
 
 export default function Header({ activeTab, setActiveTab }) {
     const { theme, toggleTheme } = useTheme();
@@ -46,9 +46,8 @@ export default function Header({ activeTab, setActiveTab }) {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ease-in-out ${
-                isHidden ? "-translate-y-full" : "translate-y-0"
-            }`}
+            className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ease-in-out ${isHidden ? "-translate-y-full" : "translate-y-0"
+                }`}
             style={{
                 opacity: mounted ? 1 : 0,
                 transform: isHidden
@@ -60,13 +59,12 @@ export default function Header({ activeTab, setActiveTab }) {
             }}
         >
             <div
-                className={`absolute inset-0 transition-all duration-500 ${
-                    isScrolled
+                className={`absolute inset-0 transition-all duration-500 ${isScrolled
                         ? isDark
                             ? "bg-[#0a0a0c]/80 backdrop-blur-xl border-b border-white/5 shadow-2xl"
                             : "bg-white/80 backdrop-blur-xl border-b border-gray-200/50 shadow-sm"
                         : "bg-transparent border-b border-transparent"
-                }`}
+                    }`}
             />
 
             <div className="relative max-w-7xl mx-auto px-3 min-[360px]:px-4 sm:px-6 md:px-10">
@@ -103,9 +101,8 @@ export default function Header({ activeTab, setActiveTab }) {
 
                     {/* Actions */}
                     <div
-                        className={`relative z-20 transition-all duration-500 ${
-                            mobileSearchOpen ? "flex-1 flex justify-end" : ""
-                        }`}
+                        className={`relative z-20 transition-all duration-500 ${mobileSearchOpen ? "flex-1 flex justify-end" : ""
+                            }`}
                         style={{
                             opacity: mounted ? 1 : 0,
                             transform: mounted ? "none" : "translateX(16px)",

@@ -4,12 +4,13 @@ import AnimeSection from "../../components/Home/anime/AnimeSection";
 import HomePremiumBanner from "./HomePremiumBanner";
 import useAnimeHome from "../../hooks/useAnimeHome";
 import HeroCarouselSkeleton from "../../components/Home/hero/HeroCarouselSkeleton";
-import useHeroAnimeHome from "../../hooks/UseHeroAnimeHome";
+
 import AnimeSectionSkeleton from "../../components/Home/anime/AnimeSectionSkeleton";
 import useAnimeCompleteHome from "../../hooks/useAnimeCompleteHome";
 import { useEffect, useRef } from "react";
 import useToast from "../../hooks/useToast";
 import { useNavigate } from "react-router-dom";
+import useHeroAnimeHome from "../../hooks/UseHeroAnimeHome";
 
 export default function HomePage() {
     const toast = useToast();
