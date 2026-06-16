@@ -1,0 +1,23 @@
+/* ==========================================
+   Reduced Motion — Accessibility
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    .animate-shimmer-sweep,
+    .animate-shimmer-glint,
+    .animate-shimmer {
+        animation: none !important;
+    }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@keyframes wave {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+    50% { transform: scaleY(1); opacity: 1; }
+}

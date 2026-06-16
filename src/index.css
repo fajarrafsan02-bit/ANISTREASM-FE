@@ -1,0 +1,9 @@
+@import "/src/styles/01-taiwind.css";
+@import "/src/styles/02-variables.css";
+@import "/src/styles/03-base.css";
+@import "/src/styles/04-animations.css";
+@import "/src/styles/05-utilities.css";
+@import "/src/styles/06-reduced-motion.css";
+@import "/src/styles/authModal/AuthModal.css";
+
+
