@@ -1,5 +1,5 @@
 // Wishlist.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // 1. Tambahkan import useNavigate
 import { useTheme } from '../../context/ThemeContext'; // Sesuaikan path jika berbeda
 
