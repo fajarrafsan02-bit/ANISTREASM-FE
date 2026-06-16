@@ -1,11 +1,10 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "http://localhost:3000/api",
+    baseURL: import.meta.env.VITE_API,
     timeout: 30000,
     withCredentials: true
 });
-
 let isRefreshing = false;
 let failedQueue = [];
 

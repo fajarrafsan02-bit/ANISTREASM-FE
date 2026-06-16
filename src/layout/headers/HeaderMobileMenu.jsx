@@ -1,7 +1,7 @@
 // HeaderMobileMenu.jsx
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Search, LogIn, LogOut, User } from "lucide-react";
+import { LogIn, LogOut, User } from "lucide-react";
 import { NAV_LINKS } from "./headerConstants";
 import { useAuthModal } from "../../context/AuthModalContext";
 import { useAuth } from "../../context/AuthContext";
@@ -9,8 +9,6 @@ import { useAuth } from "../../context/AuthContext";
 export default function HeaderMobileMenu({
     menuOpen,
     isDark,
-    searchQuery,
-    setSearchQuery,
     activeTab,
     setActiveTab,
     scrollToTop,
@@ -47,11 +45,18 @@ export default function HeaderMobileMenu({
         }
     };
 
+    // Fungsi untuk navigasi ke halaman profil
+    const handleProfileClick = () => {
+        navigate("/profile");
+        setActiveTab("profile");
+        scrollToTop();
+    };
+
     return (
         <div
             className={`lg:hidden fixed inset-x-0 top-full z-50 transition-all duration-500 ease-in-out ${menuOpen
-                    ? "translate-y-0 opacity-100 visible"
-                    : "-translate-y-4 opacity-0 invisible pointer-events-none"
+                ? "translate-y-0 opacity-100 visible"
+                : "-translate-y-4 opacity-0 invisible pointer-events-none"
                 }`}
         >
             <div
@@ -99,17 +104,25 @@ export default function HeaderMobileMenu({
                         {isLoggedIn ? (
                             <div
                                 className={`flex flex-col gap-2.5 p-2 rounded-xl border ${isDark
-                                        ? "bg-white/[0.02] border-white/5"
-                                        : "bg-slate-50 border-gray-100 shadow-sm"
+                                    ? "bg-white/[0.02] border-white/5"
+                                    : "bg-slate-50 border-gray-100 shadow-sm"
                                     }`}
                             >
-                                <div className="flex items-center gap-2">
+                                {/* Bagian Informasi Profil (Bisa Diklik) */}
+                                <div
+                                    onClick={handleProfileClick}
+                                    className={`flex items-center gap-2 p-1.5 rounded-lg cursor-pointer transition-all duration-300
+                                        ${isDark
+                                            ? "hover:bg-white/5 active:bg-white/10"
+                                            : "hover:bg-slate-100 active:bg-slate-200"
+                                        }`}
+                                >
                                     <div className="relative flex-shrink-0">
                                         <div className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-[#ff1e56] to-[#c41e3a] opacity-50 blur-sm animate-pulse" />
                                         <div
                                             className={`relative w-8 h-8 sm:w-11 sm:h-11 rounded-full overflow-hidden border flex items-center justify-center ${isDark
-                                                    ? "bg-[#13080c] border-[#2a1117]"
-                                                    : "bg-white border-slate-200"
+                                                ? "bg-[#13080c] border-[#2a1117]"
+                                                : "bg-white border-slate-200"
                                                 }`}
                                         >
                                             {displayAvatar ? (

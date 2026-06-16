@@ -19,9 +19,7 @@ export default function ProfileHeader({ animeWatchedCount }) {
     // ✅ Cloudinary URL selalu https:// — tidak perlu prefix API_BASE_URL lagi
     const getImageUrl = (path, fallback) => {
         if (!path) return fallback;
-        // Sudah berupa URL lengkap (Cloudinary, blob, data URI) — langsung pakai
         if (path.startsWith('http') || path.startsWith('blob:') || path.startsWith('data:')) return path;
-        // Fallback untuk data lama yang masih path lokal (migrasi bertahap)
         return fallback;
     };
 
@@ -191,9 +189,10 @@ export default function ProfileHeader({ animeWatchedCount }) {
                 onCoverChange={handleCoverChange}
             />
 
-            <section className="relative px-4 sm:px-6 md:px-8 pb-6 -mt-16 sm:-mt-20 md:-mt-24 z-10 max-w-7xl mx-auto">
-                <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 text-center md:text-left">
-                    <div className="flex flex-col md:flex-row items-center md:items-end gap-5 md:gap-8 w-full">
+            {/* Padding disesuaikan responsif (px-3 di mobile, -mt-12 di mobile) */}
+            <section className="relative px-3 sm:px-6 md:px-8 pb-5 -mt-12 sm:-mt-20 md:-mt-24 z-10 max-w-7xl mx-auto">
+                <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-4 sm:gap-6 text-center md:text-left">
+                    <div className="flex flex-col md:flex-row items-center md:items-end gap-3.5 sm:gap-5 md:gap-8 w-full">
 
                         <AvatarSection
                             displayAvatar={displayAvatar}
@@ -204,15 +203,15 @@ export default function ProfileHeader({ animeWatchedCount }) {
                             getInitial={getInitial}
                         />
 
-                        <div className="flex-1 flex flex-col md:flex-row items-center md:items-end justify-between gap-6 w-full pb-1">
-                            <div className="flex flex-col items-center md:items-start gap-4 w-full md:w-auto flex-shrink-0">
-                                <div className="space-y-1.5">
-                                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
-                                        <h1 className={`font-sora text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-none transition-colors duration-300 ${isDark ? "text-white drop-shadow-md" : "text-neutral-900 drop-shadow-sm"
+                        <div className="flex-1 flex flex-col md:flex-row items-center md:items-end justify-between gap-4 md:gap-6 w-full pb-1">
+                            <div className="flex flex-col items-center md:items-start gap-3 w-full md:w-auto flex-shrink-0">
+                                <div className="space-y-1">
+                                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
+                                        <h1 className={`font-sora text-xl min-[360px]:text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-none transition-colors duration-300 ${isDark ? "text-white drop-shadow-md" : "text-neutral-900 drop-shadow-sm"
                                             }`}>
                                             {displayName}
                                         </h1>
-                                        <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-mono font-bold tracking-wider uppercase leading-none transition-colors duration-300 ${isDark
+                                        <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-[8.5px] min-[360px]:text-[10px] font-mono font-bold tracking-wider uppercase leading-none transition-colors duration-300 ${isDark
                                             ? "bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.15)]"
                                             : "bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 text-red-600 shadow-[0_0_10px_rgba(239,68,68,0.05)]"
                                             }`}>
@@ -221,7 +220,7 @@ export default function ProfileHeader({ animeWatchedCount }) {
                                     </div>
 
                                     {user?.email && (
-                                        <p className={`text-sm font-mono tracking-tight leading-none opacity-90 transition-colors duration-300 ${isDark ? "text-neutral-400" : "text-neutral-500"
+                                        <p className={`text-xs min-[360px]:text-sm font-mono tracking-tight leading-none opacity-90 transition-colors duration-300 ${isDark ? "text-neutral-400" : "text-neutral-500"
                                             }`}>
                                             {user.email}
                                         </p>
@@ -229,15 +228,15 @@ export default function ProfileHeader({ animeWatchedCount }) {
                                 </div>
 
                                 <div className="flex items-center justify-center md:justify-start">
-                                    <div className={`inline-flex items-center gap-2.5 rounded-xl px-4 py-2 transition-all duration-300 backdrop-blur-sm shadow-sm cursor-default border ${isDark
+                                    <div className={`inline-flex items-center gap-1.5 sm:gap-2.5 rounded-lg sm:rounded-xl px-3 py-1.5 sm:px-4 sm:py-2 transition-all duration-300 backdrop-blur-sm shadow-sm cursor-default border ${isDark
                                         ? "bg-white/[0.03] hover:bg-white/[0.05] border-white/5 hover:border-red-500/30"
                                         : "bg-neutral-50 hover:bg-neutral-100 border-neutral-200 hover:border-red-500/30"
                                         }`}>
-                                        <span className={`material-symbols-outlined text-base text-red-500 transition-all ${isDark ? "drop-shadow-[0_0_8px_rgba(239,68,68,0.4)]" : ""
+                                        <span className={`material-symbols-outlined text-sm sm:text-base text-red-500 transition-all ${isDark ? "drop-shadow-[0_0_8px_rgba(239,68,68,0.4)]" : ""
                                             }`}>movie</span>
-                                        <span className={`font-sora text-sm font-black transition-colors ${isDark ? "text-white" : "text-neutral-800"
+                                        <span className={`font-sora text-xs sm:text-sm font-black transition-colors ${isDark ? "text-white" : "text-neutral-800"
                                             }`}>{animeWatchedCount}</span>
-                                        <span className={`text-[10px] tracking-widest font-bold uppercase font-mono transition-colors ${isDark ? "text-neutral-400" : "text-neutral-500"
+                                        <span className={`text-[8.5px] sm:text-[10px] tracking-widest font-bold uppercase font-mono transition-colors ${isDark ? "text-neutral-400" : "text-neutral-500"
                                             }`}>Anime Watched</span>
                                     </div>
                                 </div>
@@ -263,13 +262,14 @@ export default function ProfileHeader({ animeWatchedCount }) {
                         </div>
                     </div>
 
-                    <div className="mt-4 lg:mt-0 flex-shrink-0 w-full md:w-auto self-center lg:self-end lg:mb-1">
+                    {/* Tombol Logout disesuaikan agar rapi di HP 320px (w-fit px-3.5 py-2) */}
+                    <div className="mt-2 lg:mt-0 flex-shrink-0 w-fit md:w-auto self-center lg:self-end lg:mb-1">
                         <button onClick={handleLogout}
-                            className={`w-full md:w-auto inline-flex items-center justify-center gap-2 border border-red-500/20 hover:border-red-500 hover:text-white px-5 py-2.5 rounded-xl text-xs font-black tracking-widest uppercase transition-all duration-300 cursor-pointer group ${isDark
+                            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 border border-red-500/20 hover:border-red-500 hover:text-white px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-black tracking-widest uppercase transition-all duration-300 cursor-pointer group ${isDark
                                 ? "bg-gradient-to-r from-red-500/10 to-transparent hover:from-red-600 hover:to-red-500 text-red-400 shadow-none hover:shadow-[0_0_20px_rgba(239,68,68,0.3)]"
                                 : "bg-gradient-to-r from-red-50/80 to-transparent hover:from-red-600 hover:to-red-500 text-red-600 shadow-sm hover:shadow-[0_4px_15px_rgba(239,68,68,0.2)]"
                                 }`}>
-                            <span className="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">logout</span>
+                            <span className="material-symbols-outlined text-[16px] sm:text-[18px] group-hover:scale-110 transition-transform">logout</span>
                             LOGOUT
                         </button>
                     </div>
