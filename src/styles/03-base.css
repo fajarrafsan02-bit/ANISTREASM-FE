@@ -1,74 +1,74 @@
-@layer base {
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+﻿@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    html {
-        scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
+  }
 
-    body {
-        background-color: var(--bg-primary);
-        color: var(--text-primary);
-        font-family: 'Nunito', sans-serif;
-        transition: background-color 300ms ease, color 300ms ease;
-    }
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Nunito', sans-serif;
+    transition: background-color 300ms ease, color 300ms ease;
+  }
 }
 
 ::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-primary);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #dc2626;
-    border-radius: 3px;
+  background: #dc2626;
+  border-radius: 3px;
 }
 
 .scrollbar-thin::-webkit-scrollbar {
-    width: 4px;
+  width: 4px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: rgba(220, 38, 38, 0.5);
-    border-radius: 4px;
+  background: rgba(220, 38, 38, 0.5);
+  border-radius: 4px;
 }
 
 /* Firefox */
 .scrollbar-thin {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(220, 38, 38, 0.5) transparent;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(220, 38, 38, 0.5) transparent;
 }
 
 /* Custom Scrollbar bergaya Cyan/Teal */
 .customScrollbar::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
 
 .customScrollbar::-webkit-scrollbar-track {
-    background: #07161e;
-    border-radius: 4px;
+  background: #07161e;
+  border-radius: 4px;
 }
 
 .customScrollbar::-webkit-scrollbar-thumb {
-    background: #00f0ff;
-    border-radius: 4px;
+  background: #00f0ff;
+  border-radius: 4px;
 }
 
 .customScrollbar::-webkit-scrollbar-thumb:hover {
-    background: #00b3bf;
+  background: #00b3bf;
 }
 
 /* Neon Glow Effect untuk pinggiran Poster */
 .neonGlow {
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
 }

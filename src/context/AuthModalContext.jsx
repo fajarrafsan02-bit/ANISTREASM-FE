@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useContext, useState, createContext, useCallback, useRef } from "react";
 
 const AuthModalStateContext = createContext();

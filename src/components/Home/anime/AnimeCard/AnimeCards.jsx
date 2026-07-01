@@ -53,7 +53,7 @@ export default function AnimeCards({
         transitionDuration,
     } = useAnimeCard();
 
-    const animeKey = anime.animeId || anime.id;
+    const animeKey = anime.id ?? anime.animeId ?? index;
     const isThisCardActiveOnMobile = activeCardId === animeKey;
 
     // Tentukan status aktif terpadu
@@ -135,15 +135,17 @@ export default function AnimeCards({
                     width: activeHovered ? `calc(100% + ${responsivePanelWidth}px)` : "100%",
                     left: finalOpenLeft ? "auto" : 0,
                     right: finalOpenLeft ? 0 : "auto",
-                    transform: activeHovered ? `translateY(${liftY})` : "translateY(0)",
+                    transform: activeHovered ? `translateY(${liftY}) scale(1.02)` : "translateY(0) scale(1)",
                     border: activeHovered
                         ? isDark ? "1px solid rgba(239,68,68,0.6)" : "1px solid rgba(220,38,38,0.5)"
-                        : isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)",
+                        : isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
                     boxShadow: activeHovered
                         ? isDark
-                            ? `0 0 0 1px rgba(239,68,68,0.3), 0 0 ${glowRadius} -2px rgba(239,68,68,0.35), 0 ${shadowY} ${shadowDrop} -8px rgba(0,0,0,0.9)`
-                            : `0 0 0 1px rgba(220,38,38,0.2), 0 0 ${glowRadius} -2px rgba(220,38,38,0.25), 0 ${shadowY} ${shadowDrop} -8px rgba(0,0,0,0.15)`
-                        : isDark ? "0 2px 8px rgba(0,0,0,0.4)" : "0 2px 8px rgba(0,0,0,0.08)",
+                            ? `0 0 0 1px rgba(239,68,68,0.3), 0 0 ${glowRadius} rgba(239,68,68,0.25), 0 0 ${parseInt(glowRadius) * 2}px -4px rgba(239,68,68,0.15), 0 ${shadowY} ${shadowDrop} -8px rgba(0,0,0,0.9)`
+                            : `0 0 0 1px rgba(220,38,38,0.2), 0 0 ${glowRadius} rgba(220,38,38,0.2), 0 0 ${parseInt(glowRadius) * 2}px -4px rgba(220,38,38,0.1), 0 ${shadowY} ${shadowDrop} -8px rgba(0,0,0,0.15)`
+                        : isDark
+                            ? "0 4px 16px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2)"
+                            : "0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)",
                     transition: `
                         width ${transitionDuration}ms cubic-bezier(0.4,0,0.2,1),
                         transform ${transitionDuration}ms cubic-bezier(0.4,0,0.2,1),

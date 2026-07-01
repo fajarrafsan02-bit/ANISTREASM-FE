@@ -6,8 +6,8 @@ export default function ErrorState({ error, onBack }) {
 
     return (
         <div
-            className={`min-h-screen flex items-center justify-center px-4 transition-colors duration-300 ${
-                isDark ? "bg-[#070204]" : "bg-white"
+            className={`w-full aspect-video rounded-2xl flex items-center justify-center px-4 transition-colors duration-300 ${
+                isDark ? "bg-[#070204]" : "bg-slate-50"
             }`}
         >
             <div

@@ -1,34 +1,10 @@
 // HeroBackground.jsx
-import { motion } from "motion/react";
+import { memo } from "react";
 import { getImageFilter } from "../hero/HeroStyle";
 
-// Varian Animasi untuk Transisi Latar Belakang (Cinematic Zoom & Slide)
-const backgroundVariants = {
-    active: {
-        opacity: 1,
-        x: 0,
-        scale: 1,
-        filter: "blur(0px) brightness(1)",
-        zIndex: 1,
-        transition: {
-            duration: 1.4,
-            ease: [0.16, 1, 0.3, 1], // EaseOutExpo: Transisi ultra smooth & modern
-        }
-    },
-    inactive: {
-        opacity: 0,
-        x: 40, // Geseran sedikit lebih jauh agar pergerakan terlihat jelas
-        scale: 1.08, // Efek zoom-in halus ketika tidak aktif
-        filter: "blur(10px) brightness(0.6)", // Efek focus-pull (blur memudar saat aktif)
-        zIndex: 0,
-        transition: {
-            duration: 0.9,
-            ease: [0.16, 1, 0.3, 1]
-        }
-    }
-};
+const PRESET_COLORS = ["#ef4444", "#3b82f6", "#f59e0b", "#8b5cf6", "#10b981"];
 
-export default function HeroBackground({
+export default memo(function HeroBackground({
     anime,
     index,
     currentSlide,
@@ -36,48 +12,84 @@ export default function HeroBackground({
     isDark,
 }) {
     const isActive = index === currentSlide;
-    const animateState = isActive && isLoaded ? "active" : "inactive";
+    const color = PRESET_COLORS[index % 5];
 
     return (
-        <motion.div
-            variants={backgroundVariants}
-            initial="inactive"
-            animate={animateState}
+        <div
             className="absolute inset-0 overflow-hidden"
+            style={{ opacity: isActive && isLoaded ? 1 : 0, zIndex: isActive ? 1 : 0, transition: 'opacity 1s ease, z-index 0s' }}
         >
-            {/* Kontainer untuk Drift Parallax */}
-            <div className="absolute inset-0">
-                {/* 
-                    Kontainer DRIFT tetap dipertahankan menggunakan CSS animasi 
-                    agar gerakan panning berjalan secara asinkronus dan hemat daya CPU
-                */}
+            {/* Background image with Ken Burns effect */}
+            <div className="absolute inset-0"
+                style={{
+                    animation: isActive
+                        ? 'kenBurns 10s ease-in-out forwards'
+                        : 'kenBurnsReverse 1s ease-in-out forwards',
+                    animationDelay: isActive ? '0.5s' : '0s',
+                }}
+            >
                 <div
-                    className="absolute inset-[-8%] sm:inset-[-12%] overflow-hidden"
+                    className="absolute inset-0"
                     style={{
-                        animation: "heroDrift 18s ease-in-out infinite alternate",
-                        animationDelay: `${index * -4}s`,
+                        background: `linear-gradient(135deg, ${color}33 0%, ${color}11 30%, ${isDark ? '#0a0a14' : '#e8eaf0'} 70%)`,
+                        backgroundSize: '200% 200%',
+                        animation: isActive ? 'gradientShift 8s ease-in-out infinite' : 'none',
                     }}
-                >
-                    <img
-                        src={anime.banner}
-                        alt={anime.title}
-                        fetchPriority={isActive ? "high" : "auto"}
-                        loading={isActive ? "eager" : "lazy"}
-                        className="w-full h-full object-cover scale-110"
-                        style={{
-                            objectPosition: 'center center',
-                            filter: getImageFilter(isDark),
-                            transition: 'object-position 0.8s ease, transform 0.8s ease',
-                        }}
-                    />
-                </div>
+                />
+                <img
+                    src={anime.banner || undefined}
+                    alt=""
+                    fetchPriority={isActive ? "high" : "low"}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{
+                        objectPosition: 'center center',
+                        filter: getImageFilter(isDark),
+                    }}
+                    onError={(e) => { e.target.style.opacity = '0'; }}
+                />
             </div>
+
+            {/* Color mesh overlay - animated */}
             <div
-                className={`absolute inset-0 pointer-events-none transition-opacity duration-1000 z-10 ${isDark
-                    ? "bg-gradient-to-t from-[#070204] via-[#070204]/80 sm:via-[#070204]/40 to-transparent"
-                    : "bg-gradient-to-t from-white via-white/85 sm:via-white/40 to-transparent"
-                    }`}
+                className="absolute inset-0 pointer-events-none z-[2]"
+                style={{
+                    background: `radial-gradient(ellipse at 30% 40%, ${color}33 0%, transparent 60%),
+                                radial-gradient(ellipse at 70% 60%, ${color}1a 0%, transparent 50%)`,
+                    mixBlendMode: isDark ? 'screen' : 'multiply',
+                    opacity: isActive ? 1 : 0,
+                    transition: 'opacity 1s ease',
+                }}
             />
-        </motion.div>
+
+            {/* Cinematic color grade overlay */}
+            <div
+                className="absolute inset-0 pointer-events-none z-[2] mix-blend-overlay"
+                style={{
+                    background: `linear-gradient(135deg, ${color}22 0%, transparent 40%, ${color}11 100%)`,
+                    opacity: isActive ? 0.8 : 0,
+                    transition: 'opacity 0.8s ease',
+                }}
+            />
+
+            {/* Dramatic vignette - bottom with enhanced gradient */}
+            <div
+                className={`absolute inset-0 pointer-events-none z-[3] ${isDark
+                    ? "bg-gradient-to-t from-[#070204] via-[#070204]/80 sm:via-[#070204]/40 via-30% to-transparent"
+                    : "bg-gradient-to-t from-white via-white/80 sm:via-white/40 via-30% to-transparent"
+                }`}
+            />
+
+            {/* Left vignette for depth */}
+            <div
+                className="absolute inset-0 pointer-events-none z-[3]"
+                style={{
+                    background: isDark
+                        ? 'linear-gradient(to right, rgba(5,5,8,0.6) 0%, transparent 40%)'
+                        : 'linear-gradient(to right, rgba(248,249,250,0.3) 0%, transparent 40%)',
+                    opacity: isActive ? 1 : 0,
+                    transition: 'opacity 0.8s ease',
+                }}
+            />
+        </div>
     );
-}
+});

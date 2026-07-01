@@ -3,38 +3,71 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import CurrentlyWatching from '../components/profile/CurrentlyWatching';
 import RecentActivity from '../components/profile/RecentActivity';
-import Wishlist from "../components/profile/Wishlist";// Import komponen Wishlist baru
+import Wishlist from "../components/profile/Wishlist";
 import ProfileHeader from '../components/profile/profileHeader/ProfileHeader';
 import { useScrollReveal } from "../hooks/useScrollReveal"
-import { useWishlist } from '../hooks/useWishlist'; // Import hook useWishlist
+import { useWishlist } from '../hooks/useWishList'; 
+import useWatchHistory from '../hooks/useWatchHistory'; 
+import useRecentActivity from '../hooks/useRecentActivity'; 
+
+// Helper function untuk relative time
+function getRelativeTime(dateString) {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffMs = now - date;
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMins / 60);
+    const diffDays = Math.floor(diffHours / 24);
+
+    if (diffMins < 1) return "Baru saja";
+    if (diffMins < 60) return `${diffMins} mnt lalu`;
+    if (diffHours < 24) return `${diffHours} jam lalu`;
+    if (diffDays === 1) return "Kemarin";
+    return `${diffDays} hari lalu`;
+}
 
 export default function AniStreamProfilePage() {
     const { theme } = useTheme();
     const isDark = theme === "dark";
 
-    const [animeWatchedCount] = useState(120);
-    const [isFavoritesExpanded, setIsFavoritesExpanded] = useState(false);
-    const [isWishlistExpanded, setIsWishlistExpanded] = useState(false); // State ekspansi Wishlist
-
-    // Integrasi state & fungsi dari useWishlist hook
     const { wishlistItems, loadingItems, removeWishlist } = useWishlist();
+    
+    // ✅ Kita akan menggunakan historyLoading ini untuk trigger skeleton
+    const { history, historyLoading } = useWatchHistory(); 
+
+    const { recentWatched, recentWishlist, loading: recentLoading } = useRecentActivity();
+
+    const [animeWatchedCount, setAnimeWatchedCount] = useState(0);
+    const [isFavoritesExpanded, setIsFavoritesExpanded] = useState(false);
+    const [isWishlistExpanded, setIsWishlistExpanded] = useState(false); 
 
     const [mounted, setMounted] = useState(false);
 
     const revealGrid = useScrollReveal({ threshold: 0.1, once: true });
     const revealFavorites = useScrollReveal({ threshold: 0.1, once: true });
-    const revealWishlist = useScrollReveal({ threshold: 0.1, once: true }); // Scroll reveal khusus Wishlist
+    const revealWishlist = useScrollReveal({ threshold: 0.1, once: true }); 
 
     useEffect(() => {
         const t = setTimeout(() => setMounted(true), 60);
         return () => clearTimeout(t);
     }, []);
 
-    const [watchingList] = useState([
-        { id: 1, title: 'Cyberpunk Edgerunners', episode: 'Episode 12', progress: 50, duration: '24 min', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBtETzdVxgDy-r-GfUJ0Zh2NVGToYHg6YvQilrN0Juq5_DDr_GxxN6wzLDq5s4kD44rake8-LC5-kjwkS1oKqtPzCPmmbuUgTXHFh570SrtFPvSeUPDhEAjRqD2TWsYsfccSdtWp7cKbYUDrPfAHPh-p-yawViMKDmLMNRFeeoX5JEdi3BxL8qQudt9e3Jw8pmQSso-1aLEo8uis0nZB4dA8ZMx95s4DUlfFqPKLhuqDz-bkEktP6uxu1OYs-yFEQzWBzmfKufs1lh3' },
-        { id: 2, title: 'Solo Leveling', episode: 'Episode 04', progress: 33, duration: '23 min', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA__V2pEdAy_hVIn4DpQ_W-e43MZmyemnmwGF8-zGq7ZlJp6ATLo4LaZRGPLTdbEDkxuvMzAeog2Y9klMqKDzFhNjtdAUx1yB54486f6Qa4tKHZnjRvtNQ543T8xol_zt1I5Rtf84URYdR833-ZlVW99CvrDUdXgYW41mewOwAuVuQ5xaLXy1GoLTl0aQ6p89CAWZPP0QZeRxLsDov0xZwU2pc5U_Ha-OHyJCKVi0QaNrx2kDUHRLmwJfepXd3ShqdpUuEbdZgPHsMP' },
-        { id: 3, title: "Frieren: Beyond Journey's End", episode: 'Episode 21', progress: 75, duration: '25 min', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCT-jE6FksyuNlsfwNy8sXsi-wHaIUsY3WHOOGeget22NgXbIjN0Q8QY4Z1mPVW-CtTMUsH0G97elyg8LnVA1Rt6GTpm66y4PrQzDQ4q1PiEaiZcuaxNAZzet_hrOCcv3cLDkxvpqGh9Gk72fDpaZs07Od7Fxm6A-hQ61BdZ40o3JPBq3GQYaMdu0q9BMQYwTx-DMcn98cnF4IvapinB2-QYuNXeUvd2mFXpDy0I4oTKJxxouJwfm7QK5XXvUHJJT8x-dLfpPDE6DvR' },
-    ]);
+    useEffect(() => {
+        if (history) {
+            setAnimeWatchedCount(history.length);
+        }
+    }, [history]);
+
+    const watchingList = history.map((item) => ({
+        id: item.id,
+        episodeId: item.episodeId,
+        title: item.title,
+        episode: item.episodeTitle || "Episode Baru",
+        image: item.poster || "https://lh3.googleusercontent.com/aida-public/AB6AXuBtETzdVxgDy-r-GfUJ0Zh2NVGToYHg6YvQilrN0Juq5_DDr_GxxN6wzLDq5s4kD44rake8-LC5-kjwkS1oKqtPzCPmmbuUgTXHFh570SrtFPvSeUPDhEAjRqD2TWsYsfccSdtWp7cKbYUDrPfAHPh-p-yawViMKDmLMNRFeeoX5JEdi3BxL8qQudt9e3Jw8pmQSso-1aLEo8uis0nZB4dA8ZMx95s4DUlfFqPKLhuqDz-bkEktP6uxu1OYs-yFEQzWBzmfKufs1lh3",
+        duration: getRelativeTime(item.watchedAt),
+        progress: 100
+    }));
 
     return (
         <div
@@ -44,20 +77,21 @@ export default function AniStreamProfilePage() {
                 color: isDark ? "#e5e2e1" : "#1a1a1a",
             }}
         >
-            {/* Ambient Glow responsif ukuran HP */}
             <div
-                className="absolute top-0 left-1/4 w-[280px] h-[280px] sm:w-[500px] sm:h-[500px] rounded-full blur-[80px] sm:blur-[140px] pointer-events-none z-0 transition-colors duration-500"
-                style={{ backgroundColor: isDark ? "rgba(236,0,29,0.05)" : "rgba(239,68,68,0.08)" }}
+                className="absolute top-[-5%] left-[10%] w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] rounded-full blur-[100px] sm:blur-[160px] pointer-events-none z-0 transition-colors duration-500"
+                style={{ backgroundColor: isDark ? "rgba(236,0,29,0.06)" : "rgba(239,68,68,0.06)" }}
             />
             <div
-                className="absolute top-1/2 right-1/4 w-[240px] h-[240px] sm:w-[400px] sm:h-[400px] rounded-full blur-[70px] sm:blur-[120px] pointer-events-none z-0 transition-colors duration-500"
-                style={{ backgroundColor: isDark ? "rgba(236,0,29,0.03)" : "rgba(249,115,22,0.05)" }}
+                className="absolute top-[40%] right-[5%] w-[260px] h-[260px] sm:w-[450px] sm:h-[450px] rounded-full blur-[90px] sm:blur-[130px] pointer-events-none z-0 transition-colors duration-500"
+                style={{ backgroundColor: isDark ? "rgba(236,0,29,0.04)" : "rgba(249,115,22,0.04)" }}
+            />
+            <div
+                className="absolute bottom-[10%] left-[30%] w-[200px] h-[200px] sm:w-[350px] sm:h-[350px] rounded-full blur-[80px] sm:blur-[120px] pointer-events-none z-0 transition-colors duration-500"
+                style={{ backgroundColor: isDark ? "rgba(236,0,29,0.03)" : "rgba(220,38,38,0.04)" }}
             />
 
-            {/* Jarak padding vertikal dan spasi antar-seksi disesuaikan responsif */}
-            <main className="pt-6 sm:pt-10 pb-16 sm:pb-24 px-3.5 sm:px-6 max-w-7xl mx-auto z-10 relative space-y-7 sm:space-y-12">
+            <main className="pt-6 sm:pt-12 pb-16 sm:pb-24 px-3.5 sm:px-6 max-w-7xl mx-auto z-10 relative space-y-8 sm:space-y-14">
 
-                {/* 1. ProfileHeader */}
                 <div
                     style={{
                         opacity: mounted ? 1 : 0,
@@ -68,7 +102,6 @@ export default function AniStreamProfilePage() {
                     <ProfileHeader animeWatchedCount={animeWatchedCount} />
                 </div>
 
-                {/* 2. Grid Sections (Gap disesuaikan responsif) */}
                 <div
                     ref={revealGrid.ref}
                     className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-stretch"
@@ -79,14 +112,17 @@ export default function AniStreamProfilePage() {
                     }}
                 >
                     <div className="lg:col-span-8 flex flex-col">
-                        <CurrentlyWatching shows={watchingList} />
+                        <CurrentlyWatching shows={watchingList} loading={historyLoading} />
                     </div>
                     <div className="lg:col-span-4 flex flex-col">
-                        <RecentActivity />
+                        <RecentActivity
+                            recentWatched={recentWatched}
+                            recentWishlist={recentWishlist}
+                            loading={recentLoading}
+                        />
                     </div>
                 </div>
 
-                {/* 4. Wishlist Section */}
                 <div
                     ref={revealWishlist.ref}
                     className="w-full pt-2"

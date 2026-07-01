@@ -1,4 +1,3 @@
-// ToastContainer.jsx
 import Toast from "./Toast";
 
 export default function ToastContainer({ toasts, onRemove }) {
@@ -6,19 +5,21 @@ export default function ToastContainer({ toasts, onRemove }) {
 
     return (
         <div className="
-            fixed z-99999 flex flex-col gap-2 pointer-events-none
-
-            /* Mobile: full width, mepet ke tepi, dari bawah */
+            fixed z-[99999] flex flex-col gap-3 pointer-events-none
+            
+            /* Mobile (hingga 320px): Full width dengan margin kiri-kanan kecil, stack dari bawah */
             bottom-4 left-3 right-3
-            items-stretch
-
-            /* sm+: kembali ke pojok kanan bawah, lebar otomatis */
+            items-center sm:items-end
+            
+            /* sm+: Pindah ke pojok kanan bawah, lebar sesuai konten */
             sm:bottom-6 sm:left-auto sm:right-6
-            sm:items-end
             sm:w-auto
         ">
             {toasts.map((toast) => (
-                <div key={toast.id} className="pointer-events-auto w-full sm:w-auto">
+                <div 
+                    key={toast.id} 
+                    className="pointer-events-auto w-full max-w-[calc(100vw-24px)] sm:w-auto transition-all duration-400 ease-[cubic-bezier(0.25,1,0.5,1)]"
+                >
                     <Toast toast={toast} onRemove={onRemove} />
                 </div>
             ))}

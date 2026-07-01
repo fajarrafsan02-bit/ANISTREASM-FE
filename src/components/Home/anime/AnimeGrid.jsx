@@ -84,7 +84,7 @@ export default function AnimeGrid({ animes = [] }) {
 
     return (
         <div
-            className={`grid gap-2.5 sm:gap-4 relative ${isMobile
+            className={`grid gap-3 sm:gap-5 relative ${isMobile
                 ? "grid-cols-2"
                 : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
                 }`}
@@ -94,7 +94,7 @@ export default function AnimeGrid({ animes = [] }) {
             }}
         >
             {animes.map((anime, index) => {
-                const animeKey = anime.animeId || anime.id;
+                const animeKey = anime.id ?? anime.animeId ?? index;
                 const isActive = activeCardId === animeKey;
 
                 return (

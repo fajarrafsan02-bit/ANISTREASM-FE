@@ -178,10 +178,11 @@ export default function ProfileHeader({ animeWatchedCount }) {
     const displayName = user?.username || user?.name || user?.email?.split("@")[0] || "User";
 
     return (
-        <div className={`w-full rounded-3xl overflow-hidden border shadow-2xl relative transition-colors duration-500 ${isDark
-            ? "bg-[#07070a] text-white border-white/5"
-            : "bg-white text-neutral-800 border-neutral-200/60"
-            }`}>
+        <div className={`w-full rounded-3xl overflow-hidden border shadow-2xl relative transition-colors duration-500 ${
+            isDark
+                ? "bg-[#07070a] text-white border-white/5"
+                : "bg-white text-neutral-800 border-neutral-200/60"
+        }`}>
             <CoverBanner
                 displayCover={displayCover}
                 isUploadingCover={isUploadingCover}
@@ -189,7 +190,6 @@ export default function ProfileHeader({ animeWatchedCount }) {
                 onCoverChange={handleCoverChange}
             />
 
-            {/* Padding disesuaikan responsif (px-3 di mobile, -mt-12 di mobile) */}
             <section className="relative px-3 sm:px-6 md:px-8 pb-5 -mt-12 sm:-mt-20 md:-mt-24 z-10 max-w-7xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-4 sm:gap-6 text-center md:text-left">
                     <div className="flex flex-col md:flex-row items-center md:items-end gap-3.5 sm:gap-5 md:gap-8 w-full">
@@ -205,45 +205,54 @@ export default function ProfileHeader({ animeWatchedCount }) {
 
                         <div className="flex-1 flex flex-col md:flex-row items-center md:items-end justify-between gap-4 md:gap-6 w-full pb-1">
                             <div className="flex flex-col items-center md:items-start gap-3 w-full md:w-auto flex-shrink-0">
-                                <div className="space-y-1">
+                                <div className="space-y-1.5">
                                     <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
-                                        <h1 className={`font-sora text-xl min-[360px]:text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-none transition-colors duration-300 ${isDark ? "text-white drop-shadow-md" : "text-neutral-900 drop-shadow-sm"
-                                            }`}>
+                                        <h1 className={`font-sora text-xl min-[360px]:text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-none transition-colors duration-300 ${
+                                            isDark ? "text-white drop-shadow-md" : "text-neutral-900 drop-shadow-sm"
+                                        }`}>
                                             {displayName}
                                         </h1>
-                                        <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-[8.5px] min-[360px]:text-[10px] font-mono font-bold tracking-wider uppercase leading-none transition-colors duration-300 ${isDark
-                                            ? "bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.15)]"
-                                            : "bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 text-red-600 shadow-[0_0_10px_rgba(239,68,68,0.05)]"
-                                            }`}>
+                                        <span className={`relative inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[8.5px] min-[360px]:text-[10px] font-mono font-bold tracking-wider uppercase leading-none transition-all duration-300 ${
+                                            isDark
+                                                ? "bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.15)]"
+                                                : "bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 text-red-600 shadow-[0_0_10px_rgba(239,68,68,0.05)]"
+                                        }`}>
+                                            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                                             PRO MEMBER
                                         </span>
                                     </div>
 
                                     {user?.email && (
-                                        <p className={`text-xs min-[360px]:text-sm font-mono tracking-tight leading-none opacity-90 transition-colors duration-300 ${isDark ? "text-neutral-400" : "text-neutral-500"
-                                            }`}>
+                                        <p className={`text-xs min-[360px]:text-sm font-mono tracking-tight leading-none transition-colors duration-300 ${
+                                            isDark ? "text-neutral-400" : "text-neutral-500"
+                                        }`}>
                                             {user.email}
                                         </p>
                                     )}
                                 </div>
 
                                 <div className="flex items-center justify-center md:justify-start">
-                                    <div className={`inline-flex items-center gap-1.5 sm:gap-2.5 rounded-lg sm:rounded-xl px-3 py-1.5 sm:px-4 sm:py-2 transition-all duration-300 backdrop-blur-sm shadow-sm cursor-default border ${isDark
-                                        ? "bg-white/[0.03] hover:bg-white/[0.05] border-white/5 hover:border-red-500/30"
-                                        : "bg-neutral-50 hover:bg-neutral-100 border-neutral-200 hover:border-red-500/30"
-                                        }`}>
-                                        <span className={`material-symbols-outlined text-sm sm:text-base text-red-500 transition-all ${isDark ? "drop-shadow-[0_0_8px_rgba(239,68,68,0.4)]" : ""
-                                            }`}>movie</span>
-                                        <span className={`font-sora text-xs sm:text-sm font-black transition-colors ${isDark ? "text-white" : "text-neutral-800"
-                                            }`}>{animeWatchedCount}</span>
-                                        <span className={`text-[8.5px] sm:text-[10px] tracking-widest font-bold uppercase font-mono transition-colors ${isDark ? "text-neutral-400" : "text-neutral-500"
-                                            }`}>Anime Watched</span>
+                                    <div className={`inline-flex items-center gap-1.5 sm:gap-2.5 rounded-xl px-3 py-1.5 sm:px-4 sm:py-2 transition-all duration-300 backdrop-blur-sm shadow-sm cursor-default border ${
+                                        isDark
+                                            ? "bg-white/[0.03] hover:bg-white/[0.06] border-white/5 hover:border-red-500/30"
+                                            : "bg-neutral-50 hover:bg-neutral-100 border-neutral-200 hover:border-red-500/30"
+                                    }`}>
+                                        <span className={`material-symbols-outlined text-sm sm:text-base text-red-500 transition-all ${
+                                            isDark ? "drop-shadow-[0_0_8px_rgba(239,68,68,0.4)]" : ""
+                                        }`}>movie</span>
+                                        <span className={`font-sora text-xs sm:text-sm font-black transition-colors ${
+                                            isDark ? "text-white" : "text-neutral-800"
+                                        }`}>{animeWatchedCount}</span>
+                                        <span className={`text-[8.5px] sm:text-[10px] tracking-widest font-bold uppercase font-mono transition-colors ${
+                                            isDark ? "text-neutral-400" : "text-neutral-500"
+                                        }`}>Anime Watched</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className={`hidden md:block w-px self-stretch bg-gradient-to-b from-transparent to-transparent my-1 mx-2 transition-colors duration-500 ${isDark ? "via-white/15" : "via-neutral-300"
-                                }`}></div>
+                            <div className={`hidden md:block w-px self-stretch bg-gradient-to-b from-transparent via-transparent to-transparent my-1 mx-2 transition-colors duration-500 ${
+                                isDark ? "via-white/15" : "via-neutral-300"
+                            }`}></div>
 
                             <div className="w-full md:flex-1 md:max-w-sm lg:max-w-md xl:max-w-lg flex flex-col justify-end">
                                 <BioSection
@@ -262,15 +271,16 @@ export default function ProfileHeader({ animeWatchedCount }) {
                         </div>
                     </div>
 
-                    {/* Tombol Logout disesuaikan agar rapi di HP 320px (w-fit px-3.5 py-2) */}
                     <div className="mt-2 lg:mt-0 flex-shrink-0 w-fit md:w-auto self-center lg:self-end lg:mb-1">
                         <button onClick={handleLogout}
-                            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 border border-red-500/20 hover:border-red-500 hover:text-white px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-black tracking-widest uppercase transition-all duration-300 cursor-pointer group ${isDark
-                                ? "bg-gradient-to-r from-red-500/10 to-transparent hover:from-red-600 hover:to-red-500 text-red-400 shadow-none hover:shadow-[0_0_20px_rgba(239,68,68,0.3)]"
-                                : "bg-gradient-to-r from-red-50/80 to-transparent hover:from-red-600 hover:to-red-500 text-red-600 shadow-sm hover:shadow-[0_4px_15px_rgba(239,68,68,0.2)]"
-                                }`}>
-                            <span className="material-symbols-outlined text-[16px] sm:text-[18px] group-hover:scale-110 transition-transform">logout</span>
-                            LOGOUT
+                            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 border border-red-500/20 hover:border-red-500 hover:text-white px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-black tracking-widest uppercase transition-all duration-300 cursor-pointer group overflow-hidden relative ${
+                                isDark
+                                    ? "bg-gradient-to-r from-red-500/10 to-transparent hover:from-red-600 hover:to-red-500 text-red-400 shadow-none hover:shadow-[0_0_25px_rgba(239,68,68,0.3)]"
+                                    : "bg-gradient-to-r from-red-50/80 to-transparent hover:from-red-600 hover:to-red-500 text-red-600 shadow-sm hover:shadow-[0_4px_20px_rgba(239,68,68,0.25)]"
+                            }`}>
+                            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                            <span className="material-symbols-outlined text-[16px] sm:text-[18px] group-hover:scale-110 transition-transform relative">logout</span>
+                            <span className="relative">LOGOUT</span>
                         </button>
                     </div>
                 </div>

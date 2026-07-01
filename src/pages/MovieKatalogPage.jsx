@@ -355,7 +355,7 @@ export default function MovieCatalogPage() {
                                     <div className={`grid gap-3 sm:gap-5 ${contentGridClass}`}>
                                         {filteredData.map((anime, i) => (
                                             <MovieCard
-                                                key={anime.animeId ?? i}
+                                                key={`${anime.animeId ?? 'card'}-${i}`}
                                                 anime={anime}
                                                 variant={isRecent ? 'recent' : 'default'}
                                                 onClick={() => navigate(`/anime/${anime.animeId}`)}

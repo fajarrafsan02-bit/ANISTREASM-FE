@@ -1,0 +1,62 @@
+// CurrentlyWatchingSkeleton.jsx
+import React from 'react';
+import { useTheme } from '../../context/ThemeContext';
+
+export default function CurrentlyWatchingSkeleton() {
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
+
+    return (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {/* Merender 3 buah kerangka dummy */}
+            {Array.from({ length: 3 }).map((_, idx) => (
+                <div
+                    key={idx}
+                    className={`rounded-2xl overflow-hidden border transition-all duration-300 ${isDark
+                            ? "bg-[#0f0f0f] border-white/5"
+                            : "bg-white border-neutral-100"
+                        }`}
+                >
+                    {/* Skeleton Gambar (Aspect Video) */}
+                    <div className={`relative aspect-video w-full animate-pulse ${isDark ? "bg-white/10" : "bg-neutral-200"
+                        }`} />
+
+                    {/* Skeleton Konten Teks */}
+                    <div className="p-4 sm:p-5 flex flex-col gap-3">
+                        <div>
+                            {/* Skeleton "Currently At" & "Episode" */}
+                            <div className="flex items-center gap-2 mb-2">
+                                <div className={`h-2.5 w-16 rounded-sm animate-pulse ${isDark ? "bg-white/5" : "bg-neutral-200/80"
+                                    }`} />
+                                <span className={`w-1 h-1 rounded-full animate-pulse ${isDark ? "bg-white/20" : "bg-neutral-300"
+                                    }`} />
+                                <div className={`h-2.5 w-10 rounded-sm animate-pulse ${isDark ? "bg-white/10" : "bg-neutral-200"
+                                    }`} />
+                            </div>
+
+                            {/* Skeleton Judul Animasi (Variasi Lebar) */}
+                            <div className={`h-4 rounded-md animate-pulse ${isDark ? "bg-white/10" : "bg-neutral-200"
+                                } ${idx === 1 ? 'w-3/4' : 'w-5/6'}`} />
+                        </div>
+
+                        {/* Skeleton Progress Bar */}
+                        <div className="mt-1">
+                            <div className="flex justify-between items-center mb-2">
+                                <div className={`h-2 w-12 rounded-sm animate-pulse ${isDark ? "bg-white/5" : "bg-neutral-200/80"
+                                    }`} />
+                                <div className={`h-2 w-6 rounded-sm animate-pulse ${isDark ? "bg-white/10" : "bg-neutral-200"
+                                    }`} />
+                            </div>
+                            <div className={`w-full rounded-full h-1.5 overflow-hidden shadow-inner ${isDark ? "bg-white/5" : "bg-neutral-100"
+                                }`}>
+                                {/* Batang Progress Palsu yang sedang di-load */}
+                                <div className={`h-full rounded-full animate-pulse ${isDark ? "bg-white/10" : "bg-neutral-200"
+                                    }`} style={{ width: `${40 + (idx * 20)}%` }} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+}

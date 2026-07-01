@@ -33,43 +33,48 @@ export default function AnimeCardInfo({ anime, isHovered, isDark, isMobile }) {
                 border-t
                 ${containerPadding}
                 ${dark
-                    ? "bg-[#121214] border-zinc-800/40"
+                    ? "bg-[#121214] border-zinc-800/30"
                     : "bg-white border-gray-100"
                 }
             `}
         >
             <h3
                 className={`
-                    font-semibold 
+                    font-bold
                     line-clamp-1 
                     leading-tight
-                    tracking-wide
-                    transition-colors 
+                    tracking-tight
+                    transition-all 
                     duration-300 
                     ${titleSize} 
                     ${isHovered
-                        ? "text-rose-500"
+                        ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]"
                         : dark ? "text-zinc-100" : "text-zinc-800"
                     }
                 `}
             >
                 {anime.title}
             </h3>
-            <span
-                className={`
-                    block 
-                    truncate 
-                    mt-1 
-                    font-medium
-                    tracking-wider
-                    transition-colors 
-                    duration-300 
-                    ${genreSize} 
-                    ${dark ? "text-zinc-500" : "text-gray-400"}
-                `}
-            >
-                {anime.genre}
-            </span>
+            <div className="flex items-center gap-1.5 mt-1">
+                <span
+                    className={`
+                        block 
+                        truncate 
+                        font-medium
+                        tracking-wide
+                        transition-colors 
+                        duration-300 
+                        ${genreSize} 
+                        ${dark ? "text-zinc-500" : "text-gray-400"}
+                    `}
+                >
+                    {anime.genre}
+                </span>
+                <span className={`w-[2px] h-[2px] rounded-full shrink-0 ${dark ? "bg-zinc-600" : "bg-gray-300"}`} />
+                <span className={`shrink-0 font-semibold ${genreSize} ${dark ? "text-zinc-500" : "text-gray-400"}`}>
+                    {anime.year || ""}
+                </span>
+            </div>
         </div>
     );
 }

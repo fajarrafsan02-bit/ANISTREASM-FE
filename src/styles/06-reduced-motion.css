@@ -1,23 +1,31 @@
-/* ==========================================
+﻿/* ==========================================
    Reduced Motion — Accessibility
    ========================================== */
 @media (prefers-reduced-motion: reduce) {
-    .animate-shimmer-sweep,
-    .animate-shimmer-glint,
-    .animate-shimmer {
-        animation: none !important;
-    }
+  .animate-shimmer-sweep,
+  .animate-shimmer-glint,
+  .animate-shimmer {
+    animation: none !important;
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
-.scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  display: none;
 }
 
 @keyframes wave {
-    0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
-    50% { transform: scaleY(1); opacity: 1; }
+  0%,
+  100% {
+    transform: scaleY(0.5);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }

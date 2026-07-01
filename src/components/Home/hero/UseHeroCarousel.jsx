@@ -1,71 +1,127 @@
+// useHeroCarousel.js
 import { useState, useEffect, useRef, useCallback } from "react";
+
+const ANIMATION_DURATION = 900;
+const AUTO_INTERVAL = 6000;
 
 export default function useHeroCarousel(total) {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [isAnimating, setIsAnimating] = useState(false);
     const [direction, setDirection] = useState(1);
     const [isLoaded, setIsLoaded] = useState(false);
     const [animationKey, setAnimationKey] = useState(0);
+    const [hasTransitioned, setHasTransitioned] = useState(false);
 
+    const isAnimating = useRef(false);
+    const animatingTimerRef = useRef(null);
     const autoTimerRef = useRef(null);
-    const progressRef = useRef(null);
     const touchStartX = useRef(null);
+    const slideRef = useRef(0);
+    const hasStartedAutoRef = useRef(false);
 
-    const goTo = useCallback((index, dir = 1) => {
-        if (isAnimating) return;
-        setIsAnimating(true);
-        setDirection(dir);
-        setCurrentSlide(((index % total) + total) % total);
+    slideRef.current = currentSlide;
+
+    // Sets isAnimating = true, and (re)arms a hard-reset timeout for it.
+    // Using a single ref-based timer (instead of a useEffect tied to
+    // [currentSlide, hasTransitioned]) means a fast second transition
+    // simply re-arms this timer instead of cancelling the first one
+    // without replacing it — so isAnimating can never get stuck `true`.
+    const armAnimating = useCallback(() => {
+        isAnimating.current = true;
+        clearTimeout(animatingTimerRef.current);
+        animatingTimerRef.current = setTimeout(() => {
+            isAnimating.current = false;
+        }, ANIMATION_DURATION);
+    }, []);
+
+    useEffect(() => {
+        return () => clearTimeout(animatingTimerRef.current);
+    }, []);
+
+    const autoAdvance = useCallback(() => {
+        if (total <= 1) return;
+        armAnimating();
+        setDirection(1);
+        setCurrentSlide((prev) => (prev + 1) % total);
         setAnimationKey((prev) => prev + 1);
-        setTimeout(() => setIsAnimating(false), 900);
-    }, [total, isAnimating]);
+        setHasTransitioned(true);
+    }, [total, armAnimating]);
+
+    const autoAdvanceRef = useRef(null);
+    autoAdvanceRef.current = autoAdvance;
 
     const resetAuto = useCallback(() => {
         clearInterval(autoTimerRef.current);
+
+        if (!hasStartedAutoRef.current) return;
+        if (total <= 1) return;
+
         autoTimerRef.current = setInterval(() => {
-            setDirection(1);
-            setCurrentSlide((prev) => (prev + 1) % total);
-            setAnimationKey((prev) => prev + 1);
-        }, 6000);
+            if (isAnimating.current) {
+                isAnimating.current = false;
+                clearTimeout(animatingTimerRef.current);
+            }
+            autoAdvanceRef.current();
+        }, AUTO_INTERVAL);
+    }, [total]);
+
+    const resetAutoRef = useRef(null);
+    resetAutoRef.current = resetAuto;
+
+    const goTo = useCallback((index, dir = 1) => {
+        if (isAnimating.current || total === 0) return;
+        armAnimating();
+
+        setDirection(dir);
+        setCurrentSlide(((index % total) + total) % total);
+        setAnimationKey((prev) => prev + 1);
+        setHasTransitioned(true);
+
+        resetAutoRef.current();
+    }, [total, armAnimating]);
+
+    const pauseAuto = useCallback(() => {
+        clearInterval(autoTimerRef.current);
+    }, []);
+
+    const resumeAuto = useCallback(() => {
+        if (total > 1) resetAutoRef.current();
+    }, [total]);
+
+    // Mark as loaded once, after initial mount delay.
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoaded(true);
+        }, 50);
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (total <= 1) return;
+        hasStartedAutoRef.current = true;
+        resetAutoRef.current();
+
+        return () => {
+            clearInterval(autoTimerRef.current);
+        };
     }, [total]);
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsLoaded(true), 50);
-        resetAuto();
-        return () => {
-            clearTimeout(timer);
-            clearInterval(autoTimerRef.current);
-        };
-    }, [resetAuto]);
-
-    useEffect(() => {
-        setAnimationKey((prev) => prev + 1);
-    }, [currentSlide]);
-
-    useEffect(() => {
         const handleKey = (e) => {
-            if (e.key === "ArrowLeft") {
-                goTo(currentSlide - 1, -1);
-                resetAuto();
-            }
-            if (e.key === "ArrowRight") {
-                goTo(currentSlide + 1, 1);
-                resetAuto();
-            }
+            const s = slideRef.current;
+            if (e.key === "ArrowLeft") goTo(s - 1, -1);
+            if (e.key === "ArrowRight") goTo(s + 1, 1);
         };
         window.addEventListener("keydown", handleKey);
         return () => window.removeEventListener("keydown", handleKey);
-    }, [currentSlide, goTo, resetAuto]);
+    }, [goTo]);
 
-    const handlePrev = () => {
-        goTo(currentSlide - 1, -1);
-        resetAuto();
-    };
+    const handlePrev = useCallback(() => {
+        goTo(slideRef.current - 1, -1);
+    }, [goTo]);
 
-    const handleNext = () => {
-        goTo(currentSlide + 1, 1);
-        resetAuto();
-    };
+    const handleNext = useCallback(() => {
+        goTo(slideRef.current + 1, 1);
+    }, [goTo]);
 
     const handleTouchStart = (e) => {
         touchStartX.current = e.touches[0].clientX;
@@ -85,9 +141,11 @@ export default function useHeroCarousel(total) {
         direction,
         isLoaded,
         animationKey,
-        progressRef,
+        hasTransitioned,
         goTo,
         resetAuto,
+        pauseAuto,
+        resumeAuto,
         handlePrev,
         handleNext,
         handleTouchStart,

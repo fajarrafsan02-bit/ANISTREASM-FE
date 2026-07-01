@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useEpisodeDetail from '../hooks/useEpisodeDetail';
+import useWatchHistory from '../hooks/useWatchHistory';
 import { api } from '../api/axios';
 import { useTheme } from '../context/ThemeContext';
 
@@ -19,12 +20,18 @@ export default function VideoPlayerPage() {
     const { episodeId } = useParams();
     const navigate = useNavigate();
     const normalizedEpisodeId = normalizeEpisodeId(episodeId);
-    const { episode, loading, error } = useEpisodeDetail();
+    const { episode, loading, error, prevEpisode } = useEpisodeDetail();
+    const { saveHistory } = useWatchHistory();
+
+    console.log("normalizedEpisodeId", normalizedEpisodeId);
 
     const [selectedServer, setSelectedServer] = useState(null);
     const [activeStreamUrl, setActiveStreamUrl] = useState(null);
     const [serverLoading, setServerLoading] = useState(false);
     const [serverError, setServerError] = useState(null);
+
+    // ✅ Mencegah double-hit API pada render session yang sama
+    const historySavedFor = useRef(null);
 
     // ✅ Scroll ke atas saat episode berganti
     useEffect(() => {
@@ -39,6 +46,38 @@ export default function VideoPlayerPage() {
         setServerLoading(false);
     }, [normalizedEpisodeId]);
 
+    // ✅ Simpan history tontonan dengan pengambilan nomor episode yang 100% Akurat
+    useEffect(() => {
+        if (!episode) return;
+
+        // Cegah eksekusi ulang jika episode ini sudah tersimpan di sesi render saat ini
+        if (historySavedFor.current === normalizedEpisodeId) return;
+
+        // 1. Ekstrak Nomor Episode dari ID (karena ID selalu konsisten)
+        // Contoh: "snowball-earth-episode-12" -> akan mengambil angka "12"
+        const epMatchFromId = normalizedEpisodeId.match(/-episode-(\d+)/i);
+        const parsedEpisodeTitle = epMatchFromId ? `Episode ${epMatchFromId[1]}` : "Episode Baru";
+
+        // 2. Ekstrak Judul Anime
+        let parsedAnimeTitle = episode.title || "";
+        const titleMatch = parsedAnimeTitle.match(/(.*?)\s+(?:episode|ep|ep\.)\s+\d+/i);
+        if (titleMatch) {
+            parsedAnimeTitle = titleMatch[1].trim(); // Ambil nama animenya saja
+        }
+
+        saveHistory({
+            animeId: episode.animeId || normalizedEpisodeId.split("-episode-")[0] || "",
+            episodeId: normalizedEpisodeId,
+            title: parsedAnimeTitle,
+            episodeTitle: parsedEpisodeTitle, // Menggunakan angka akurat dari URL/ID
+            poster: episode.poster || null
+        });
+
+        // Tandai bahwa request history sudah dikirim
+        historySavedFor.current = normalizedEpisodeId;
+
+    }, [episode, saveHistory, normalizedEpisodeId]);
+
     // ✅ Set defaultStreamingUrl saat episode masuk
     useEffect(() => {
         if (!episode) return;
@@ -47,11 +86,10 @@ export default function VideoPlayerPage() {
         setServerError(null);
     }, [episode?.episodeId]);
 
-    // ✅ useCallback — referensi stabil, tidak berubah tiap render
+    // ✅ useCallback — referensi stabil untuk perpindahan server
     const handleChangeServer = useCallback(async (serverId, resolution, serverName) => {
         if (serverLoading) return;
 
-        // ✅ Skip kalau server yang sama sudah aktif
         if (selectedServer?.serverId === serverId) return;
 
         setServerLoading(true);
@@ -70,7 +108,6 @@ export default function VideoPlayerPage() {
             console.error('[handleChangeServer]', err.message);
             setServerError(`Gagal memuat server "${serverName}". Coba server lain.`);
 
-            // ✅ Fallback ke defaultStreamingUrl kalau belum ada URL aktif
             if (episode?.defaultStreamingUrl && !activeStreamUrl) {
                 setActiveStreamUrl(episode.defaultStreamingUrl);
             }
@@ -80,9 +117,10 @@ export default function VideoPlayerPage() {
     }, [serverLoading, selectedServer?.serverId, episode?.defaultStreamingUrl, activeStreamUrl]);
 
     if (loading) return <LoadingState />;
-    if (error) return <ErrorState error={error} onBack={() => navigate(-1)} />;
 
-    const animeTitle = episode?.title ?? 'Unknown Anime';
+    const effectiveEpisode = episode || prevEpisode;
+    const relatedEpisodes = episode?.recommendedEpisodes || prevEpisode?.recommendedEpisodes;
+    const animeTitle = episode?.title ?? prevEpisode?.title ?? 'Unknown Anime';
 
     return (
         <div
@@ -90,11 +128,9 @@ export default function VideoPlayerPage() {
             className={`min-h-screen overflow-x-hidden selection:bg-[#ff1e56] selection:text-white transition-colors duration-300 ${isDark ? 'bg-[#070204] text-white' : 'bg-white text-slate-900'
                 }`}
         >
-            {/* Server error banner - Diubah ke max-w-[1440px] */}
+            {/* Server error banner */}
             {serverError && (
-                <div className={`mx-3 sm:mx-4 md:mx-auto md:max-w-[1440px] mt-3 rounded-lg text-xs py-2 px-4 border flex items-center justify-between gap-3 ${isDark
-                    ? 'bg-red-500/10 border-red-500/30 text-red-400'
-                    : 'bg-rose-50 border-rose-200 text-rose-600'
+                <div className={`mx-3 sm:mx-4 md:mx-auto md:max-w-[1440px] mt-3 rounded-lg text-xs py-2 px-4 border flex items-center justify-between gap-3 ${isDark ? 'bg-red-500/10 border-red-500/30 text-red-400' : 'bg-rose-50 border-rose-200 text-rose-600'
                     }`}>
                     <span>{serverError}</span>
                     <button
@@ -106,53 +142,55 @@ export default function VideoPlayerPage() {
                 </div>
             )}
 
-            {/* Video Player Container - Menggunakan max-w-[1440px] dan penyesuaian padding lateral px-3 agar tidak terlalu mepet ke tepi layar */}
+            {/* Video Player Container */}
             <div className="mx-auto max-w-[1440px] px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6">
-                <VideoPlayer
-                    episode={episode}
-                    activeStreamUrl={activeStreamUrl}
-                    selectedServer={selectedServer}
-                    serverLoading={serverLoading}
-                    onChangeServer={handleChangeServer}
-                />
+                {error ? (
+                    <ErrorState error={error} onBack={() => navigate(-1)} />
+                ) : (
+                    <VideoPlayer
+                        episode={episode}
+                        activeStreamUrl={activeStreamUrl}
+                        selectedServer={selectedServer}
+                        serverLoading={serverLoading}
+                        onChangeServer={handleChangeServer}
+                    />
+                )}
             </div>
 
-            {/* Info & Related Container - Diubah ke max-w-[1440px] agar sejajar dengan video player */}
+            {/* Info & Related Container */}
             <section className={`mx-auto max-w-[1440px] px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 transition-colors duration-300 ${isDark ? 'text-white' : 'text-slate-900'
                 }`}>
-                <EpisodeInfo
-                    episode={episode}
-                    animeTitle={animeTitle}
-                    selectedServer={selectedServer}
-                />
-
-                <div className={`h-px bg-gradient-to-r my-5 sm:my-6 ${isDark
-                    ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent'
-                    : 'from-slate-200 via-slate-300/60 to-transparent'
-                    }`} />
-
                 <RelatedEpisodes
-                    episodes={episode?.recommendedEpisodes}
+                    episodes={relatedEpisodes}
                     currentEpisodeId={normalizedEpisodeId}
                 />
 
-                {episode?.movies?.length > 0 && (
+                {episode && (
+                    <div className={`h-px bg-gradient-to-r my-5 sm:my-6 ${isDark ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent' : 'from-slate-200 via-slate-300/60 to-transparent'
+                        }`} />
+                )}
+
+                {episode && (
+                    <EpisodeInfo
+                        episode={episode}
+                        animeTitle={animeTitle}
+                        selectedServer={selectedServer}
+                    />
+                )}
+
+                {effectiveEpisode?.movies?.length > 0 && (
                     <>
-                        <div className={`h-px my-5 sm:my-6 bg-gradient-to-r ${isDark
-                            ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent'
-                            : 'from-slate-200 via-slate-300/60 to-transparent'
+                        <div className={`h-px my-5 sm:my-6 bg-gradient-to-r ${isDark ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent' : 'from-slate-200 via-slate-300/60 to-transparent'
                             }`} />
-                        <RelatedMovies movies={episode.movies} />
+                        <RelatedMovies movies={effectiveEpisode.movies} />
                     </>
                 )}
 
-                {episode?.downloadFormats?.length > 0 && (
+                {effectiveEpisode?.downloadFormats?.length > 0 && (
                     <>
-                        <div className={`h-px my-5 sm:my-6 bg-gradient-to-r ${isDark
-                            ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent'
-                            : 'from-slate-200 via-slate-300/60 to-transparent'
+                        <div className={`h-px my-5 sm:my-6 bg-gradient-to-r ${isDark ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent' : 'from-slate-200 via-slate-300/60 to-transparent'
                             }`} />
-                        <DownloadSection formats={episode.downloadFormats} />
+                        <DownloadSection formats={effectiveEpisode.downloadFormats} />
                     </>
                 )}
             </section>

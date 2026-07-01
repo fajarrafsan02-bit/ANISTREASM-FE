@@ -6,7 +6,7 @@ export default function AuthModalTabs({ activeTab, onChange }) {
 
     return (
         <div
-            className={`flex mb-6 rounded-2xl p-1.5 border transition-all duration-300 relative ${
+            className={`aml-layer-1 flex mb-6 rounded-2xl p-1.5 border transition-all duration-300 relative ${
                 isDark
                     ? "bg-zinc-900/40 border-zinc-800/80 shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)]"
                     : "bg-zinc-100/80 border-zinc-200/60 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]"

@@ -1,5 +1,5 @@
 // src/hooks/useEpisodeDetail.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../api/axios';
 
@@ -8,6 +8,7 @@ export default function useEpisodeDetail() {
     const [episode, setEpisode] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const prevEpisodeRef = useRef(null);
 
     useEffect(() => {
         if (!episodeId) return;
@@ -17,9 +18,14 @@ export default function useEpisodeDetail() {
             setError(null);
             try {
                 const res = await api.get(`/anime/episode/${episodeId}`);
-                setEpisode(res.data.data);
+                const data = res.data.data;
+                setEpisode(data);
+                prevEpisodeRef.current = data;
             } catch (err) {
                 setError(err.response?.data?.message ?? err.message ?? 'Terjadi kesalahan');
+                // Keep previous episode data so RelatedEpisodes can still render
+                // but set episode to null so the video player shows error
+                setEpisode(null);
             } finally {
                 setLoading(false);
             }
@@ -28,5 +34,5 @@ export default function useEpisodeDetail() {
         fetchEpisode();
     }, [episodeId]);
 
-    return { episode, loading, error };
-}
+    return { episode, loading, error, prevEpisode: prevEpisodeRef.current };
+}

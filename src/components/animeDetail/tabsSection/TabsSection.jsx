@@ -3,17 +3,18 @@ import { useTheme } from "../../../context/ThemeContext";
 import TabButton from "./TabButton";
 import CharactersTab from "./CharactersTab";
 import RelationsTab from "./RelationsTab";
+import CommentsTab from "../comments/CommentsTab";
 
 const tabs = [
     { id: "characters", label: "Characters & Voice Actors" },
     { id: "relations", label: "Relations & Sequel Network" },
+    { id: "comments", label: "Komentar" },
 ];
 
 export default function TabsSection({ anime, activeTab, onTabChange }) {
     const { theme } = useTheme();
     const isDark = theme === "dark";
 
-    console.log("RELASI : ", anime?.relations);
 
     return (
         <div className="space-y-4 pt-4">
@@ -47,6 +48,10 @@ export default function TabsSection({ anime, activeTab, onTabChange }) {
                     relations={anime?.relations ?? []}
                     tags={anime?.tags ?? []}
                 />
+            )}
+
+            {activeTab === "comments" && (
+                <CommentsTab animeId={anime?.animeId} />
             )}
         </div>
     );
