@@ -97,7 +97,7 @@ export default function RecentActivity({ recentWatched = [], recentWishlist = []
         : "text-neutral-400 hover:text-neutral-800 hover:bg-neutral-100";
 
     return (
-        <div className="flex flex-col h-full transition-colors duration-500">
+        <div className="flex flex-col transition-colors duration-500">
             <div className="flex items-center gap-2.5 mb-5 flex-shrink-0">
                 <div className="w-1 h-5 bg-gradient-to-b from-[#ec001d] to-rose-500 rounded-full shadow-[0_2px_10px_rgba(236,0,29,0.4)]" />
                 <h2 className={`font-sora text-xs md:text-sm font-extrabold tracking-tight uppercase transition-colors duration-300 ${
@@ -114,7 +114,7 @@ export default function RecentActivity({ recentWatched = [], recentWishlist = []
                 )}
             </div>
 
-            <div className={`relative flex-1 border rounded-3xl p-5 backdrop-blur-md transition-all duration-300 ${
+            <div className={`relative border rounded-3xl p-5 backdrop-blur-md transition-all duration-300 ${
                 isDark
                     ? "bg-white/[0.02] border-white/5 shadow-none"
                     : "bg-gradient-to-b from-white to-neutral-50/80 border-neutral-200/60 shadow-[0_12px_40px_rgba(0,0,0,0.03)]"
@@ -128,7 +128,7 @@ export default function RecentActivity({ recentWatched = [], recentWishlist = []
                 {loading ? (
                     <RecentActivitySkeleton />
                 ) : empty ? (
-                    <div className="flex flex-col items-center justify-center h-full py-10 px-4">
+                    <div className="flex flex-col items-center justify-center py-10 px-4">
                         <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 ${
                             isDark ? "bg-white/[0.03]" : "bg-neutral-100"
                         }`}>
@@ -175,7 +175,7 @@ export default function RecentActivity({ recentWatched = [], recentWishlist = []
                                                 }`}>
                                                     <img
                                                         alt={item.title}
-                                                        className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105"
+                                                        className="w-10 h-10 object-cover transition-all duration-500 ease-out group-hover:scale-105"
                                                         src={item.poster || ""}
                                                         onError={(e) => { e.target.style.display = "none" }}
                                                     />

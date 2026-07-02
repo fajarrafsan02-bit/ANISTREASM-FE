@@ -25,7 +25,7 @@ export default function EpisodeDirectorySkeleton() {
                     <div
                         className={`h-5 w-40 sm:w-56 rounded da-animate-pulse ${
                             isDark
-                                ? "bg-[#1a0a0f]"
+                                ? "bg-[#2a1117]"
                                 : "bg-slate-300"
                         }`}
                     />
@@ -33,7 +33,7 @@ export default function EpisodeDirectorySkeleton() {
                     <div
                         className={`h-3 w-full max-w-[280px] sm:max-w-[320px] rounded da-animate-pulse ${
                             isDark
-                                ? "bg-[#1a0a0f]"
+                                ? "bg-[#2a1117]"
                                 : "bg-slate-200"
                         }`}
                     />
@@ -42,7 +42,7 @@ export default function EpisodeDirectorySkeleton() {
                 <div
                     className={`w-24 sm:w-28 h-8 rounded-lg da-animate-pulse ${
                         isDark
-                            ? "bg-[#1a0a0f]"
+                            ? "bg-[#2a1117]"
                             : "bg-slate-300"
                     }`}
                 />
@@ -66,7 +66,7 @@ export default function EpisodeDirectorySkeleton() {
                 <div
                     className={`h-3 w-24 sm:w-32 rounded da-animate-pulse ${
                         isDark
-                            ? "bg-[#1a0a0f]"
+                            ? "bg-[#2a1117]"
                             : "bg-slate-200"
                     }`}
                 />
@@ -77,7 +77,7 @@ export default function EpisodeDirectorySkeleton() {
                             key={i}
                             className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg da-animate-pulse ${
                                 isDark
-                                    ? "bg-[#1a0a0f]"
+                                    ? "bg-[#2a1117]"
                                     : "bg-slate-200"
                             }`}
                         />

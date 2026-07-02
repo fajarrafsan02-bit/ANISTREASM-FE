@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'motion/react';
 import { Lock } from 'lucide-react';
 import { useNavigate } from 'react-router';
@@ -14,7 +13,7 @@ export default function UnauthorizedCard() {
             scale: 1,
             transition: {
                 duration: 0.8,
-                ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier untuk transisi elegan & super halus
+                ease: [0.16, 1, 0.3, 1], 
                 when: "beforeChildren",
                 staggerChildren: 0.12,
             },
@@ -51,7 +50,6 @@ export default function UnauthorizedCard() {
             animate="visible"
             className="z-10 w-full max-w-[460px] bg-white/[0.02] border border-white/10 backdrop-blur-3xl rounded-[36px] p-6 md:p-8 pt-12 flex flex-col items-center relative shadow-2xl"
         >
-            {/* Lock Icon Overflowing at top with dynamic floating spring and hover */}
             <motion.div
                 variants={lockVariants}
                 whileHover={{ scale: 1.08 }}

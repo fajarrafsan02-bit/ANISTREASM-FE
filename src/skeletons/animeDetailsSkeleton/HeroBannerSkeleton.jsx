@@ -57,12 +57,12 @@ export default function HeroBannerSkeleton() {
                 {/* Badge pills */}
                 <div className="flex gap-2 mb-1">
                     <div className={`w-14 h-4 sm:w-20 sm:h-5 rounded da-animate-pulse overflow-hidden ${
-                        isDark ? "bg-[#1a0a0f]" : "bg-rose-100"
+                        isDark ? "bg-[#2a1117]" : "bg-rose-100"
                     }`}>
                         <ShimmerSkeleton isDark={isDark} />
                     </div>
                     <div className={`w-10 h-4 sm:w-16 sm:h-5 rounded da-animate-pulse overflow-hidden ${
-                        isDark ? "bg-[#1a0a0f]" : "bg-slate-100"
+                        isDark ? "bg-[#2a1117]" : "bg-slate-100"
                     }`}>
                         <ShimmerSkeleton isDark={isDark} />
                     </div>
@@ -70,14 +70,14 @@ export default function HeroBannerSkeleton() {
 
                 {/* Title */}
                 <div className={`w-[85%] xs:w-[75%] sm:w-[55%] max-w-lg h-6 sm:h-9 rounded-lg da-animate-pulse overflow-hidden ${
-                    isDark ? "bg-[#1a0a0f]" : "bg-slate-200"
+                    isDark ? "bg-[#2a1117]" : "bg-slate-200"
                 }`}>
                     <ShimmerSkeleton isDark={isDark} />
                 </div>
 
                 {/* Subtitle */}
                 <div className={`w-[60%] xs:w-[50%] sm:w-[35%] max-w-sm h-3 sm:h-4 rounded-md da-animate-pulse overflow-hidden ${
-                    isDark ? "bg-[#1a0a0f]" : "bg-slate-100"
+                    isDark ? "bg-[#2a1117]" : "bg-slate-100"
                 }`}>
                     <ShimmerSkeleton isDark={isDark} />
                 </div>

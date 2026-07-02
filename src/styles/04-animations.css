@@ -303,7 +303,7 @@
     opacity: 1;
   }
   50% {
-    opacity: 0.4;
+    opacity: 0.2;
   }
 }
 
@@ -406,7 +406,7 @@
 }
 
 .da-animate-shimmer {
-  animation: shimmer 2s infinite;
+  animation: da-shimmer 1.5s infinite;
 }
 
 .da-animate-bounce {

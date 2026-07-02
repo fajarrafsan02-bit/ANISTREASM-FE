@@ -61,7 +61,7 @@ export default function HeaderDesktopNav({
         if (isNavigating || activeTab === linkId) return;
 
         if (linkId !== "beranda" && !isLoggedIn) {
-            toast.error("Silakan login terlebih dahulu", 3000);
+            toast.warning("Silakan masuk terlebih dahulu untuk pindah halaman.", 3000);
             openModal({ mode: "login" });
             return;
         }
@@ -173,7 +173,6 @@ export default function HeaderDesktopNav({
                                 />
                             )}
                         </AnimatePresence>
-
                         <span className="relative z-10">{link.name}</span>
                     </motion.button>
                 );

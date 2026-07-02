@@ -29,7 +29,7 @@ export default function InfoGridSkeleton() {
                         <div
                             className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg da-animate-pulse ${
                                 isDark
-                                    ? "bg-[#1a0a0f]"
+                                    ? "bg-[#2a1117]"
                                     : "bg-slate-300"
                             }`}
                         />
@@ -38,14 +38,14 @@ export default function InfoGridSkeleton() {
                             <div
                                 className={`h-3 sm:h-4 w-24 sm:w-28 rounded da-animate-pulse ${
                                     isDark
-                                        ? "bg-[#1a0a0f]"
+                                        ? "bg-[#2a1117]"
                                         : "bg-slate-300"
                                 }`}
                             />
                             <div
                                 className={`h-2.5 sm:h-3 w-16 sm:w-20 rounded da-animate-pulse ${
                                     isDark
-                                        ? "bg-[#1a0a0f]"
+                                        ? "bg-[#2a1117]"
                                         : "bg-slate-200"
                                 }`}
                             />
@@ -64,7 +64,7 @@ export default function InfoGridSkeleton() {
                             <div
                                 className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full da-animate-pulse ${
                                     isDark
-                                        ? "bg-[#1a0a0f]"
+                                        ? "bg-[#2a1117]"
                                         : "bg-slate-300"
                                 }`}
                             />
@@ -95,7 +95,7 @@ export default function InfoGridSkeleton() {
                         <div
                             className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg da-animate-pulse ${
                                 isDark
-                                    ? "bg-[#1a0a0f]"
+                                    ? "bg-[#2a1117]"
                                     : "bg-slate-300"
                             }`}
                         />
@@ -104,14 +104,14 @@ export default function InfoGridSkeleton() {
                             <div
                                 className={`h-3 sm:h-4 w-20 rounded da-animate-pulse ${
                                     isDark
-                                        ? "bg-[#1a0a0f]"
+                                        ? "bg-[#2a1117]"
                                         : "bg-slate-300"
                                 }`}
                             />
                             <div
                                 className={`h-2.5 sm:h-3 w-20 sm:w-24 rounded da-animate-pulse ${
                                     isDark
-                                        ? "bg-[#1a0a0f]"
+                                        ? "bg-[#2a1117]"
                                         : "bg-slate-200"
                                 }`}
                             />
@@ -131,7 +131,7 @@ export default function InfoGridSkeleton() {
                                 key={i}
                                 className={`h-2.5 sm:h-3 rounded da-animate-pulse ${
                                     isDark
-                                        ? "bg-[#1a0a0f]"
+                                        ? "bg-[#2a1117]"
                                         : "bg-slate-300"
                                 }`}
                                 style={{
@@ -155,7 +155,7 @@ export default function InfoGridSkeleton() {
                         <div
                             className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg da-animate-pulse ${
                                 isDark
-                                    ? "bg-[#1a0a0f]"
+                                    ? "bg-[#2a1117]"
                                     : "bg-slate-300"
                             }`}
                         />
@@ -164,14 +164,14 @@ export default function InfoGridSkeleton() {
                             <div
                                 className={`h-3 sm:h-4 w-14 sm:w-16 rounded da-animate-pulse ${
                                     isDark
-                                        ? "bg-[#1a0a0f]"
+                                        ? "bg-[#2a1117]"
                                         : "bg-slate-300"
                                 }`}
                             />
                             <div
                                 className={`h-2.5 sm:h-3 w-10 sm:w-12 rounded da-animate-pulse ${
                                     isDark
-                                        ? "bg-[#1a0a0f]"
+                                        ? "bg-[#2a1117]"
                                         : "bg-slate-200"
                                 }`}
                             />
@@ -185,7 +185,7 @@ export default function InfoGridSkeleton() {
                                 key={i}
                                 className={`h-5 sm:h-6 rounded-md da-animate-pulse ${
                                     isDark
-                                        ? "bg-[#1a0a0f]"
+                                        ? "bg-[#2a1117]"
                                         : "bg-slate-200"
                                 }`}
                                 style={{

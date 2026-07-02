@@ -37,16 +37,16 @@ export default function StatusCardSkeleton() {
                     {/* Left: Status indicator */}
                     <div className="flex items-center gap-1.5 sm:gap-2">
                         <div className={`w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full da-animate-pulse ${
-                            isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                            isDark ? "bg-[#2a1117]" : "bg-slate-300"
                         }`} />
                         <div className={`h-2.5 sm:h-3 w-16 sm:w-28 rounded da-animate-pulse ${
-                            isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                            isDark ? "bg-[#2a1117]" : "bg-slate-300"
                         }`} />
                     </div>
 
                     {/* Right: Status badge */}
                     <div className={`h-5 sm:h-7 w-16 sm:w-24 rounded-md da-animate-pulse ${
-                        isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                        isDark ? "bg-[#2a1117]" : "bg-slate-300"
                     }`} />
                 </div>
             </div>

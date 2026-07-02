@@ -1,5 +1,4 @@
 import { useTheme } from "../../../context/ThemeContext";
-import useComments from "../../../hooks/useComments";
 import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
 import CommentSkeleton from "./CommentSkeleton";
@@ -18,7 +17,7 @@ function getMyAvatar(user) {
     return user?.profil?.avatar || user?.profile?.avatar || user?.avatar || null;
 }
 
-export default function CommentsTab({ animeId }) {
+export default function CommentsTab({ commentsApi }) {
     const { theme } = useTheme();
     const isDark = theme === "dark";
 
@@ -40,7 +39,7 @@ export default function CommentsTab({ animeId }) {
         toggleLike,
         fetchReplies,
         isLiked,
-    } = useComments(animeId);
+    } = commentsApi;
 
     const cardBaseClass = isDark
         ? "bg-[#0d0407]/90 border border-[#2a1117]/80 shadow-2xl backdrop-blur-xl"

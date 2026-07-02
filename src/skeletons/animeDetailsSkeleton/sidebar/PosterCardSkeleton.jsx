@@ -30,7 +30,7 @@ export default function PosterCardSkeleton() {
             }`}>
                 {/* Poster placeholder */}
                 <div className={`absolute inset-0 animate-pulse relative overflow-hidden transform-gpu ${
-                    isDark ? "bg-[#1a0a0f]" : "bg-slate-200"
+                    isDark ? "bg-[#2a1117]" : "bg-slate-200"
                 }`}>
                     <ShimmerSkeleton />
                     <div className="absolute inset-0 opacity-[0.02] sm:opacity-[0.03]" style={{
@@ -47,7 +47,7 @@ export default function PosterCardSkeleton() {
                     <div className="relative">
                         <div className="absolute -inset-1 bg-[#ff1e56]/10 rounded-lg blur-sm hidden sm:block" />
                         <div className={`relative w-16 sm:w-24 h-5 sm:h-6 rounded-lg animate-pulse overflow-hidden transform-gpu ${
-                            isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                            isDark ? "bg-[#2a1117]" : "bg-slate-300"
                         }`}>
                             <ShimmerSkeleton />
                         </div>
@@ -57,7 +57,7 @@ export default function PosterCardSkeleton() {
                 {/* Quality badge */}
                 <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10">
                     <div className={`w-8 sm:w-10 h-4 sm:h-5 rounded-md animate-pulse overflow-hidden transform-gpu ${
-                        isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                        isDark ? "bg-[#2a1117]" : "bg-slate-300"
                     }`}>
                         <ShimmerSkeleton />
                     </div>
@@ -75,12 +75,12 @@ export default function PosterCardSkeleton() {
                             : "from-slate-300/40 via-slate-200/20 to-transparent"
                     }`} />
                     <div className={`h-3.5 sm:h-4 w-5/6 rounded animate-pulse overflow-hidden transform-gpu ${
-                        isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                        isDark ? "bg-[#2a1117]" : "bg-slate-300"
                     }`}>
                         <ShimmerSkeleton />
                     </div>
                     <div className={`h-2.5 sm:h-3 w-1/2 rounded animate-pulse overflow-hidden transform-gpu ${
-                        isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                        isDark ? "bg-[#2a1117]" : "bg-slate-300"
                     }`}>
                         <ShimmerSkeleton />
                     </div>

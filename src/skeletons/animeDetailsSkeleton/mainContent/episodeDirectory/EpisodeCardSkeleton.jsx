@@ -25,7 +25,7 @@ export default function EpisodeCardSkeleton() {
                         da-animate-pulse
                         ${
                             isDark
-                                ? "bg-[#1a0a0f] border-[#2a1117]"
+                                ? "bg-[#2a1117] border-[#2a1117]"
                                 : "bg-slate-300 border-slate-300"
                         }`}
                 />
@@ -48,7 +48,7 @@ export default function EpisodeCardSkeleton() {
                     <div
                         className={`h-3.5 sm:h-4 w-[85%] rounded da-animate-pulse ${
                             isDark
-                                ? "bg-[#1a0a0f]"
+                                ? "bg-[#2a1117]"
                                 : "bg-slate-300"
                         }`}
                     />
@@ -57,7 +57,7 @@ export default function EpisodeCardSkeleton() {
                     <div
                         className={`h-2.5 sm:h-3 w-14 sm:w-16 rounded da-animate-pulse ${
                             isDark
-                                ? "bg-[#1a0a0f]"
+                                ? "bg-[#2a1117]"
                                 : "bg-slate-200"
                         }`}
                     />

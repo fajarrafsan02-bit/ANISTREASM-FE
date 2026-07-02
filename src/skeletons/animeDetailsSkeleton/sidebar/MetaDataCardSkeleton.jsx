@@ -14,17 +14,17 @@ export default function MetadataCardSkeleton() {
             <div className="flex items-center gap-2 mb-4">
                 <div className="flex gap-[2px] mt-[1px]">
                     <div className={`w-0.5 h-3 rounded-[1px] animate-pulse ${
-                        isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                        isDark ? "bg-[#2a1117]" : "bg-slate-300"
                     }`} />
                     <div className={`w-0.5 h-2 rounded-[1px] mt-[4px] animate-pulse ${
-                        isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                        isDark ? "bg-[#2a1117]" : "bg-slate-300"
                     }`} />
                     <div className={`w-0.5 h-1 rounded-[1px] mt-[8px] animate-pulse ${
-                        isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                        isDark ? "bg-[#2a1117]" : "bg-slate-300"
                     }`} />
                 </div>
                 <div className={`h-3 w-28 rounded animate-pulse ${
-                    isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                    isDark ? "bg-[#2a1117]" : "bg-slate-300"
                 }`} />
             </div>
 
@@ -41,7 +41,7 @@ export default function MetadataCardSkeleton() {
 
                         {/* Label */}
                         <div className={`flex-shrink-0 ml-2.5 h-2.5 w-20 rounded animate-pulse ${
-                            isDark ? "bg-[#1a0a0f]" : "bg-slate-200"
+                            isDark ? "bg-[#2a1117]" : "bg-slate-200"
                         }`} />
 
                         {/* Dotted line */}
@@ -51,7 +51,7 @@ export default function MetadataCardSkeleton() {
 
                         {/* Value */}
                         <div className={`flex-shrink-0 h-4 w-24 rounded animate-pulse ${
-                            isDark ? "bg-[#1a0a0f]" : "bg-slate-200"
+                            isDark ? "bg-[#2a1117]" : "bg-slate-200"
                         }`} />
                     </div>
                 ))}

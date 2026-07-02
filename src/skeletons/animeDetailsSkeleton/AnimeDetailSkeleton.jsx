@@ -47,10 +47,10 @@ export default function AnimeDetailSkeleton({ fullPage = false }) {
                     : "bg-slate-100 border-slate-300"
             }`}>
                 <div className={`mx-auto h-3 w-64 rounded da-animate-pulse mb-2 ${
-                    isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                    isDark ? "bg-[#2a1117]" : "bg-slate-300"
                 }`} />
                 <div className={`mx-auto h-2 w-48 rounded da-animate-pulse ${
-                    isDark ? "bg-[#1a0a0f]" : "bg-slate-200"
+                    isDark ? "bg-[#2a1117]" : "bg-slate-200"
                 }`} />
             </footer>
         </div>

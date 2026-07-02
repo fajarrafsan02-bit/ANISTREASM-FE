@@ -44,10 +44,10 @@ export default function DesktopSearch({
             <div className={`flex items-center gap-3 rounded-full px-4 py-2.5 border transition-all duration-500 relative overflow-hidden
                 ${isFocused
                     ? isDark
-                        ? "bg-zinc-950 border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.25)]"
-                        : "bg-white border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.15)]"
+                        ? "bg-zinc-800 border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
+                        : "bg-white border-red-500 shadow-[0_0_18px_rgba(239,68,68,0.22)]"
                     : isDark
-                        ? "bg-zinc-950 border-zinc-800/80"
+                        ? "bg-zinc-900 border-zinc-700/80"
                         : "bg-white border-gray-200"
                 }`}
             >

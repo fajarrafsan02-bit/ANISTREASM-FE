@@ -33,20 +33,17 @@ export default function AniStreamProfilePage() {
 
     const { wishlistItems, loadingItems, removeWishlist } = useWishlist();
     
-    // ✅ Kita akan menggunakan historyLoading ini untuk trigger skeleton
     const { history, historyLoading } = useWatchHistory(); 
 
     const { recentWatched, recentWishlist, loading: recentLoading } = useRecentActivity();
 
     const [animeWatchedCount, setAnimeWatchedCount] = useState(0);
-    const [isFavoritesExpanded, setIsFavoritesExpanded] = useState(false);
-    const [isWishlistExpanded, setIsWishlistExpanded] = useState(false); 
+    const [isWishlistExpanded, setIsWishlistExpanded] = useState(false);
 
     const [mounted, setMounted] = useState(false);
 
     const revealGrid = useScrollReveal({ threshold: 0.1, once: true });
-    const revealFavorites = useScrollReveal({ threshold: 0.1, once: true });
-    const revealWishlist = useScrollReveal({ threshold: 0.1, once: true }); 
+    const revealWishlist = useScrollReveal({ threshold: 0.1, once: true });
 
     useEffect(() => {
         const t = setTimeout(() => setMounted(true), 60);
@@ -104,7 +101,7 @@ export default function AniStreamProfilePage() {
 
                 <div
                     ref={revealGrid.ref}
-                    className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-stretch"
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-start"
                     style={{
                         opacity: revealGrid.isVisible ? 1 : 0,
                         transform: revealGrid.isVisible ? "translateY(0px)" : "translateY(25px)",

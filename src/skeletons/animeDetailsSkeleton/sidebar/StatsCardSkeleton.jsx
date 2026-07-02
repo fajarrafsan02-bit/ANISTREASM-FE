@@ -48,7 +48,7 @@ export default function StatsCardSkeleton() {
                             {/* Icon placeholder */}
                             <div className={`w-7 h-7 sm:w-9 sm:h-9 rounded-lg flex-shrink-0 da-animate-pulse ${
                                 isDark
-                                    ? "bg-[#1a0a0f] border border-red-950/30"
+                                    ? "bg-[#2a1117] border border-red-950/30"
                                     : "bg-slate-300 border border-slate-400/20"
                                     // ✅ light: bg-slate-300 supaya kontras di atas slate-100
                             }`} />
@@ -56,14 +56,14 @@ export default function StatsCardSkeleton() {
                             {/* Content */}
                             <div className="flex-1 min-w-0 space-y-1 sm:space-y-1.5">
                                 <div className={`h-2 sm:h-2.5 w-20 sm:w-24 rounded da-animate-pulse ${
-                                    isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                                    isDark ? "bg-[#2a1117]" : "bg-slate-300"
                                 }`} />
                                 <div className="flex items-center gap-1 sm:gap-1.5">
                                     <div className={`h-4 sm:h-5 w-10 sm:w-12 rounded da-animate-pulse ${
-                                        isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                                        isDark ? "bg-[#2a1117]" : "bg-slate-300"
                                     }`} />
                                     <div className={`h-3 sm:h-4 w-8 sm:w-10 rounded da-animate-pulse ${
-                                        isDark ? "bg-[#1a0a0f]" : "bg-slate-200"
+                                        isDark ? "bg-[#2a1117]" : "bg-slate-200"
                                         // ✅ sedikit lebih terang untuk variasi
                                     }`} />
                                 </div>

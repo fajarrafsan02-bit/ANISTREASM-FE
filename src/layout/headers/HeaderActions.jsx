@@ -97,10 +97,6 @@ export default function HeaderActions({
     };
 
     return (
-        /* 
-          ✅ PERBAIKAN RESPONSif: Kesenjangan antar ikon di HP terkecil dikompresi ke gap-1 (4px) 
-          dan bertahap membesar ke min-[360px]:gap-1.5 agar barisan menu & logo terhindar dari kepenuhan elemen.
-        */
         <div className={`flex items-center gap-1 min-[360px]:gap-1.5 sm:gap-2 md:gap-3 transition-all duration-500 ${mobileSearchOpen ? "flex-1 justify-end max-w-full" : "shrink-0"
             }`}>
             <DesktopSearch

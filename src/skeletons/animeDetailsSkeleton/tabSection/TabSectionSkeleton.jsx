@@ -19,7 +19,7 @@ export default function TabsSectionSkeleton() {
                                     ? "w-28 bg-[#ff1e56]/8"
                                     : "w-28 bg-rose-100"
                                 : isDark
-                                    ? "w-24 bg-[#1a0a0f]"
+                                    ? "w-24 bg-[#2a1117]"
                                     : "w-24 bg-slate-200"
                         }`}
                     />
@@ -39,19 +39,19 @@ export default function TabsSectionSkeleton() {
                     >
                         <div className="flex gap-3">
                             <div className={`w-16 h-16 rounded-lg da-animate-pulse flex-shrink-0 ${
-                                isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                                isDark ? "bg-[#2a1117]" : "bg-slate-300"
                             }`} />
                             <div className="flex-1 space-y-2">
                                 <div className={`h-4 w-full rounded da-animate-pulse ${
-                                    isDark ? "bg-[#1a0a0f]" : "bg-slate-300"
+                                    isDark ? "bg-[#2a1117]" : "bg-slate-300"
                                 }`} />
                                 <div className={`h-3 w-3/4 rounded da-animate-pulse ${
-                                    isDark ? "bg-[#1a0a0f]" : "bg-slate-200"
+                                    isDark ? "bg-[#2a1117]" : "bg-slate-200"
                                 }`} />
                             </div>
                         </div>
                         <div className={`h-3 w-full rounded da-animate-pulse ${
-                            isDark ? "bg-[#1a0a0f]" : "bg-slate-200"
+                            isDark ? "bg-[#2a1117]" : "bg-slate-200"
                         }`} />
                     </div>
                 ))}
