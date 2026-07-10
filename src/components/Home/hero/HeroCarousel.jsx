@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { useTheme } from "../../../context/ThemeContext";
 
-import useHeroCarousel from "./useHeroCarousel";
+import useHeroCarousel from "./UseHeroCarousel";
 import useHeroMouseParallax from "../../../hooks/useHeroMouseParallax";
 import { getSectionStyle, heroKeyframes } from "../hero/HeroStyle";
 
-import HeroBackground from "./HeroBackground";
+import HeroBackground from "./HeroBackGround";
 import HeroOverlays from "./HeroOverlays";
 import HeroContent from "./HeroContent";
 import HeroInfoCard from "./HeroInfoCard";

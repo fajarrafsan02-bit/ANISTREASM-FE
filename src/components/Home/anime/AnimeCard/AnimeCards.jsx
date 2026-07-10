@@ -1,5 +1,5 @@
 // AnimeCards.jsx
-import { useAnimeCard } from "./useAnimeCard";
+import { useAnimeCard } from "./UseAnimeCard";
 import AnimeCardImage from "./AnimeCardImage";
 import AnimeCardInfo from "./AnimeCardInfo";
 import AnimeCardPanel from "./AnimeCardPanel";

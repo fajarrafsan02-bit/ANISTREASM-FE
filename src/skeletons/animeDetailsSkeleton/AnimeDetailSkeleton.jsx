@@ -1,5 +1,5 @@
 import { useTheme } from "../../context/ThemeContext";
-import HeroBannerSkeleton from "./HerobannerSkeleton";
+import HeroBannerSkeleton from "./HeroBannerSkeleton";
 import LoadingSpinner from "./LoadingSpinner";
 import MainContentSkeleton from "./mainContent/MainContentSkeleton";
 import SidebarSkeleton from "./sidebar/SidebarSkeleton";

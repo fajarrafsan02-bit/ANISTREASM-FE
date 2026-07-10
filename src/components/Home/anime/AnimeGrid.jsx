@@ -1,7 +1,7 @@
 import { useTheme } from "../../../context/ThemeContext";
 import { useState, useEffect } from "react";
 import AnimeCards from "./AnimeCard/AnimeCards";
-import { useScrollReveal } from "../../../hooks/useScrollReveal";
+import { useScrollReveal } from "../../../hooks/UseScrollReveal";
 
 // ─── Wrapper animasi per card ─────────────────────────────────────────────────
 function RevealCard({ children, index, cols, isMobile, isActive }) {

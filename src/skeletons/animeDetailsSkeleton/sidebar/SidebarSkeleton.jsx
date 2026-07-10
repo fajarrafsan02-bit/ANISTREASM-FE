@@ -1,7 +1,7 @@
 import PosterCardSkeleton from "./PosterCardSkeleton";
 import StatusCardSkeleton from "./StatusCardSkeleton";
 import StatsCardSkeleton from "./StatsCardSkeleton";
-import MetadataCardSkeleton from "./MetadataCardSkeleton";
+import MetadataCardSkeleton from "./MetaDataCardSkeleton";
 
 export default function SidebarSkeleton() {
     return (

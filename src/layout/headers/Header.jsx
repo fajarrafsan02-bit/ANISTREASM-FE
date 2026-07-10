@@ -1,6 +1,6 @@
 import { useTheme } from "../../context/ThemeContext";
 import { useState, useEffect, useRef } from "react";
-import useHeader from "./useHeader";
+import useHeader from "./UseHeader";
 
 import HeaderLogo from "./HeaderLogo";
 import HeaderDesktopNav from "./HeaderDesktopNav";
