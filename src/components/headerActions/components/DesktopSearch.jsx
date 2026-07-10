@@ -1,6 +1,6 @@
 import { Search, X, Loader2 } from "lucide-react";
 import { useRef, useEffect } from "react";
-import SearchModal from "../../SearchModal";
+import SearchModal from "../../searchModal";
 
 export default function DesktopSearch({
     isDark,

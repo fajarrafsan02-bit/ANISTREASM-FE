@@ -4,7 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useAuthModal } from "../../context/AuthModalContext";
 import useToast from "../../hooks/useToast";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useScrollReveal } from "../../hooks/UseScrollReveal";
 
 const animeQuotes = [
   { text: "Mati tanpa kebencian adalah jalan seorang ninja", from: "Jiraiya — Naruto" },

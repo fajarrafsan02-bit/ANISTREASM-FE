@@ -5,7 +5,7 @@ import { useAuthModalActions } from "../../context/AuthModalContext";
 import { useAuth } from "../../context/AuthContext";
 import useToast from "../../hooks/useToast";
 import useAnimeSearch from "../../hooks/useSearchAnime";
-import useBreakpoint from "../../components/headerActions/hooks/useBreakpoint";
+import useBreakpoint from "../../components/headerActions/hooks/useBreakPoint";
 import { getImageUrl } from "../../components/headerActions/constants";
 import DesktopSearch from "../../components/headerActions/components/DesktopSearch";
 import MobileSearch from "../../components/headerActions/components/SearchMobile";

@@ -1,7 +1,7 @@
 import PosterCard from './PosterCard';
 import StatusCard from './StatusCard';
 import StatsCard from './StatsCard';
-import MetadataCard from './MetadataCard';
+import MetadataCard from './MetaDataCard';
 
 export default function Sidebar({ anime }) {
     const popularRankYearly = anime?.rankings?.find(

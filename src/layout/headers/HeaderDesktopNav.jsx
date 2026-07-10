@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useAuth } from "../../context/AuthContext";
 import { useAuthModal } from "../../context/AuthModalContext";
 import useToast from "../../hooks/useToast";
-import { NAV_LINKS } from "./headerConstants";
+import { NAV_LINKS } from "./HeaderConstants";
 
 export default function HeaderDesktopNav({
     isDark,

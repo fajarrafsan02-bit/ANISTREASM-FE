@@ -1,7 +1,7 @@
 import { useTheme } from "../../../context/ThemeContext";
 import { useState, useEffect } from "react";
 import AnimeGrid from "./AnimeGrid";
-import { useScrollReveal } from "../../../hooks/useScrollReveal";
+import { useScrollReveal } from "../../../hooks/UseScrollReveal";
 import { useAuth } from "../../../context/AuthContext";
 import { useAuthModal } from "../../../context/AuthModalContext";
 import useToast from "../../../hooks/useToast";

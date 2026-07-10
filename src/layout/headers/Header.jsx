@@ -8,7 +8,7 @@ import HeaderMobileMenu from "./HeaderMobileMenu";
 import HeaderBottomGradient from "./HeaderBottomGradient";
 import HeaderProgressBar from "./HeaderProgressBar";
 import HeaderActions from "./HeaderActions";
-import useBreakpoint from "../../components/headerActions/hooks/useBreakpoint";
+import useBreakpoint from "../../components/headerActions/hooks/useBreakPoint";
 
 export default function Header({ activeTab, setActiveTab }) {
     const { theme, toggleTheme } = useTheme();

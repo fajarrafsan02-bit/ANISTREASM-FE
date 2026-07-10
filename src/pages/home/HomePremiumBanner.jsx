@@ -1,6 +1,6 @@
 import { Heart } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
-import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useScrollReveal } from "../../hooks/UseScrollReveal";
 
 export default function HomeSupportBanner() {
     const { theme } = useTheme();

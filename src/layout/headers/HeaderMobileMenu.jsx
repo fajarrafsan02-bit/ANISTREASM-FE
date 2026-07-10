@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { LogIn, LogOut, User } from "lucide-react";
-import { NAV_LINKS } from "./headerConstants";
+import { NAV_LINKS } from "./HeaderConstants";
 import { useAuthModal } from "../../context/AuthModalContext";
 import { useAuth } from "../../context/AuthContext";
 

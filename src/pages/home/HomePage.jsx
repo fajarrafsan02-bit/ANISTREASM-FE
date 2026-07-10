@@ -9,7 +9,7 @@ import useAnimeCompleteHome from "../../hooks/useAnimeCompleteHome";
 import { useEffect, useRef } from "react";
 import useToast from "../../hooks/useToast";
 import { useNavigate } from "react-router-dom";
-import useHeroAnimeHome from "../../hooks/UseHeroAnimeHome";
+import useHeroAnimeHome from "../../hooks/useHeroAnimeHome";
 
 export default function HomePage() {
     const toast = useToast();
