@@ -58,7 +58,7 @@ export default function FilterSidebar({
             <div
                 className={`relative rounded-2xl border-2 p-3 sm:p-6 flex flex-col gap-4 sm:gap-6 overflow-hidden min-w-0
                     ${isDark
-                        ? "border-[#2a1117]/60 bg-gradient-to-br from-[#13080c]/80 to-[#0a0305]/90 backdrop-blur-xl"
+                        ? "border-[#2a1117]/60 bg-linear-to-br from-[#13080c]/80 to-[#0a0305]/90 backdrop-blur-xl"
                         : "border-slate-200/80 bg-white shadow-xl shadow-slate-200/20"
                     }`}
             >
@@ -120,7 +120,7 @@ export default function FilterSidebar({
                                     className={`relative px-2.5 py-1.5 sm:px-3 sm:py-2 text-[10px] sm:text-xs font-bold rounded-lg border transition-all duration-300 flex items-center gap-1.5 overflow-hidden min-w-0
                                         ${isSelected
                                             ? isDark
-                                                ? 'bg-gradient-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_2px_10px_rgba(255,30,86,0.2)]'
+                                                ? 'bg-linear-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_2px_10px_rgba(255,30,86,0.2)]'
                                                 : 'bg-slate-900 border-transparent text-white'
                                             : isDark
                                                 ? 'border-[#2a1117] bg-[#10070a]/80 text-slate-400 hover:border-[#ff1e56]/20 hover:text-slate-200'
@@ -128,7 +128,7 @@ export default function FilterSidebar({
                                         }`}
                                 >
                                     {isSelected && (
-                                        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+                                        <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                                     )}
                                     <span className="relative z-10 truncate max-w-[120px] sm:max-w-none">
                                         {genre.title}
@@ -160,7 +160,7 @@ export default function FilterSidebar({
                                         className={`relative py-2 sm:py-2.5 px-2 text-[10px] sm:text-xs font-black rounded-lg border transition-all duration-300 overflow-hidden min-w-0
                                             ${isActive
                                                 ? isDark
-                                                    ? 'bg-gradient-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_2px_10px_rgba(255,30,86,0.2)]'
+                                                    ? 'bg-linear-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_2px_10px_rgba(255,30,86,0.2)]'
                                                     : 'bg-slate-900 border-transparent text-white'
                                                 : isDark
                                                     ? 'border-[#2a1117] bg-[#10070a]/80 text-slate-400 hover:border-[#ff1e56]/20 hover:text-slate-200'
@@ -168,7 +168,7 @@ export default function FilterSidebar({
                                             }`}
                                     >
                                         {isActive && (
-                                            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+                                            <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                                         )}
                                         <span className="relative z-10 truncate block">
                                             {status}
@@ -186,11 +186,11 @@ export default function FilterSidebar({
                         onClick={onApply}
                         className={`relative flex-1 py-2.5 sm:py-3 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] border transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden group min-w-0
                             ${isDark
-                                ? 'bg-gradient-to-r from-[#ff1e56] to-rose-600 border-transparent text-white hover:shadow-[0_4px_25px_rgba(255,30,86,0.35)]'
+                                ? 'bg-linear-to-r from-[#ff1e56] to-rose-600 border-transparent text-white hover:shadow-[0_4px_25px_rgba(255,30,86,0.35)]'
                                 : 'bg-slate-900 border-transparent text-white hover:bg-slate-800'
                             }`}
                     >
-                        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                        <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                         <i className="fa-solid fa-check text-[10px] relative z-10" />
                         <span className="relative z-10 truncate">Terapkan</span>
                     </button>

@@ -1,5 +1,3 @@
-// playerUtils.js
-
 export const RESOLUTION_PRIORITY = ['1080p', '720p', '480p', '360p', 'unknown'];
 
 export const BLOCKED_EMBED_DOMAINS = ['pixeldrain.com'];

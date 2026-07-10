@@ -5,6 +5,6 @@
 @import "tailwindcss";
 
 /* Breakpoint tambahan untuk HP kecil (320px) -> HP normal (>=400px) */
-@theme {
+:root {
   --breakpoint-xs: 400px;
 }

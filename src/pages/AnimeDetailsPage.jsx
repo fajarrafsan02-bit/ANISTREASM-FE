@@ -60,7 +60,7 @@ export default function AnimeDetailsPage() {
             />
 
             {/* Navigation Buttons */}
-            <div className="fixed top-[72px] left-4 sm:absolute sm:top-8 sm:left-7 md:top-10 md:left-10 lg:left-12 z-[9999] flex items-center gap-2">
+            <div className="fixed top-[72px] left-4 sm:absolute sm:top-8 sm:left-7 md:top-10 md:left-10 lg:left-12 z-9999 flex items-center gap-2">
                 {/* Back Button */}
                 <button
                     onClick={() => navigate(-1)}

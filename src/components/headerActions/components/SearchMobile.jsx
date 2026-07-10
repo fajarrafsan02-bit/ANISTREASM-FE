@@ -1,4 +1,3 @@
-// SearchMobile.jsx
 import { Search, X, Loader2 } from "lucide-react";
 import { useRef, useEffect } from "react";
 import SearchModal from "../../SearchModal";
@@ -40,7 +39,9 @@ export default function MobileSearch({
 
     return (
         <div
-            className="relative md:hidden flex items-center justify-end outline-none"
+            // PERBAIKAN 1: Tambahkan z-50 di sini saat terbuka agar seluruh area search berada di ATAS lapisan gelap
+            className={`relative md:hidden flex items-center justify-end outline-none ${mobileSearchOpen ? "z-50" : "z-auto"
+                }`}
             ref={mobileSearchRef}
             tabIndex={-1}
             style={smoothTransition}
@@ -49,30 +50,26 @@ export default function MobileSearch({
                 onClick={() => {
                     if (!mobileSearchOpen) setMobileSearchOpen(true);
                 }}
-                /* 
-                  ✅ PERBAIKAN 1: Saat ditutup, ukuran menyusut rapi ke w-7.5 h-7.5 di HP. 
-                  Saat dibuka, tingginya disesuaikan ke h-8 sm:h-9 dengan padding rapat agar tipis.
-                */
-                className={`flex items-center rounded-full border relative overflow-hidden cursor-pointer
+                className={`flex items-center rounded-full border relative overflow-hidden cursor-pointer z-100
                     ${mobileSearchOpen
                         ? "w-full h-8 sm:h-9 px-2 sm:px-2.5 py-0.5 sm:py-1"
                         : "w-7.5 h-7.5 sm:w-9 sm:h-9 justify-center p-0"
-                    }
+                    }   
                     ${isDark
                         ? mobileSearchOpen
-                            ? "bg-zinc-950 border-zinc-800/80 focus-within:border-red-500 focus-within:shadow-[0_0_12px_rgba(239,68,68,0.2)]"
+                            ? "bg-zinc-900 border-zinc-700 focus-within:border-red-500 focus-within:shadow-[0_0_12px_rgba(239,68,68,0.2)]"
                             : "bg-zinc-950 border-white/10 text-gray-400 hover:text-red-500 hover:border-red-500/40 hover:bg-red-500/5 shadow-[0_0_10px_rgba(255,30,86,0.1)]"
                         : mobileSearchOpen
-                            ? "bg-white border-zinc-200/80 focus-within:border-red-500 focus-within:shadow-[0_0_10px_rgba(239,68,68,0.1)]"
+                            ? "bg-white border-zinc-300 focus-within:border-red-500 focus-within:shadow-[0_0_10px_rgba(239,68,68,0.1)]"
                             : "bg-white border-gray-200 text-gray-500 hover:text-red-500 hover:border-red-500/30 hover:shadow-md"
                     }`}
                 style={smoothTransition}
             >
                 {/* Garis Aksen */}
-                <div className={`absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-red-500 to-transparent transition-opacity duration-300 ${mobileSearchOpen ? "opacity-100" : "opacity-0"
+                <div className={`absolute bottom-0 left-0 right-0 h-[1.5px] bg-linear-to-r from-transparent via-red-500 to-transparent transition-opacity duration-300 ${mobileSearchOpen ? "opacity-100" : "opacity-0"
                     }`} />
 
-                {/* Tombol Cari / Loader (✅ PERBAIKAN 2: Ukuran boks dikompresi menjadi w-6 h-6, ikon w-3 di HP) */}
+                {/* Tombol Cari / Loader */}
                 <button
                     onClick={(e) => {
                         if (mobileSearchOpen) {
@@ -91,7 +88,6 @@ export default function MobileSearch({
                     )}
                 </button>
 
-                {/* Input (✅ PERBAIKAN 3: Ukuran teks disetel ke text-[11px] pada HP agar seimbang) */}
                 <input
                     ref={inputRef}
                     type="text"
@@ -99,7 +95,7 @@ export default function MobileSearch({
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyDown={(e) => onKeyDown(e, true)}
                     placeholder="Cari..."
-                    className={`bg-transparent text-[11px] sm:text-xs md:text-sm outline-none min-w-0 font-medium placeholder:text-gray-500 ${isDark ? "text-white" : "text-zinc-900"
+                    className={`bg-transparent text-[11px] sm:text-xs md:text-sm outline-none min-w-0 font-medium placeholder:text-gray-400 ${isDark ? "text-white" : "text-zinc-900"
                         }`}
                     style={{
                         ...smoothTransition,
@@ -110,7 +106,6 @@ export default function MobileSearch({
                     }}
                 />
 
-                {/* Tombol Tutup (✅ PERBAIKAN 4: Lebar dikurangi menjadi 20px, ikon X w-3 di HP) */}
                 <button
                     onMouseDown={(e) => e.preventDefault()}
                     onClick={(e) => {
@@ -118,7 +113,7 @@ export default function MobileSearch({
                         onCloseMobileSearch();
                     }}
                     aria-label="Tutup pencarian"
-                    className={`shrink-0 flex items-center justify-center transition-all duration-300 ${isDark ? "text-gray-600 hover:text-red-500" : "text-gray-400 hover:text-red-500"
+                    className={`shrink-0 flex items-center justify-center transition-all duration-300 ${isDark ? "text-gray-400 hover:text-red-500" : "text-gray-400 hover:text-red-500"
                         }`}
                     style={{
                         ...smoothTransition,

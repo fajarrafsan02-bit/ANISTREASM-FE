@@ -7,7 +7,7 @@ export function SkeletonCard({ isDark }) {
             className={`relative overflow-hidden rounded-2xl border group ${isDark ? 'border-[#2a1117]/60 bg-[#0d0407]' : 'border-slate-200/80 bg-white'
                 }`}
         >
-            <div className={`aspect-[2/3] animate-pulse ${isDark ? 'bg-[#1a0a0f]' : 'bg-slate-100'}`} />
+            <div className={`aspect-2/3 animate-pulse ${isDark ? 'bg-[#1a0a0f]' : 'bg-slate-100'}`} />
             <div className="p-3 sm:p-4 space-y-2.5 sm:space-y-3">
                 <div className={`h-2 w-1/3 rounded animate-pulse ${isDark ? 'bg-[#1a0a0f]' : 'bg-slate-100'}`} />
                 <div className={`h-4 w-full rounded animate-pulse ${isDark ? 'bg-[#1a0a0f]' : 'bg-slate-100'}`} />
@@ -27,7 +27,7 @@ export function SkeletonIndexList({ isDark }) {
                     key={idx}
                     className={`relative rounded-2xl border p-3 sm:p-6 ${
                         isDark 
-                            ? 'border-[#2a1117]/50 bg-gradient-to-br from-[#13080c]/40 to-[#0a0305]/60' 
+                            ? 'border-[#2a1117]/50 bg-linear-to-br from-[#13080c]/40 to-[#0a0305]/60' 
                             : 'border-slate-200/80 bg-white'
                     }`}
                 >

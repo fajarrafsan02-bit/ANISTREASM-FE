@@ -9,7 +9,7 @@ export default function TitleSectionSkeleton() {
 
             {/* Accent line */}
             <div
-                className={`w-12 sm:w-16 h-px bg-gradient-to-r ${
+                className={`w-12 sm:w-16 h-px bg-linear-to-r ${
                     isDark
                         ? "from-[#ff1e56]/30"
                         : "from-rose-400/50"
@@ -73,7 +73,7 @@ export default function TitleSectionSkeleton() {
 
             {/* Divider */}
             <div
-                className={`w-8 sm:w-10 h-px bg-gradient-to-r ${
+                className={`w-8 sm:w-10 h-px bg-linear-to-r ${
                     isDark
                         ? "from-[#ff1e56]/30"
                         : "from-rose-400/50"

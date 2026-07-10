@@ -9,7 +9,6 @@ export default function DesktopSearch({
     isFocused,
     setIsFocused,
     localLoading,
-    onSubmit,
     onDesktopSearchClick,
     onKeyDown,
     isSearchOpen,
@@ -34,7 +33,7 @@ export default function DesktopSearch({
         window.addEventListener("mousedown", handleMouseDown);
         return () => window.removeEventListener("mousedown", handleMouseDown);
 
-    }, [isSearchOpen]); // ✅ closeSearch sekarang stabil, tidak perlu di deps
+    }, [isSearchOpen]); 
 
     return (
         <div
@@ -51,7 +50,7 @@ export default function DesktopSearch({
                         : "bg-white border-gray-200"
                 }`}
             >
-                <div className={`absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-red-500 to-transparent transition-opacity duration-500 ${
+                <div className={`absolute bottom-0 left-0 right-0 h-[1.5px] bg-linear-to-r from-transparent via-red-500 to-transparent transition-opacity duration-500 ${
                     isFocused ? "opacity-100" : "opacity-0"
                 }`} />
 

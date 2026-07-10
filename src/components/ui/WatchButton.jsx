@@ -1,4 +1,3 @@
-// WatchButton.jsx
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 

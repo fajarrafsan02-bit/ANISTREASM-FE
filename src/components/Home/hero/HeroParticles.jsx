@@ -18,7 +18,6 @@ export default function HeroParticles({ isDark, mousePos }) {
         let w, h;
         let lastFrame = 0;
         const FPS_INTERVAL = 1000 / 24;
-        let time = 0;
 
         const resize = () => {
             w = canvas.width = canvas.offsetWidth;
@@ -61,7 +60,6 @@ export default function HeroParticles({ isDark, mousePos }) {
                 return;
             }
             lastFrame = now;
-            time += 0.016;
 
             ctx.clearRect(0, 0, w, h);
             const mp = mousePosRef.current;

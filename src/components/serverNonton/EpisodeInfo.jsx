@@ -52,24 +52,24 @@ export default function EpisodeInfo({ episode, animeTitle, selectedServer }) {
                 }`}
         >
             <div
-                className={`absolute -top-12 -left-12 w-36 h-36 sm:w-48 sm:h-48 rounded-full blur-3xl pointer-events-none ${isDark ? "bg-[#ff1e56]/[0.08]" : "bg-rose-200/40"
+                className={`absolute -top-12 -left-12 w-36 h-36 sm:w-48 sm:h-48 rounded-full blur-3xl pointer-events-none ${isDark ? "bg-[#ff1e56]/8" : "bg-rose-200/40"
                     }`}
             />
             <div
                 className={`absolute -bottom-16 -right-16 w-28 h-28 sm:w-36 sm:h-36 rounded-full blur-3xl pointer-events-none ${isDark
-                        ? "bg-gradient-to-br from-[#c41e3a]/[0.04] to-transparent"
-                        : "bg-gradient-to-br from-rose-100/50 to-transparent"
+                        ? "bg-linear-to-br from-[#c41e3a]/4 to-transparent"
+                        : "bg-linear-to-br from-rose-100/50 to-transparent"
                     }`}
             />
             <div
-                className={`absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b ${isDark ? "from-[#ff1e56] to-transparent" : "from-rose-400 to-transparent"
+                className={`absolute left-0 top-0 bottom-0 w-[3px] bg-linear-to-b ${isDark ? "from-[#ff1e56] to-transparent" : "from-rose-400 to-transparent"
                     }`}
             />
 
             <div className="relative">
                 {/* Badges */}
                 <div className="flex flex-wrap items-center gap-1.5 mb-3 sm:mb-5">
-                    <span className="inline-flex items-center gap-1 bg-gradient-to-r from-[#ff1e56] to-[#c41e3a] text-white text-[8px] sm:text-[10px] font-black px-2.5 py-1 rounded-lg tracking-wider uppercase shadow-[0_4px_15px_-2px_rgba(255,30,86,0.35)] select-none">
+                    <span className="inline-flex items-center gap-1 bg-linear-to-r from-[#ff1e56] to-[#c41e3a] text-white text-[8px] sm:text-[10px] font-black px-2.5 py-1 rounded-lg tracking-wider uppercase shadow-[0_4px_15px_-2px_rgba(255,30,86,0.35)] select-none">
                         <span className="w-1 h-1 rounded-full bg-white animate-pulse" />
                         EP BARU
                     </span>
@@ -110,7 +110,7 @@ export default function EpisodeInfo({ episode, animeTitle, selectedServer }) {
                     </span>
 
                     <h1
-                        className={`font-black leading-tight tracking-tight break-words text-lg sm:text-2xl md:text-3xl lg:text-4xl ${isDark ? "text-white" : "text-slate-900"
+                        className={`font-black leading-tight tracking-tight wrap-break-word text-lg sm:text-2xl md:text-3xl lg:text-4xl ${isDark ? "text-white" : "text-slate-900"
                             }`}
                     >
                         {animeTitle}
@@ -159,7 +159,7 @@ export default function EpisodeInfo({ episode, animeTitle, selectedServer }) {
                     {episode?.hasNextEpisode && episode?.nextEpisode ? (
                         <button
                             onClick={() => navigate(`/episode/${episode.nextEpisode.episodeId}`)}
-                            className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#ff1e56] to-[#c41e3a] text-white font-black h-9 sm:h-11 px-3.5 sm:px-6 rounded-xl text-[9px] sm:text-[11px] tracking-widest uppercase transition-all duration-300 shadow-[0_4px_16px_-2px_rgba(255,30,86,0.35)] hover:shadow-[0_6px_25px_rgba(255,30,86,0.55)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer w-full sm:w-auto"
+                            className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-[#ff1e56] to-[#c41e3a] text-white font-black h-9 sm:h-11 px-3.5 sm:px-6 rounded-xl text-[9px] sm:text-[11px] tracking-widest uppercase transition-all duration-300 shadow-[0_4px_16px_-2px_rgba(255,30,86,0.35)] hover:shadow-[0_6px_25px_rgba(255,30,86,0.55)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer w-full sm:w-auto"
                         >
                             <i className="fa-solid fa-forward text-[9px] transition-transform group-hover:translate-x-1" />
                             <span>Episode selanjutnya</span>

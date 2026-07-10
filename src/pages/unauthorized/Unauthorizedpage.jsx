@@ -1,4 +1,3 @@
-// Contoh di App.jsx atau route Unauthorized
 
 import UnauthorizedCard from "./Unauthorized";
 

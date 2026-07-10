@@ -1,4 +1,3 @@
-// HeroContent.jsx
 import { motion } from "motion/react";
 import { memo, useMemo } from "react";
 import { stripHtml } from "../../../utils/htmlParser";
@@ -74,14 +73,14 @@ export default memo(function HeroContent({ current, isDark, animationKey }) {
             openModal({
                 redirectAction: () => {
                     if (current?.animeId && isLoggedIn) {
-                        navigate(`/anime/${current.animeId}`);
+                        navigate(`/anime/detail/${current.animeId}`);
                     }
                 },
                 mode: "login"
             });
             return;
         }
-        navigate(`/anime/${current.animeId}`);
+        navigate(`/anime/detail/${current.animeId}`);
     };
 
     const handleBookmarkClick = async (e) => {
@@ -112,7 +111,7 @@ export default memo(function HeroContent({ current, isDark, animationKey }) {
     if (!current) return null;
 
     return (
-        <div className="relative z-[5] h-full flex items-end pb-14 xs:pb-16 sm:pb-24 md:pb-32">
+        <div className="relative z-5 h-full flex items-end pb-14 xs:pb-16 sm:pb-24 md:pb-32">
             <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 md:px-16 lg:px-24 w-full">
                 <div className="max-w-2xl">
                     {/* Decorative accent line - animated */}
@@ -123,9 +122,9 @@ export default memo(function HeroContent({ current, isDark, animationKey }) {
                         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         className="flex items-center gap-2 xs:gap-3 mb-3 xs:mb-4 sm:mb-6"
                     >
-                        <span className="h-[3px] w-6 xs:w-8 sm:w-12 bg-gradient-to-r from-red-500 via-red-400 to-red-500/0 rounded-full" />
+                        <span className="h-[3px] w-6 xs:w-8 sm:w-12 bg-linear-to-r from-red-500 via-red-400 to-red-500/0 rounded-full" />
                         <span className="h-[3px] w-2.5 xs:w-3 sm:w-4 bg-red-500/40 rounded-full" />
-                        <span className="h-[2px] w-16 sm:w-24 bg-gradient-to-r from-red-500/20 to-transparent rounded-full hidden sm:block" />
+                        <span className="h-[2px] w-16 sm:w-24 bg-linear-to-r from-red-500/20 to-transparent rounded-full hidden sm:block" />
                     </motion.div>
 
                     {/* Status + Meta Badges */}
@@ -140,11 +139,11 @@ export default memo(function HeroContent({ current, isDark, animationKey }) {
                                 <motion.span
                                     custom={0}
                                     variants={badgeVariants}
-                                    className="relative px-2.5 py-0.5 xs:px-3 xs:py-1 sm:px-5 sm:py-1.5 bg-gradient-to-r from-red-600 to-red-500 text-white text-[9px] xs:text-[10px] sm:text-[11px] font-black tracking-[0.15em] xs:tracking-[0.2em] uppercase rounded-full shadow-lg shadow-red-600/30"
+                                    className="relative px-2.5 py-0.5 xs:px-3 xs:py-1 sm:px-5 sm:py-1.5 bg-linear-to-r from-red-600 to-red-500 text-white text-[9px] xs:text-[10px] sm:text-[11px] font-black tracking-[0.15em] xs:tracking-[0.2em] uppercase rounded-full shadow-lg shadow-red-600/30"
                                 >
                                     {current.status === "ONGOING" ? "ONGOING" : "COMPLETE"}
                                     <span className="absolute inset-0 rounded-full bg-red-400/20 animate-ping" />
-                                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                                    <span className="absolute inset-0 rounded-full bg-linear-to-r from-transparent via-white/10 to-transparent" />
                                 </motion.span>
                             )}
 
@@ -215,7 +214,7 @@ export default memo(function HeroContent({ current, isDark, animationKey }) {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                            className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent font-bold text-[11px] xs:text-xs sm:text-lg md:text-xl tracking-wide mb-2 xs:mb-2 sm:mb-5"
+                            className="bg-linear-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent font-bold text-[11px] xs:text-xs sm:text-lg md:text-xl tracking-wide mb-2 xs:mb-2 sm:mb-5"
                         >
                             {current.subtitle}
                         </motion.p>
@@ -235,7 +234,7 @@ export default memo(function HeroContent({ current, isDark, animationKey }) {
                             }`}
                         >
                             {/* Top accent glow */}
-                            <div className="absolute -top-px left-4 right-4 h-[1px] bg-gradient-to-r from-red-500/0 via-red-500/40 to-red-500/0" />
+                            <div className="absolute -top-px left-4 right-4 h-px bg-linear-to-r from-red-500/0 via-red-500/40 to-red-500/0" />
                             <p className={`text-[10px] xs:text-[11px] sm:text-sm md:text-base leading-relaxed line-clamp-2 transition-colors duration-500 ${isDark ? "text-gray-400" : "text-gray-600"}`}>
                                 {stripHtml(current.description)}
                             </p>
@@ -254,11 +253,11 @@ export default memo(function HeroContent({ current, isDark, animationKey }) {
                             onClick={handleWatch}
                             whileHover={{ y: -4, scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
-                            className="group relative overflow-hidden bg-gradient-to-b from-red-500 to-red-700 hover:from-red-400 hover:to-red-600 text-white h-9 xs:h-10 sm:h-12 px-3.5 xs:px-5 sm:px-8 rounded-lg xs:rounded-xl sm:rounded-2xl font-bold text-[11px] xs:text-xs sm:text-sm flex items-center justify-center gap-1.5 xs:gap-2 shadow-xl shadow-red-600/30 hover:shadow-[0_0_25px_rgba(239,68,68,0.5)] cursor-pointer flex-1 sm:flex-initial transition-all duration-300"
+                            className="group relative overflow-hidden bg-linear-to-b from-red-500 to-red-700 hover:from-red-400 hover:to-red-600 text-white h-9 xs:h-10 sm:h-12 px-3.5 xs:px-5 sm:px-8 rounded-lg xs:rounded-xl sm:rounded-2xl font-bold text-[11px] xs:text-xs sm:text-sm flex items-center justify-center gap-1.5 xs:gap-2 shadow-xl shadow-red-600/30 hover:shadow-[0_0_25px_rgba(239,68,68,0.5)] cursor-pointer flex-1 sm:flex-initial transition-all duration-300"
                         >
-                            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                            <span className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            <span className="relative w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-white/30 transition-colors duration-300">
+                            <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                            <span className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <span className="relative w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 bg-white/20 rounded-full flex items-center justify-center shrink-0 group-hover:bg-white/30 transition-colors duration-300">
                                 <svg className="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-3.5 sm:h-3.5 fill-current ml-0.5" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
@@ -283,7 +282,7 @@ export default memo(function HeroContent({ current, isDark, animationKey }) {
                                 }`}
                         >
                             <span
-                                className={`w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center transition-all duration-300 flex-shrink-0
+                                className={`w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center transition-all duration-300 shrink-0
                                     ${isBookmarked
                                         ? "border-red-500/40 bg-red-500 text-white shadow-md shadow-red-500/20"
                                         : isDark

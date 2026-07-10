@@ -82,7 +82,7 @@ export default function UnauthorizedCard() {
                 </motion.div>
                 <motion.div
                     variants={itemVariants}
-                    className="h-[1px] w-12 bg-white/25 mx-auto"
+                    className="h-px w-12 bg-white/25 mx-auto"
                 />
                 <motion.p
                     variants={itemVariants}

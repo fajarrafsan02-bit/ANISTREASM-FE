@@ -46,18 +46,14 @@ export default function AuthProvider({ children }) {
             } catch (error) {
                 console.error('Session verification error:', error);
 
-                // ✅ PERBAIKAN: Deteksi apakah server merespon permintaan (artinya server online)
                 const hasServerResponse = !!error.response;
 
                 if (hasServerResponse) {
-                    // Jika ada respon tetapi error, sesi tidak valid (cookie hilang/tidak cocok)
                     if (savedUser) {
                         toastRef.current.error("Sesi telah berakhir. Silakan masuk kembali.");
                     }
                     handleForceClear();
                 } else {
-                    // ✅ JIKA ERROR JARINGAN / TIMEOUT (Tidak ada respon dari server):
-                    // Pulihkan data cadangan dari localStorage untuk mode offline
                     toastRef.current.error("Gagal terhubung ke server. Menggunakan sesi offline.");
                     try {
                         const parsedUser = JSON.parse(savedUser);

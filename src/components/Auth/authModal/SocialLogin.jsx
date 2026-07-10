@@ -75,7 +75,7 @@ export default function SocialLogin() {
                 </button>
 
                 <button className={btnClass} type="button">
-                    <AppleIcon isDark={isDark} />
+                    <AppleIcon />
                     <span>Apple</span>
                 </button>
             </div>
@@ -113,7 +113,7 @@ function GoogleIcon() {
     );
 }
 
-function AppleIcon({ isDark }) {
+function AppleIcon() {
     return (
         <svg
             className="w-4 h-4 shrink-0"

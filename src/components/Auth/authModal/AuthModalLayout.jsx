@@ -62,7 +62,7 @@ export default function AuthModalLayout({ isOpen, onClose, children }) {
 
     return (
         <div
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-3"
+            className="fixed inset-0 z-99999 flex items-center justify-center p-3"
             style={{
                 visibility: isHidden ? "hidden" : "visible",
                 pointerEvents: isHidden ? "none" : "auto",
@@ -184,7 +184,7 @@ export default function AuthModalLayout({ isOpen, onClose, children }) {
                 {/* 3D Floating Orb Behind Content */}
                 {isVisible && (
                     <div
-                        className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full pointer-events-none z-[1]"
+                        className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full pointer-events-none z-1"
                         style={{
                             background: isDark
                                 ? "radial-gradient(circle, rgba(239,68,68,0.12) 0%, transparent 70%)"
@@ -196,7 +196,7 @@ export default function AuthModalLayout({ isOpen, onClose, children }) {
                 )}
 
                 {/* Content */}
-                <div className="p-5 pt-8 overflow-y-auto flex-1 aml-scrollbar-hide relative z-[5] overscroll-contain aml-layer-2">
+                <div className="p-5 pt-8 overflow-y-auto flex-1 aml-scrollbar-hide relative z-5 overscroll-contain aml-layer-2">
                     <div
                         className={`transition-all duration-500 ${
                             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
@@ -231,7 +231,7 @@ export default function AuthModalLayout({ isOpen, onClose, children }) {
 
                 {/* Sweep Shine */}
                 {isVisible && (
-                    <div className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden z-1">
                         <div
                             style={{
                                 position: "absolute",

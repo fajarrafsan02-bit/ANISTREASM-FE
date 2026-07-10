@@ -38,7 +38,7 @@ export default function TabsSectionSkeleton() {
                         }`}
                     >
                         <div className="flex gap-3">
-                            <div className={`w-16 h-16 rounded-lg da-animate-pulse flex-shrink-0 ${
+                            <div className={`w-16 h-16 rounded-lg da-animate-pulse shrink-0 ${
                                 isDark ? "bg-[#2a1117]" : "bg-slate-300"
                             }`} />
                             <div className="flex-1 space-y-2">

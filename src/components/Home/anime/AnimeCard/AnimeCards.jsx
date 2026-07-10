@@ -67,7 +67,7 @@ export default function AnimeCards({
 
     // Handler tonton
     const handlePlay = () => {
-        navigate(`/anime/${anime.animeId}`);
+        navigate(`/anime/detail/${anime.animeId}`);
     };
 
     const getPanelWidth = () => {

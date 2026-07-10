@@ -23,8 +23,6 @@ export default function useEpisodeDetail() {
                 prevEpisodeRef.current = data;
             } catch (err) {
                 setError(err.response?.data?.message ?? err.message ?? 'Terjadi kesalahan');
-                // Keep previous episode data so RelatedEpisodes can still render
-                // but set episode to null so the video player shows error
                 setEpisode(null);
             } finally {
                 setLoading(false);
@@ -35,4 +33,4 @@ export default function useEpisodeDetail() {
     }, [episodeId]);
 
     return { episode, loading, error, prevEpisode: prevEpisodeRef.current };
-}
+}

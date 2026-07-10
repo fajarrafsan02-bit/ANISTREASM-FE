@@ -36,7 +36,7 @@ export default function DaySelector({ activeDay, onDayChange }) {
                                 }`}
                         >
                             {isActive && (
-                                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+                                <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                             )}
                             <span className="relative z-10">{day.label}</span>
                         </button>

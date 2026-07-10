@@ -1,4 +1,3 @@
-// Header.jsx
 import { useTheme } from "../../context/ThemeContext";
 import { useState, useEffect, useRef } from "react";
 import useHeader from "./useHeader";
@@ -22,8 +21,8 @@ export default function Header({ activeTab, setActiveTab }) {
         isHidden,
         scrollProgress,
         scrollToTop,
-        searchQuery,     // ✅ PERBAIKAN 1: Ambil search query dari useHeader
-        setSearchQuery,  // ✅ PERBAIKAN 2: Ambil setter search query dari useHeader
+        searchQuery,
+        setSearchQuery,
     } = useHeader();
 
     const { isDesktop } = useBreakpoint();
@@ -46,7 +45,7 @@ export default function Header({ activeTab, setActiveTab }) {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ease-in-out ${isHidden ? "-translate-y-full" : "translate-y-0"
+            className={`fixed top-0 left-0 right-0 z-9999 transition-all duration-500 ease-in-out ${isHidden ? "-translate-y-full" : "translate-y-0"
                 }`}
             style={{
                 opacity: mounted ? 1 : 0,
@@ -59,16 +58,15 @@ export default function Header({ activeTab, setActiveTab }) {
             }}
         >
             <div
-                className={`absolute inset-0 transition-all duration-500 ${isScrolled
-                        ? isDark
-                            ? "bg-[#0a0a0c]/80 backdrop-blur-xl border-b border-white/5 shadow-2xl"
-                            : "bg-white/80 backdrop-blur-xl border-b border-gray-200/50 shadow-sm"
-                        : "bg-transparent border-b border-transparent"
+                className={`absolute inset-0 transition-all duration-500 ${isScrolled || mobileSearchOpen
+                    ? isDark
+                        ? "bg-[#0a0a0c]/80 backdrop-blur-xl border-b border-white/5 shadow-2xl"
+                        : "bg-white/80 backdrop-blur-xl border-b border-gray-200/50 shadow-sm"
+                    : "bg-transparent border-b border-transparent"
                     }`}
             />
 
             <div className="relative max-w-7xl mx-auto px-3 min-[360px]:px-4 sm:px-6 md:px-10">
-                {/* ✅ PERBAIKAN 3: Ketinggian header mobile dirampingkan dari h-[72px] menjadi h-[60px] agar ringkas & proporsional */}
                 <div className="flex items-center justify-between h-[60px] sm:h-20 md:h-[88px]">
 
                     {/* Logo */}
@@ -101,7 +99,7 @@ export default function Header({ activeTab, setActiveTab }) {
 
                     {/* Actions */}
                     <div
-                        className={`relative z-20 transition-all duration-500 ${mobileSearchOpen ? "flex-1 flex justify-end" : ""
+                        className={`relative transition-all duration-500 ${mobileSearchOpen ? "flex-1 flex justify-end z-[100]" : "z-20"
                             }`}
                         style={{
                             opacity: mounted ? 1 : 0,
@@ -124,7 +122,6 @@ export default function Header({ activeTab, setActiveTab }) {
                 </div>
             </div>
 
-            {/* ✅ PERBAIKAN 4: Menghubungkan state pencarian (searchQuery & setSearchQuery) agar input pencarian di HP berfungsi aktif */}
             <HeaderMobileMenu
                 menuOpen={menuOpen}
                 isDark={isDark}

@@ -1,6 +1,5 @@
-// TitleSection.jsx
 import { useState, useEffect, useMemo } from "react";
-import { useLocation } from "react-router"; // Menggunakan hook router untuk mendeteksi perubahan lokasi
+import { useLocation } from "react-router"; 
 import { useTheme } from "../../../context/ThemeContext";
 import { useWishlist } from "../../../context/WishlistContext";
 
@@ -84,11 +83,11 @@ export default function TitleSection({ anime }) {
         <div className="relative max-w-4xl w-full px-3 sm:px-0">
 
             {/* Accent */}
-            <div className="absolute -top-4 sm:-top-6 left-3 sm:left-0 w-16 h-px bg-gradient-to-r from-[#ff1e56] to-transparent" />
+            <div className="absolute -top-4 sm:-top-6 left-3 sm:left-0 w-16 h-px bg-linear-to-r from-[#ff1e56] to-transparent" />
 
             {/* Meta */}
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-3">
-                <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#ff1e56] to-[#c41e3a] text-white text-[9px] sm:text-[10px] font-black px-2 py-0.5 sm:px-3 sm:py-1 rounded tracking-wider uppercase shadow-[0_0_15px_rgba(255,30,86,0.25)]">
+                <span className="inline-flex items-center gap-1.5 bg-linear-to-r from-[#ff1e56] to-[#c41e3a] text-white text-[9px] sm:text-[10px] font-black px-2 py-0.5 sm:px-3 sm:py-1 rounded tracking-wider uppercase shadow-[0_0_15px_rgba(255,30,86,0.25)]">
                     <span className="w-1 h-1 rounded-full bg-white/80 animate-pulse" />
                     Sub Indo
                 </span>
@@ -127,7 +126,7 @@ export default function TitleSection({ anime }) {
                     leading-[1.1]
                     sm:leading-[1.05]
                     tracking-tight
-                    break-words
+                    wrap-break-word
                     ${isDark ? "text-white" : "text-slate-900"}
                 `}
                 style={{ wordBreak: "break-word", overflowWrap: "anywhere" }}
@@ -139,7 +138,7 @@ export default function TitleSection({ anime }) {
             <div className="flex flex-wrap items-center gap-x-2 mt-1 sm:mt-1.5 text-xs font-medium">
                 {titleNative && (
                     <span
-                        className={`text-[10px] sm:text-xs break-words ${isDark ? "text-slate-300" : "text-slate-600"
+                        className={`text-[10px] sm:text-xs wrap-break-word ${isDark ? "text-slate-300" : "text-slate-600"
                             }`}
                         style={{ wordBreak: "break-word", overflowWrap: "anywhere" }}
                     >
@@ -163,7 +162,7 @@ export default function TitleSection({ anime }) {
                             )}
 
                             <span
-                                className={`text-[10px] sm:text-xs italic break-words ${isDark ? "text-slate-500" : "text-slate-400"
+                                className={`text-[10px] sm:text-xs italic wrap-break-word ${isDark ? "text-slate-500" : "text-slate-400"
                                     }`}
                                 style={{ wordBreak: "break-word", overflowWrap: "anywhere" }}
                             >
@@ -175,7 +174,7 @@ export default function TitleSection({ anime }) {
 
             {/* Divider */}
             <div
-                className={`w-10 h-px mt-3.5 sm:mt-5 mb-4 sm:mb-5 bg-gradient-to-r ${isDark
+                className={`w-10 h-px mt-3.5 sm:mt-5 mb-4 sm:mb-5 bg-linear-to-r ${isDark
                     ? "from-[#ff1e56]/60"
                     : "from-rose-400/60"
                     } to-transparent`}
@@ -188,11 +187,11 @@ export default function TitleSection({ anime }) {
                 {trailerId && (
                     <a
                         href="#section-trailer"
-                        className="group relative inline-flex items-center justify-center gap-1.5 h-9 sm:h-10 px-3 sm:px-5 bg-gradient-to-r from-[#ff1e56] to-[#c41e3a] hover:from-[#ff336a] hover:to-[#e11d48] text-white font-bold rounded-xl text-[10px] sm:text-[12px] tracking-wide transition-all duration-300 shadow-[0_4px_15px_rgba(255,30,86,0.25)] hover:shadow-[0_0_25px_rgba(255,30,86,0.55)] hover:scale-105 active:scale-95 overflow-hidden flex-1 sm:flex-initial"
+                        className="group relative inline-flex items-center justify-center gap-1.5 h-9 sm:h-10 px-3 sm:px-5 bg-linear-to-r from-[#ff1e56] to-[#c41e3a] hover:from-[#ff336a] hover:to-[#e11d48] text-white font-bold rounded-xl text-[10px] sm:text-[12px] tracking-wide transition-all duration-300 shadow-[0_4px_15px_rgba(255,30,86,0.25)] hover:shadow-[0_0_25px_rgba(255,30,86,0.55)] hover:scale-105 active:scale-95 overflow-hidden flex-1 sm:flex-initial"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out z-10 pointer-events-none" />
+                        <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out z-10 pointer-events-none" />
 
-                        <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 z-20">
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white/20 flex items-center justify-center shrink-0 z-20">
                             <i className="fa-solid fa-play text-[7px] sm:text-[8px] ml-0.5" />
                         </div>
 
@@ -217,7 +216,7 @@ export default function TitleSection({ anime }) {
                                 : "bg-white border-slate-300 hover:border-rose-400/50 text-slate-600 hover:text-slate-900 shadow-sm"
                         }`}
                 >
-                    <div className="relative flex items-center justify-center flex-shrink-0">
+                    <div className="relative flex items-center justify-center shrink-0">
                         {isFavoriteLoading ? (
                             <i className="fa-solid fa-spinner animate-spin text-[#ff1e56]" />
                         ) : (

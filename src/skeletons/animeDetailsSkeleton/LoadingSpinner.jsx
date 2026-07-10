@@ -19,7 +19,7 @@ export default function LoadingSpinner() {
                 </div>
             </div>
             <div className="absolute bottom-0 left-0 right-0">
-                <div className="h-[2px] bg-gradient-to-r from-transparent via-[#ff1e56]/30 to-transparent" />
+                <div className="h-[2px] bg-linear-to-r from-transparent via-[#ff1e56]/30 to-transparent" />
             </div>
         </div>
     );

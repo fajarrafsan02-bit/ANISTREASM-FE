@@ -1,4 +1,3 @@
-// CharactersTab.jsx
 import { useState, useEffect } from "react";
 import { useTheme } from "../../../context/ThemeContext";
 
@@ -78,7 +77,7 @@ export default function CharactersTab({ characters }) {
                 >
                     {/* Avatar dikecilkan dari w-10 ke w-8 di ponsel */}
                     <div
-                        className={`relative w-8 h-8 sm:w-11 sm:h-11 rounded-lg overflow-hidden flex-shrink-0 transition-colors ${avatarClass}`}
+                        className={`relative w-8 h-8 sm:w-11 sm:h-11 rounded-lg overflow-hidden shrink-0 transition-colors ${avatarClass}`}
                     >
                         {image ? (
                             <img
@@ -101,11 +100,10 @@ export default function CharactersTab({ characters }) {
 
                     {/* Konten detail teks responsif rapat */}
                     <div className="min-w-0 flex-1">
-                        {/* ✅ PERBAIKAN UTAMA: Mengubah baris lencana dari flex-wrap menjadi flex-row sejajar ujung-ke-ujung (justify-between w-full) */}
                         <div className="flex items-center justify-between w-full mb-0.5 sm:mb-1">
                             {/* Lencana jenis ("CHARACTER" / "SEIYUU") merapat di sebelah kiri */}
                             <span
-                                className={`inline-flex items-center border text-[7px] sm:text-[9px] font-black tracking-wider uppercase px-1 py-[1px] sm:px-1.5 sm:py-0.5 rounded-md ${labelClass}`}
+                                className={`inline-flex items-center border text-[7px] sm:text-[9px] font-black tracking-wider uppercase px-1 py-px sm:px-1.5 sm:py-0.5 rounded-md ${labelClass}`}
                             >
                                 {title}
                             </span>
@@ -162,8 +160,8 @@ export default function CharactersTab({ characters }) {
             {/* Ambient glow */}
             <div
                 className={`absolute -inset-1 rounded-2xl blur-xl opacity-20 group-hover:opacity-35 transition-opacity duration-700 ${isDark
-                    ? "bg-gradient-to-br from-red-900/30 via-transparent to-red-950/20"
-                    : "bg-gradient-to-br from-rose-200/30 via-transparent to-rose-100/20"
+                    ? "bg-linear-to-br from-red-900/30 via-transparent to-red-950/20"
+                    : "bg-linear-to-br from-rose-200/30 via-transparent to-rose-100/20"
                     }`}
             />
 
@@ -176,7 +174,7 @@ export default function CharactersTab({ characters }) {
             >
                 {/* Top gradient line */}
                 <div
-                    className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${isDark ? "via-red-900/50" : "via-slate-400/40"
+                    className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent ${isDark ? "via-red-900/50" : "via-slate-400/40"
                         } to-transparent`}
                 />
 
@@ -190,8 +188,8 @@ export default function CharactersTab({ characters }) {
                 <div className="flex items-start sm:items-center justify-between gap-1.5 sm:gap-3 mb-2.5 sm:mb-5">
                     <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
                         <div
-                            className={`w-7 h-7 sm:w-10 sm:h-10 rounded-lg border flex items-center justify-center flex-shrink-0 ${isDark
-                                ? "bg-gradient-to-br from-[#1a0a0f] to-[#0f0508] border-red-950/50 shadow-[0_0_15px_rgba(255,30,86,0.1)]"
+                            className={`w-7 h-7 sm:w-10 sm:h-10 rounded-lg border flex items-center justify-center shrink-0 ${isDark
+                                ? "bg-linear-to-br from-[#1a0a0f] to-[#0f0508] border-red-950/50 shadow-[0_0_15px_rgba(255,30,86,0.1)]"
                                 : "bg-white border-slate-300 shadow-sm"
                                 }`}
                         >
@@ -204,7 +202,7 @@ export default function CharactersTab({ characters }) {
                             >
                                 Karakter & Seiyuu
                                 <span
-                                    className={`border text-[7px] sm:text-[8px] px-1 py-[1px] sm:px-1.5 sm:py-0.5 rounded font-black ${isDark
+                                    className={`border text-[7px] sm:text-[8px] px-1 py-px sm:px-1.5 sm:py-0.5 rounded font-black ${isDark
                                         ? "bg-[#ff1e56]/10 text-[#ff1e56] border-[#ff1e56]/20"
                                         : "bg-rose-50 text-rose-500 border-rose-300/50"
                                         }`}
@@ -242,7 +240,7 @@ export default function CharactersTab({ characters }) {
                                 style={{ animationDelay: `${index * 50}ms` }}
                             >
                                 <div
-                                    className={`absolute inset-0 rounded-xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-r ${isDark
+                                    className={`absolute inset-0 rounded-xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none bg-linear-to-r ${isDark
                                         ? "from-red-900/5 to-transparent"
                                         : "from-rose-100/30 to-transparent"
                                         }`}
@@ -259,7 +257,7 @@ export default function CharactersTab({ characters }) {
                                     />
 
                                     {/* Line pembatas tipis elegan pada mobile (HP) */}
-                                    <div className={`block sm:hidden h-px w-full bg-gradient-to-r ${mobileDividerColor} my-1`} />
+                                    <div className={`block sm:hidden h-px w-full bg-linear-to-r ${mobileDividerColor} my-1`} />
 
                                     {/* Line pembatas putus-putus pada layar desktop */}
                                     <div className="hidden sm:flex items-center justify-center w-6 opacity-30">

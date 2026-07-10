@@ -1,4 +1,3 @@
-// MovieCatalogPage.jsx
 import { useState, useMemo, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -148,28 +147,28 @@ export default function MovieCatalogPage() {
                 {/* Header */}
                 <header className="relative mb-5 sm:mb-8 md:mb-10 min-w-0">
                     <div
-                        className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${isDark ? 'via-[#ff1e56]/30' : 'via-slate-300'
+                        className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent ${isDark ? 'via-[#ff1e56]/30' : 'via-slate-300'
                             } to-transparent`}
                     />
 
                     <div className="pt-4 sm:pt-6 pb-4 sm:pb-5 border-b border-dashed relative min-w-0">
                         <div
-                            className={`absolute bottom-[-1px] left-0 w-4 h-4 border-l-2 border-b-2 ${isDark ? 'border-[#ff1e56]/30' : 'border-slate-300'
+                            className={`absolute -bottom-px left-0 w-4 h-4 border-l-2 border-b-2 ${isDark ? 'border-[#ff1e56]/30' : 'border-slate-300'
                                 }`}
                         />
                         <div
-                            className={`absolute bottom-[-1px] right-0 w-4 h-4 border-r-2 border-b-2 ${isDark ? 'border-[#ff1e56]/30' : 'border-slate-300'
+                            className={`absolute -bottom-px right-0 w-4 h-4 border-r-2 border-b-2 ${isDark ? 'border-[#ff1e56]/30' : 'border-slate-300'
                                 }`}
                         />
 
                         <div className="flex items-center gap-3 sm:gap-4 mb-2 min-w-0">
                             <div
-                                className={`w-1 h-8 sm:w-1.5 sm:h-10 rounded-full bg-gradient-to-b shrink-0 ${isDark ? 'from-[#ff1e56] to-rose-800' : 'from-rose-50 to-rose-700'
+                                className={`w-1 h-8 sm:w-1.5 sm:h-10 rounded-full bg-linear-to-b shrink-0 ${isDark ? 'from-[#ff1e56] to-rose-800' : 'from-rose-50 to-rose-700'
                                     }`}
                             />
                             <div className="min-w-0">
                                 <h1
-                                    className={`font-black uppercase tracking-tight leading-none text-2xl sm:text-3xl md:text-5xl break-words ${isDark ? 'text-white' : 'text-slate-900'
+                                    className={`font-black uppercase tracking-tight leading-none text-2xl sm:text-3xl md:text-5xl wrap-break-word ${isDark ? 'text-white' : 'text-slate-900'
                                         }`}
                                 >
                                     ANIME CATALOG
@@ -199,15 +198,15 @@ export default function MovieCatalogPage() {
                                     className={`relative flex items-center justify-center gap-1 sm:gap-2 px-1 min-[360px]:px-1.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[8px] min-[360px]:text-[9px] min-[390px]:text-[10px] sm:text-[11px] font-black uppercase tracking-wider border transition-all duration-300 select-none overflow-hidden group/tab whitespace-nowrap text-center
                                         ${isActive
                                             ? isDark
-                                                ? 'bg-gradient-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_4px_20px_rgba(255,30,86,0.35)]'
-                                                : 'bg-gradient-to-r from-slate-900 to-slate-800 border-transparent text-white shadow-lg shadow-slate-900/20'
+                                                ? 'bg-linear-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_4px_20px_rgba(255,30,86,0.35)]'
+                                                : 'bg-linear-to-r from-slate-900 to-slate-800 border-transparent text-white shadow-lg shadow-slate-900/20'
                                             : isDark
                                                 ? 'border-[#2a1117]/80 bg-[#13080c]/60 text-slate-400 hover:border-[#ff1e56]/25 hover:text-slate-200 hover:bg-[#1a0a10]'
                                                 : 'border-slate-200/80 bg-white/80 text-slate-500 hover:bg-white hover:border-slate-300 hover:text-slate-700'
                                         }`}
                                 >
                                     {isActive && (
-                                        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+                                        <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                                     )}
                                     <i
                                         className={`fa-solid ${tab.icon} text-[8px] min-[360px]:text-[9px] sm:text-[10px] ${isActive ? 'text-white' : ''
@@ -298,7 +297,7 @@ export default function MovieCatalogPage() {
                                             <div
                                                 key={idx}
                                                 className={`relative rounded-2xl border p-3 sm:p-6 transition-all duration-300 group/section ${isDark
-                                                    ? 'border-[#2a1117]/50 bg-gradient-to-br from-[#13080c]/60 to-[#0a0305]/80 hover:border-[#2a1117]'
+                                                    ? 'border-[#2a1117]/50 bg-linear-to-br from-[#13080c]/60 to-[#0a0305]/80 hover:border-[#2a1117]'
                                                     : 'border-slate-200/80 bg-white hover:border-slate-300'
                                                     }`}
                                             >
@@ -325,7 +324,7 @@ export default function MovieCatalogPage() {
                                                     {group.animeList?.map((anime) => (
                                                         <div
                                                             key={anime.animeId}
-                                                            onClick={() => navigate(`/anime/${anime.animeId}`)}
+                                                            onClick={() => navigate(`/anime/detail/${anime.animeId}`)}
                                                             className={`group/item relative p-3 rounded-xl border text-[12px] font-bold transition-all duration-300 cursor-pointer flex items-center justify-between overflow-hidden min-w-0 ${isDark
                                                                 ? 'border-[#2a1117]/60 bg-[#13080c]/40 text-slate-300 hover:border-[#ff1e56]/30 hover:text-white hover:bg-[#1a0a10]'
                                                                 : 'border-slate-100 bg-slate-50/50 text-slate-600 hover:border-rose-200 hover:bg-white hover:text-slate-900'
@@ -333,8 +332,8 @@ export default function MovieCatalogPage() {
                                                         >
                                                             <div
                                                                 className={`absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ${isDark
-                                                                    ? 'bg-gradient-to-r from-[#ff1e56]/5 to-transparent'
-                                                                    : 'bg-gradient-to-r from-rose-50 to-transparent'
+                                                                    ? 'bg-linear-to-r from-[#ff1e56]/5 to-transparent'
+                                                                    : 'bg-linear-to-r from-rose-50 to-transparent'
                                                                     }`}
                                                             />
 
@@ -358,7 +357,7 @@ export default function MovieCatalogPage() {
                                                 key={`${anime.animeId ?? 'card'}-${i}`}
                                                 anime={anime}
                                                 variant={isRecent ? 'recent' : 'default'}
-                                                onClick={() => navigate(`/anime/${anime.animeId}`)}
+                                                onClick={() => navigate(`/anime/detail/${anime.animeId}`)}
                                             />
                                         ))}
                                     </div>
@@ -436,7 +435,7 @@ export default function MovieCatalogPage() {
                                                     onClick={() => handlePageChange(p)}
                                                     className={`relative px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[9px] sm:text-xs font-black transition-all duration-300 border overflow-hidden min-w-8 sm:min-w-9 ${page === p
                                                         ? isDark
-                                                            ? 'bg-gradient-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_4px_15px_rgba(255,30,86,0.3)]'
+                                                            ? 'bg-linear-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_4px_15px_rgba(255,30,86,0.3)]'
                                                             : 'bg-slate-900 border-transparent text-white shadow-lg'
                                                         : isDark
                                                             ? 'border-[#2a1117] bg-[#13080c] text-slate-400 hover:border-[#ff1e56]/25 hover:text-white'
@@ -444,7 +443,7 @@ export default function MovieCatalogPage() {
                                                         }`}
                                                 >
                                                     {page === p && (
-                                                        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+                                                        <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                                                     )}
                                                     {p}
                                                 </button>

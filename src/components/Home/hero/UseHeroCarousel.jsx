@@ -1,4 +1,3 @@
-// useHeroCarousel.js
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const ANIMATION_DURATION = 900;
@@ -20,11 +19,6 @@ export default function useHeroCarousel(total) {
 
     slideRef.current = currentSlide;
 
-    // Sets isAnimating = true, and (re)arms a hard-reset timeout for it.
-    // Using a single ref-based timer (instead of a useEffect tied to
-    // [currentSlide, hasTransitioned]) means a fast second transition
-    // simply re-arms this timer instead of cancelling the first one
-    // without replacing it — so isAnimating can never get stuck `true`.
     const armAnimating = useCallback(() => {
         isAnimating.current = true;
         clearTimeout(animatingTimerRef.current);

@@ -16,7 +16,7 @@ export default function AuthModalHeader() {
                         ? "bg-zinc-950/80 border-zinc-800 shadow-[0_8px_20px_rgba(0,0,0,0.6)] shadow-red-950/20"
                         : "bg-white border-zinc-200/80 shadow-[0_8px_20px_rgba(0,0,0,0.06)] shadow-red-100/30"
                 }`}>
-                    <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-red-500 to-rose-600 flex items-center justify-center shadow-inner shadow-white/10">
+                    <div className="w-8 h-8 rounded-xl bg-linear-to-tr from-red-500 to-rose-600 flex items-center justify-center shadow-inner shadow-white/10">
                         <Play className="w-3.5 h-3.5 text-white fill-white translate-x-0.5" />
                     </div>
                 </div>
@@ -24,8 +24,8 @@ export default function AuthModalHeader() {
                 <div className="text-center space-y-1 aml-layer-1">
                     <h1 className={`text-2xl font-black tracking-[-0.03em] ${
                         isDark
-                            ? "bg-clip-text text-transparent bg-gradient-to-b from-zinc-50 via-zinc-100 to-zinc-400"
-                            : "bg-clip-text text-transparent bg-gradient-to-b from-zinc-950 to-zinc-800"
+                            ? "bg-clip-text text-transparent bg-linear-to-b from-zinc-50 via-zinc-100 to-zinc-400"
+                            : "bg-clip-text text-transparent bg-linear-to-b from-zinc-950 to-zinc-800"
                     }`}>
                         ANI<span className="text-red-500">STREAM</span>
                     </h1>

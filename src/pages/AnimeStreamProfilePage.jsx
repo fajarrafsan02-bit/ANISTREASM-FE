@@ -1,4 +1,3 @@
-// AniStreamProfilePage.jsx
 import { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import CurrentlyWatching from '../components/profile/CurrentlyWatching';

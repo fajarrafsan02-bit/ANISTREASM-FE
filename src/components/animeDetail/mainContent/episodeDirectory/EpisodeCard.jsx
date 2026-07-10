@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../../../context/ThemeContext";
 
-// ✅ Fungsi pembantu untuk memotong nama episode agar bersih di badge kartu
 const extractEpisodeNumber = (title) => {
     if (!title) return "";
     const match = title.match(/episode\s*(\d+)/i);
@@ -31,7 +30,7 @@ export default function EpisodeCard({ episode, poster, duration }) {
         >
             {/* Hover Glow */}
             <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-t ${isDark
+                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-linear-to-t ${isDark
                     ? "from-red-900/10 via-transparent to-transparent"
                     : "from-rose-100/40 via-transparent to-transparent"
                     }`}
@@ -41,7 +40,7 @@ export default function EpisodeCard({ episode, poster, duration }) {
             <div className="relative flex gap-2 sm:gap-3 p-1.5 sm:p-3">
                 {/* Thumbnail */}
                 <div
-                    className={`relative w-[76px] sm:w-28 aspect-video rounded-lg overflow-hidden flex-shrink-0 border transition-colors ${isDark
+                    className={`relative w-[76px] sm:w-28 aspect-video rounded-lg overflow-hidden shrink-0 border transition-colors ${isDark
                         ? "bg-[#1a0a0f] border-[#2a1117] group-hover:border-red-900/40"
                         : "bg-slate-200 border-slate-300 group-hover:border-rose-300/50"
                         }`}

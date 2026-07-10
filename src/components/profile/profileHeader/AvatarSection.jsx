@@ -1,6 +1,4 @@
-// AvatarSection.jsx
-import React from 'react';
-import { useTheme } from '../../../context/ThemeContext'; // ✅ Mengimpor deteksi tema (sesuaikan path jika berbeda)
+import { useTheme } from '../../../context/ThemeContext'; 
 
 export default function AvatarSection({
     displayAvatar,
@@ -14,7 +12,7 @@ export default function AvatarSection({
     const isDark = theme === "dark";
 
     return (
-        <div className="relative group flex-shrink-0 z-20">
+        <div className="relative group shrink-0 z-20">
             <input
                 type="file"
                 ref={avatarInputRef}
@@ -23,7 +21,7 @@ export default function AvatarSection({
                 className="hidden"
             />
 
-            <div className={`absolute -inset-2 rounded-[2rem] bg-gradient-to-tr from-red-600 via-orange-500 to-red-700 opacity-0 group-hover:opacity-25 blur-2xl transition-all duration-700 pointer-events-none scale-90 group-hover:scale-100`}></div>
+            <div className={`absolute -inset-2 rounded-[2rem] bg-linear-to-tr from-red-600 via-orange-500 to-red-700 opacity-0 group-hover:opacity-25 blur-2xl transition-all duration-700 pointer-events-none scale-90 group-hover:scale-100`}></div>
 
             <div className={`relative w-20 h-20 sm:w-24 sm:h-24 md:w-[110px] md:h-[110px] rounded-[1.5rem] p-[3px] group hover:-translate-y-1.5 hover:scale-[1.03] transition-all duration-400 ease-out cursor-pointer active:scale-95 ${
                 isDark 
@@ -31,13 +29,13 @@ export default function AvatarSection({
                     : "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
             }`}>
 
-                <div className={`absolute inset-0 rounded-[1.5rem] bg-gradient-to-br opacity-100 group-hover:opacity-0 transition-all duration-400 ease-out pointer-events-none z-0 ${
+                <div className={`absolute inset-0 rounded-[1.5rem] bg-linear-to-br opacity-100 group-hover:opacity-0 transition-all duration-400 ease-out pointer-events-none z-0 ${
                     isDark 
                         ? "from-white/12 via-white/5 to-transparent" 
                         : "from-black/6 via-transparent to-transparent"
                 }`}></div>
 
-                <div className={`absolute inset-0 rounded-[1.5rem] bg-gradient-to-br from-red-500 via-orange-500 to-red-800 opacity-0 group-hover:opacity-100 transition-all duration-400 ease-out pointer-events-none z-0 ${
+                <div className={`absolute inset-0 rounded-[1.5rem] bg-linear-to-br from-red-500 via-orange-500 to-red-800 opacity-0 group-hover:opacity-100 transition-all duration-400 ease-out pointer-events-none z-0 ${
                     isDark 
                         ? "shadow-[inset_0_0_20px_rgba(239,68,68,0.4)]" 
                         : "shadow-[inset_0_0_20px_rgba(239,68,68,0.25)]"
@@ -56,7 +54,7 @@ export default function AvatarSection({
                             src={displayAvatar}
                         />
                     ) : (
-                        <div className={`w-full h-full relative overflow-hidden bg-gradient-to-b ${
+                        <div className={`w-full h-full relative overflow-hidden bg-linear-to-b ${
                             isDark ? "from-[#1a0606] to-black" : "from-rose-50 to-neutral-50"
                         }`}>
                             <div className="w-full h-full flex items-center justify-center relative transition-transform duration-300 group-hover:scale-105">
@@ -99,12 +97,12 @@ export default function AvatarSection({
                     title="Online"
                 >
                     <div className="absolute w-3 h-3 md:w-4 md:h-4 bg-emerald-500/30 rounded-full animate-ping opacity-60"></div>
-                    <div className={`relative w-[13px] h-[13px] md:w-[15px] md:h-[15px] rounded-full bg-emerald-500 border-[2px] md:border-[2.5px] transition-colors duration-300 ${
+                    <div className={`relative w-[13px] h-[13px] md:w-[15px] md:h-[15px] rounded-full bg-emerald-500 border-2 md:border-[2.5px] transition-colors duration-300 ${
                         isDark 
                             ? "border-[#121215] group-hover:border-[#1a0808]" 
                             : "border-white group-hover:border-red-50 shadow-[0_2px_6px_rgba(0,0,0,0.15)]"
                     }`}>
-                        <div className="absolute top-[1px] right-[1px] w-[1.5px] h-[1.5px] md:top-[1.5px] md:right-[1.5px] md:w-[2px] md:h-[2px] bg-white/80 rounded-full"></div>
+                        <div className="absolute top-px right-px w-[1.5px] h-[1.5px] md:top-[1.5px] md:right-[1.5px] md:w-[2px] md:h-[2px] bg-white/80 rounded-full"></div>
                     </div>
                 </div>
 

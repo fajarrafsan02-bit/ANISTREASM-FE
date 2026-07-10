@@ -10,11 +10,10 @@ export default function StatsCardSkeleton() {
                 isDark
                     ? "bg-[#0d0407]/90 border-[#2a1117]/80 shadow-xl shadow-black/40"
                     : "bg-slate-100 border-slate-300 shadow-lg shadow-slate-200/60"
-                    // ✅ light: bg-slate-100 bukan white, border lebih gelap
             }`}>
 
                 {/* Top line */}
-                <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${
+                <div className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent ${
                     isDark ? "via-red-900/50" : "via-slate-400/40"
                 } to-transparent`} />
 
@@ -46,7 +45,7 @@ export default function StatsCardSkeleton() {
                             }`}
                         >
                             {/* Icon placeholder */}
-                            <div className={`w-7 h-7 sm:w-9 sm:h-9 rounded-lg flex-shrink-0 da-animate-pulse ${
+                            <div className={`w-7 h-7 sm:w-9 sm:h-9 rounded-lg shrink-0 da-animate-pulse ${
                                 isDark
                                     ? "bg-[#2a1117] border border-red-950/30"
                                     : "bg-slate-300 border border-slate-400/20"

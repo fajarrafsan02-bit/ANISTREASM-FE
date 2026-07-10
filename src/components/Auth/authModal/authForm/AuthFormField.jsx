@@ -12,7 +12,6 @@ export default function AuthFormField({
     extraLabel,
     isDark,
 }) {
-    // Penyesuaian warna border, background, dan fokus agar serasi dengan Zinc-950
     const inputBase = `flex items-center gap-2 px-3 py-2 rounded-xl border text-xs transition-all ${isDark
             ? "bg-zinc-900/40 border-zinc-800/80 text-zinc-100 focus-within:border-red-500/40 focus-within:ring-2 focus-within:ring-red-500/10"
             : "bg-white border-zinc-200 text-zinc-900 shadow-sm shadow-zinc-100/50 hover:border-zinc-300 focus-within:border-red-300 focus-within:ring-2 focus-within:ring-red-500/5"

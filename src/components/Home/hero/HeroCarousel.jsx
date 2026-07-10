@@ -1,4 +1,3 @@
-// HeroCarousel.jsx
 import { useMemo } from "react";
 import { useTheme } from "../../../context/ThemeContext";
 
@@ -87,7 +86,7 @@ export default function HeroCarousel({ animeList = [] }) {
       />
 
       {/* === SCROLL INDICATOR === */}
-      <div className="absolute bottom-16 sm:bottom-24 left-1/2 -translate-x-1/2 z-[5] flex flex-col items-center gap-1.5">
+      <div className="absolute bottom-16 sm:bottom-24 left-1/2 -translate-x-1/2 z-5 flex flex-col items-center gap-1.5">
         <span className={`text-[9px] sm:text-[11px] tracking-[0.35em] uppercase font-medium animate-pulse transition-colors duration-500 ${isDark ? "text-white/25" : "text-gray-400"}`}>
           Scroll
         </span>

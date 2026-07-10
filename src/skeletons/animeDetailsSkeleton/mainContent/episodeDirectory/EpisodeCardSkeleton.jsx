@@ -20,7 +20,7 @@ export default function EpisodeCardSkeleton() {
                         w-24 h-16
                         sm:w-28 sm:h-[4.5rem]
                         rounded-lg
-                        flex-shrink-0
+                        shrink-0
                         border
                         da-animate-pulse
                         ${

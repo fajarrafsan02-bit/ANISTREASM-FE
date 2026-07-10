@@ -78,8 +78,6 @@ export default function useAuthForm(activeTab, onSuccess, onChange) {
                     password: fields.password
                 });
 
-
-                const data = result?.data ?? result;
                 contextLogin(result?.data);
 
                 setFields({ username: "", email: "", password: "", confirmPassword: "" });

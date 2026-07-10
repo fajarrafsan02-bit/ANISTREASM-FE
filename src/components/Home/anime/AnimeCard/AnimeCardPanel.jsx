@@ -148,8 +148,8 @@ export default function AnimeCardPanel({
 
                 {/* Divider Memudar (Gradient) */}
                 <div
-                    className={`h-[1px] w-full ${isDark ? "from-transparent via-zinc-800/80 to-transparent" : "from-transparent via-zinc-200/80 to-transparent"
-                        } bg-gradient-to-r`}
+                    className={`h-px w-full ${isDark ? "from-transparent via-zinc-800/80 to-transparent" : "from-transparent via-zinc-200/80 to-transparent"
+                        } bg-linear-to-r`}
                     style={{ marginBottom: sectionGap }}
                 />
 
@@ -158,8 +158,8 @@ export default function AnimeCardPanel({
 
                 {/* Divider Memudar (Gradient) */}
                 <div
-                    className={`h-[1px] w-full ${isDark ? "from-transparent via-zinc-800/80 to-transparent" : "from-transparent via-zinc-200/80 to-transparent"
-                        } bg-gradient-to-r`}
+                    className={`h-px w-full ${isDark ? "from-transparent via-zinc-800/80 to-transparent" : "from-transparent via-zinc-200/80 to-transparent"
+                        } bg-linear-to-r`}
                     style={{ marginBottom: sectionGap }}
                 />
 

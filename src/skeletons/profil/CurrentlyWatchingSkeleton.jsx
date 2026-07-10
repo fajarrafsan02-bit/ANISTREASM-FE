@@ -1,5 +1,3 @@
-// CurrentlyWatchingSkeleton.jsx
-import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function CurrentlyWatchingSkeleton() {

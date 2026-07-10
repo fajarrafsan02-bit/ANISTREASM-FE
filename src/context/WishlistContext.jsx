@@ -4,7 +4,7 @@ import { useWishlist as useWishlistHook } from "../hooks/useWishList";
 const WishlistContext = createContext(null);
 
 export function WishlistProvider({ children }) {
-    const wishlist = useWishlistHook(); // ✅ HANYA 1 instance untuk seluruh app
+    const wishlist = useWishlistHook(); 
     return (
         <WishlistContext.Provider value={wishlist}>
             {children}

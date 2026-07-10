@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTheme } from '../../../context/ThemeContext';
 import { formatTime } from '../../../utils/playerUtils';
 
@@ -50,8 +49,8 @@ export default function VideoControls({
                 showControls || !isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
             } ${
                 isDark
-                    ? 'bg-gradient-to-t from-black/95 via-black/20 to-transparent'
-                    : 'bg-gradient-to-t from-white/95 via-white/20 to-transparent'
+                    ? 'bg-linear-to-t from-black/95 via-black/20 to-transparent'
+                    : 'bg-linear-to-t from-white/95 via-white/20 to-transparent'
             }`}
         >
             {/* Title */}
@@ -134,7 +133,7 @@ export default function VideoControls({
                     />
 
                     <div
-                        className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#ff1e56] via-[#ff4d79] to-[#ff1e56] rounded-full"
+                        className="absolute top-0 left-0 h-full bg-linear-to-r from-[#ff1e56] via-[#ff4d79] to-[#ff1e56] rounded-full"
                         style={{ width: `${progressPercent}%` }}
                     />
 
@@ -147,7 +146,7 @@ export default function VideoControls({
                         className="absolute top-1/2 w-3.5 h-3.5 bg-white rounded-full shadow-lg shadow-red-500/40 opacity-0 group-hover/progress:opacity-100 transition-all duration-200"
                         style={{ left: `${progressPercent}%`, transform: 'translate(-50%, -50%)' }}
                     >
-                        <div className="absolute inset-1 rounded-full bg-gradient-to-br from-[#ff1e56] to-[#c4143a]" />
+                        <div className="absolute inset-1 rounded-full bg-linear-to-br from-[#ff1e56] to-[#c4143a]" />
                     </div>
                 </div>
 
@@ -234,7 +233,7 @@ export default function VideoControls({
                                 }`}
                             >
                                 <div
-                                    className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#ff1e56] to-[#ff4d79] rounded-full"
+                                    className="absolute top-0 left-0 h-full bg-linear-to-r from-[#ff1e56] to-[#ff4d79] rounded-full"
                                     style={{ width: `${(isMuted ? 0 : volume) * 100}%` }}
                                 />
                                 <input

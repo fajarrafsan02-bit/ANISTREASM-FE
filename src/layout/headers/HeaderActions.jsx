@@ -1,4 +1,3 @@
-// HeaderActions.jsx
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -39,7 +38,7 @@ export default function HeaderActions({
         setQuery: setSearchQuery,
         results: searchResults,
         isOpen: isSearchOpen,
-        phase: searchPhase,        // ganti dari loading/hasSearched
+        phase: searchPhase, 
         error: searchError,
         openSearch,
         searchAnime: triggerSearch,
@@ -74,7 +73,6 @@ export default function HeaderActions({
             return;
         }
 
-        // Langsung trigger — loading & delay di-handle oleh searchAnime hook
         triggerSearch(searchQuery);
     };
 
@@ -106,7 +104,6 @@ export default function HeaderActions({
                 isFocused={isFocused}
                 setIsFocused={setIsFocused}
                 localLoading={localLoading}
-                onSubmit={handleLocalSubmit}
                 onDesktopSearchClick={handleDesktopSearchClick}
                 onKeyDown={handleLocalKeyDown}
                 isSearchOpen={isSearchOpen}

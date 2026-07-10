@@ -128,7 +128,7 @@ export default function Toast({ toast, onRemove }) {
         >
             {/* Soft Background Gradient Glow */}
             <div
-                className={`absolute top-0 left-0 right-0 h-24 bg-gradient-to-b ${gradients[toast.type]} pointer-events-none opacity-60`}
+                className={`absolute top-0 left-0 right-0 h-24 bg-linear-to-b ${gradients[toast.type]} pointer-events-none opacity-60`}
             />
 
             {/* Premium Icon Wrapper */}

@@ -74,8 +74,8 @@ export default function CommentsTab({ commentsApi }) {
             <div
                 className={`absolute -inset-1 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-700 ${
                     isDark
-                        ? "bg-gradient-to-br from-red-900/20 via-transparent to-red-950/15"
-                        : "bg-gradient-to-br from-rose-200/40 via-transparent to-slate-100/30"
+                        ? "bg-linear-to-br from-red-900/20 via-transparent to-red-950/15"
+                        : "bg-linear-to-br from-rose-200/40 via-transparent to-slate-100/30"
                 }`}
             />
 
@@ -84,7 +84,7 @@ export default function CommentsTab({ commentsApi }) {
             >
                 {/* Top gradient line */}
                 <div
-                    className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${
+                    className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent ${
                         isDark ? "via-red-900/40" : "via-slate-300"
                     } to-transparent`}
                 />
@@ -99,9 +99,9 @@ export default function CommentsTab({ commentsApi }) {
                 <div className="flex items-center justify-between gap-2 mb-3.5 sm:mb-5">
                     <div className="flex items-center gap-2 min-w-0">
                         <div
-                            className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                            className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shrink-0 ${
                                 isDark
-                                    ? "bg-gradient-to-br from-[#1a0a0f] to-[#0f0508] border border-red-950/50 shadow-[0_0_12px_rgba(255,30,86,0.08)]"
+                                    ? "bg-linear-to-br from-[#1a0a0f] to-[#0f0508] border border-red-950/50 shadow-[0_0_12px_rgba(255,30,86,0.08)]"
                                     : "bg-white border border-slate-200 shadow-sm"
                             }`}
                         >
@@ -111,7 +111,7 @@ export default function CommentsTab({ commentsApi }) {
                             <h4 className={`font-black text-[11px] sm:text-sm tracking-tight flex items-center gap-1.5 ${isDark ? "text-white" : "text-slate-800"}`}>
                                 Komentar
                                 <span
-                                    className={`border text-[7px] sm:text-[8px] px-1 py-[1px] sm:px-1.5 sm:py-0.5 rounded font-black ${
+                                    className={`border text-[7px] sm:text-[8px] px-1 py-px sm:px-1.5 sm:py-0.5 rounded font-black ${
                                         isDark
                                             ? "bg-[#ff1e56]/10 text-[#ff1e56] border-[#ff1e56]/20"
                                             : "bg-rose-50 text-[#ff1e56] border-rose-300/50"
@@ -128,7 +128,7 @@ export default function CommentsTab({ commentsApi }) {
 
                     {/* Sort selector */}
                     <div
-                        className={`flex items-center gap-0.5 p-0.5 rounded-lg border flex-shrink-0 ${
+                        className={`flex items-center gap-0.5 p-0.5 rounded-lg border shrink-0 ${
                             isDark ? "bg-[#070204] border-[#2a1117]" : "bg-slate-100 border-slate-200"
                         }`}
                     >
@@ -139,7 +139,7 @@ export default function CommentsTab({ commentsApi }) {
                                 onClick={() => changeSort(opt.id)}
                                 className={`px-2 py-1 rounded-md text-[9px] sm:text-[10px] font-bold transition-all duration-200 ${
                                     sort === opt.id
-                                        ? "bg-gradient-to-r from-red-500 to-rose-500 text-white shadow-[0_0_10px_rgba(255,30,86,0.2)]"
+                                        ? "bg-linear-to-r from-red-500 to-rose-500 text-white shadow-[0_0_10px_rgba(255,30,86,0.2)]"
                                         : isDark
                                         ? "text-slate-500 hover:text-slate-300"
                                         : "text-slate-500 hover:text-slate-800"

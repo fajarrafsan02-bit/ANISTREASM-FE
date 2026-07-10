@@ -52,7 +52,7 @@ function AppContent() {
 
     const isProfile = location.pathname === "/profile";
 
-    const isDetails = useMatch("/anime/:slug");
+    const isDetails = useMatch("/anime/detail/:slug");
     const isWatchPage = useMatch("/episode/:episodeId");
 
     // Halaman yang tidak memakai Header/Footer
@@ -126,7 +126,7 @@ function AppContent() {
                     />
 
                     <Route
-                        path="/anime/:slug"
+                        path="/anime/detail/:slug"
                         element={
                             <ProtectedRoute>
                                 <AnimeDetailsPage />

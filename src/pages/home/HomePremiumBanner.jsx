@@ -23,15 +23,15 @@ export default function HomeSupportBanner() {
                     className={`relative overflow-hidden rounded-2xl border p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 group transition-all duration-300 ${
                         isDark
                             ? "bg-linear-to-r from-red-950/20 via-zinc-900/40 to-zinc-950/30 border-red-500/10"
-                            : "bg-gradient-to-r from-red-50/60 via-zinc-50/30 to-bg-primary border-red-200/50"
+                            : "bg-linear-to-r from-red-50/60 via-zinc-50/30 to-bg-primary border-red-200/50"
                     }`}
                 >
                     {/* Atmospheric Glow Background */}
                     <div
                         className={`absolute -right-20 -top-20 w-72 h-72 rounded-full blur-3xl transition-all duration-700 pointer-events-none ${
                             isDark
-                                ? "bg-gradient-to-br from-red-500/10 to-orange-500/5 group-hover:from-red-500/15"
-                                : "bg-gradient-to-br from-red-400/5 to-orange-400/5 group-hover:from-red-400/10"
+                                ? "bg-linear-to-br from-red-500/10 to-orange-500/5 group-hover:from-red-500/15"
+                                : "bg-linear-to-br from-red-400/5 to-orange-400/5 group-hover:from-red-400/10"
                         }`}
                     />
 
@@ -72,7 +72,7 @@ export default function HomeSupportBanner() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group/btn relative inline-flex items-center gap-2.5 
-                                bg-gradient-to-r from-[#ff1e56] to-[#e11d48] 
+                                bg-linear-to-r from-[#ff1e56] to-[#e11d48] 
                                 hover:from-[#ff336a] hover:to-[#f43f5e] 
                                 text-white font-bold px-7 py-3.5 rounded-xl text-sm 
                                 transition-all duration-300 
@@ -82,7 +82,7 @@ export default function HomeSupportBanner() {
                                 overflow-hidden"
                         >
                             {/* Shimmer effect on hover */}
-                            <div className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                            <div className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 bg-linear-to-r from-transparent via-white/20 to-transparent" />
                             
                             {/* Heart icon with beat animation */}
                             <Heart 

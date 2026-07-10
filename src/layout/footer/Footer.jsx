@@ -1,9 +1,9 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { useAuth } from "../../context/AuthContext";
 import { useAuthModal } from "../../context/AuthModalContext";
 import useToast from "../../hooks/useToast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const animeQuotes = [
@@ -56,6 +56,7 @@ export default function Footer() {
   const { openModal } = useAuthModal();
   const toast = useToast();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { ref, isVisible } = useScrollReveal({ threshold: 0.1, once: true });
 
   const isDark = theme === "dark";
@@ -92,7 +93,7 @@ export default function Footer() {
       ${isDark ? 'bg-[#030102] border-t border-[#2a1117]/30' : 'bg-[#f8f6f3] border-t border-slate-200/40'}`}
     >
       <div className="absolute top-0 left-0 right-0 h-px">
-        <div className="h-full bg-gradient-to-r from-transparent via-[#ff1e56]/30 to-transparent animate-pulse" />
+        <div className="h-full bg-linear-to-r from-transparent via-[#ff1e56]/30 to-transparent animate-pulse" />
       </div>
 
       {isDark && (
@@ -116,29 +117,29 @@ export default function Footer() {
         />
       ))}
 
-      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-8 py-8 sm:py-12 relative z-10">
+      <div className="w-full max-w-[1440px] mx-auto px-3 max-[374px]:px-2 md:px-8 py-6 sm:py-12 relative z-10">
         <div
           ref={ref}
-          className={`flex flex-col items-center gap-6 sm:gap-8 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]
+          className={`flex flex-col items-center gap-4 max-[374px]:gap-3 sm:gap-8 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
         >
 
           {/* ═══ STATS ROW ═══ */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 w-full max-w-xl">
+          <div className="flex flex-wrap justify-center gap-1.5 max-[374px]:gap-1 sm:gap-3 w-full max-w-xl">
             {stats.map((s, i) => (
               <div
                 key={s.label}
-                className={`flex items-center gap-2 px-3 py-2 rounded-xl border transition-all duration-300
+                className={`flex items-center gap-1.5 max-[374px]:gap-1 px-2.5 max-[374px]:px-2 py-1.5 max-[374px]:py-1 rounded-lg border transition-all duration-300
                   ${isDark
                     ? 'bg-white/[0.02] border-white/5 hover:border-[#ff1e56]/20 hover:bg-white/[0.04]'
                     : 'bg-white/40 border-slate-200/60 hover:border-rose-200 hover:bg-white/60'
                   }`}
                 style={{ animationDelay: `${i * 80}ms` }}
               >
-                <i className={`fa-solid ${s.icon} text-[10px] ${isDark ? 'text-[#ff1e56]/60' : 'text-rose-400'}`} />
-                <div className="flex items-baseline gap-1">
-                  <span className={`font-black text-xs ${isDark ? 'text-white' : 'text-slate-800'}`}>{s.count}</span>
-                  <span className={`text-[7px] uppercase tracking-wider font-bold ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{s.label}</span>
+                <i className={`fa-solid ${s.icon} text-[9px] max-[374px]:text-[8px] ${isDark ? 'text-[#ff1e56]/60' : 'text-rose-400'}`} />
+                <div className="flex items-baseline gap-0.5">
+                  <span className={`font-black text-[11px] max-[374px]:text-[10px] ${isDark ? 'text-white' : 'text-slate-800'}`}>{s.count}</span>
+                  <span className={`text-[7px] max-[374px]:text-[6px] uppercase tracking-wider font-bold ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{s.label}</span>
                 </div>
               </div>
             ))}
@@ -150,13 +151,13 @@ export default function Footer() {
               <div className={`absolute inset-0 rounded-2xl blur-xl transition-opacity duration-500 opacity-60 group-hover:opacity-100
                 ${isDark ? 'bg-[#ff1e56]/20' : 'bg-rose-400/15'}`}
               />
-              <div className={`relative w-12 h-12 rounded-2xl flex items-center justify-center border-2 transition-all duration-500 group-hover:scale-105
+              <div className={`relative w-11 max-[374px]:w-10 h-11 max-[374px]:h-10 rounded-2xl flex items-center justify-center border-2 transition-all duration-500 group-hover:scale-105
                 ${isDark
-                  ? 'bg-gradient-to-br from-[#1a0a10] to-[#0d0407] border-[#ff1e56]/30 shadow-[0_0_30px_rgba(255,30,86,0.1)]'
-                  : 'bg-gradient-to-br from-white to-rose-50 border-rose-200 shadow-lg shadow-rose-100/50'
+                  ? 'bg-linear-to-br from-[#1a0a10] to-[#0d0407] border-[#ff1e56]/30 shadow-[0_0_30px_rgba(255,30,86,0.1)]'
+                  : 'bg-linear-to-br from-white to-rose-50 border-rose-200 shadow-lg shadow-rose-100/50'
                 }`}
               >
-                <i className="fa-solid fa-play text-[#ff1e56] text-sm ml-0.5" />
+                <i className="fa-solid fa-play text-[#ff1e56] text-xs max-[374px]:text-[10px] ml-0.5" />
                 <div className={`absolute -top-px -left-px w-2 h-2 border-l-2 border-t-2 rounded-tl-lg ${isDark ? 'border-[#ff1e56]/40' : 'border-rose-300'}`} />
                 <div className={`absolute -top-px -right-px w-2 h-2 border-r-2 border-t-2 rounded-tr-lg ${isDark ? 'border-[#ff1e56]/40' : 'border-rose-300'}`} />
                 <div className={`absolute -bottom-px -left-px w-2 h-2 border-l-2 border-b-2 rounded-bl-lg ${isDark ? 'border-[#ff1e56]/40' : 'border-rose-300'}`} />
@@ -164,12 +165,12 @@ export default function Footer() {
               </div>
             </div>
             <div className="text-center">
-              <h2 className={`text-xl font-black tracking-[0.15em] uppercase bg-clip-text text-transparent bg-gradient-to-r
+              <h2 className={`text-lg max-[374px]:text-base sm:text-xl font-black tracking-[0.15em] uppercase bg-clip-text text-transparent bg-linear-to-r
                 ${isDark ? 'from-white via-slate-200 to-slate-400' : 'from-slate-900 via-slate-700 to-slate-500'}`}
               >
                 ANISTREAM
               </h2>
-              <p className={`text-[9px] font-bold uppercase tracking-[0.15em] min-[360px]:tracking-[0.2em] sm:tracking-[0.3em] mt-1 ${isDark ? 'text-slate-600' : 'text-slate-400'}`}>
+              <p className={`text-[8px] max-[374px]:text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.1em] max-[374px]:tracking-[0.08em] min-[360px]:tracking-[0.2em] sm:tracking-[0.3em] mt-1 ${isDark ? 'text-slate-600' : 'text-slate-400'}`}>
                 Nonton Anime Gratis Tanpa Iklan
               </p>
             </div>
@@ -180,37 +181,47 @@ export default function Footer() {
             {[
               { label: 'Katalog', href: '/catalog', desc: 'Jelajahi' },
               { label: 'Jadwal', href: '/schedule', desc: 'Rilis' },
-            ].map((link) => (
+            ].map((link) => {
+              const isActive = pathname === link.href;
+              return (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavigation(e, link.href)}
-                className={`group relative px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all duration-300
-                  ${isDark ? 'hover:bg-[#ff1e56]/5' : 'hover:bg-rose-50/50'}`}
+                className={`group relative px-3 max-[374px]:px-2.5 sm:px-6 py-2 max-[374px]:py-1.5 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300
+                  ${isDark
+                    ? isActive ? 'bg-[#ff1e56]/8' : 'hover:bg-[#ff1e56]/5'
+                    : isActive ? 'bg-rose-100/60' : 'hover:bg-rose-50/50'}`}
               >
-                <span className={`absolute bottom-2 left-4 right-4 sm:left-6 sm:right-6 h-px transition-all duration-500 origin-left scale-x-0 group-hover:scale-x-100
+                <span className={`absolute bottom-2 left-4 right-4 sm:left-6 sm:right-6 h-px transition-all duration-500 origin-left
+                  ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
                   ${isDark ? 'bg-[#ff1e56]/50' : 'bg-rose-300'}`}
                 />
-                <span className={`block text-xs font-black uppercase tracking-[0.15em] transition-colors duration-300
-                  ${isDark ? 'text-slate-400 group-hover:text-white' : 'text-slate-500 group-hover:text-slate-900'}`}
+                <span className={`block text-[10px] max-[374px]:text-[9px] sm:text-xs font-black uppercase tracking-[0.15em] transition-colors duration-300
+                  ${isDark
+                    ? isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'
+                    : isActive ? 'text-slate-900' : 'text-slate-500 group-hover:text-slate-900'}`}
                 >
                   {link.label}
                 </span>
-                <span className={`block text-[9px] font-bold uppercase tracking-widest mt-0.5 transition-colors duration-300
-                  ${isDark ? 'text-slate-600 group-hover:text-[#ff1e56]/60' : 'text-slate-400 group-hover:text-rose-400'}`}
+                <span className={`block text-[8px] max-[374px]:text-[7px] sm:text-[9px] font-bold uppercase tracking-widest mt-0.5 transition-colors duration-300
+                  ${isDark
+                    ? isActive ? 'text-[#ff1e56]/80' : 'text-slate-600 group-hover:text-[#ff1e56]/60'
+                    : isActive ? 'text-rose-500' : 'text-slate-400 group-hover:text-rose-400'}`}
                 >
                   {link.desc}
                 </span>
               </a>
-            ))}
+              );
+            })}
           </nav>
 
           {/* ═══ GENRE TAG CLOUD ═══ */}
-          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 max-w-lg">
+          <div className="flex flex-wrap justify-center gap-1 max-[374px]:gap-0.5 sm:gap-2 max-w-lg">
             {genres.map((g, i) => (
               <span
                 key={g}
-                className={`inline-block px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider cursor-default transition-all duration-300 hover:scale-105
+                className={`inline-block px-2 max-[374px]:px-1.5 py-0.5 max-[374px]:py-px rounded-full text-[8px] max-[374px]:text-[7px] sm:text-[9px] font-bold uppercase tracking-wider cursor-default transition-all duration-300 hover:scale-105
                   ${isDark
                     ? 'bg-white/[0.03] text-slate-500 border border-white/5 hover:border-[#ff1e56]/30 hover:text-[#ff1e56]/70'
                     : 'bg-rose-50/50 text-slate-400 border border-rose-100 hover:border-rose-300 hover:text-rose-600'
@@ -223,19 +234,19 @@ export default function Footer() {
           </div>
 
           {/* ═══ QUOTE ROTATOR ═══ */}
-          <div className={`relative w-full max-w-md px-4 py-3 rounded-xl border text-center transition-colors duration-300
+          <div className={`relative w-full max-w-md px-3 max-[374px]:px-2.5 py-2.5 max-[374px]:py-2 rounded-xl border text-center transition-colors duration-300
             ${isDark
               ? 'bg-white/[0.02] border-white/5'
               : 'bg-black/[0.02] border-slate-200/60'}`}
           >
-            <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#ff1e56]/20 to-transparent" />
+            <div className="absolute -top-px left-8 right-8 h-px bg-linear-to-r from-transparent via-[#ff1e56]/20 to-transparent" />
             <div className={`transition-opacity duration-400 ${quoteFade ? 'opacity-100' : 'opacity-0'}`}>
-              <p className={`text-[11px] sm:text-xs font-medium leading-relaxed italic transition-colors duration-300
+              <p className={`text-[10px] max-[374px]:text-[9px] sm:text-xs font-medium leading-relaxed italic transition-colors duration-300
                 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}
               >
                 "{q.text}"
               </p>
-              <p className={`text-[8px] font-bold uppercase tracking-widest mt-1.5 transition-colors duration-300
+              <p className={`text-[7px] max-[374px]:text-[6px] sm:text-[8px] font-bold uppercase tracking-widest mt-1 transition-colors duration-300
                 ${isDark ? 'text-slate-600' : 'text-slate-400'}`}
               >
                 — {q.from}
@@ -244,41 +255,41 @@ export default function Footer() {
           </div>
 
           {/* ═══ SOCIAL LINKS ═══ */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 max-[374px]:gap-1">
             {socials.map((s) => (
               <a
                 key={s.label}
                 href="#"
                 onClick={(e) => e.preventDefault()}
-                className={`w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-xl border transition-all duration-300 cursor-pointer
+                className={`w-7 max-[374px]:w-6 h-7 max-[374px]:h-6 sm:w-9 sm:h-9 flex items-center justify-center rounded-lg sm:rounded-xl border transition-all duration-300 cursor-pointer
                   ${isDark
                     ? 'border-white/5 text-slate-500 hover:border-white/20 hover:text-white bg-white/[0.02]'
                     : 'border-slate-200 text-slate-400 hover:border-slate-300 hover:text-slate-700 bg-white/40'
                   } ${s.color}`}
                 title={s.label}
               >
-                <i className={`fa-brands ${s.icon} text-xs sm:text-sm`} />
+                <i className={`fa-brands ${s.icon} text-[10px] max-[374px]:text-[9px] sm:text-sm`} />
               </a>
             ))}
           </div>
 
           {/* ═══ DIVIDER ═══ */}
-          <div className="w-full max-w-xs flex items-center gap-3">
-            <div className={`flex-1 h-px ${isDark ? 'bg-gradient-to-r from-transparent to-[#2a1117]' : 'bg-gradient-to-r from-transparent to-slate-200'}`} />
+          <div className="w-full max-w-[200px] max-[374px]:max-w-[160px] flex items-center gap-2">
+            <div className={`flex-1 h-px ${isDark ? 'bg-linear-to-r from-transparent to-[#2a1117]' : 'bg-linear-to-r from-transparent to-slate-200'}`} />
             <div className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-[#ff1e56]/30' : 'bg-rose-300'}`} />
-            <div className={`flex-1 h-px ${isDark ? 'bg-gradient-to-l from-transparent to-[#2a1117]' : 'bg-gradient-to-l from-transparent to-slate-200'}`} />
+            <div className={`flex-1 h-px ${isDark ? 'bg-linear-to-l from-transparent to-[#2a1117]' : 'bg-linear-to-l from-transparent to-slate-200'}`} />
           </div>
 
           {/* ═══ BOTTOM ═══ */}
-          <div className="flex flex-col items-center gap-3">
-            <div className={`flex items-center gap-2 text-[9px] min-[360px]:text-[10px] font-bold uppercase tracking-widest
+          <div className="flex flex-col items-center gap-2 max-[374px]:gap-1.5">
+            <div className={`flex items-center gap-1.5 max-[374px]:gap-1 text-[8px] max-[374px]:text-[7px] min-[360px]:text-[10px] font-bold uppercase tracking-widest
               ${isDark ? 'text-slate-700' : 'text-slate-300'}`}
             >
               <span>Dibuat dengan</span>
-              <i className="fa-solid fa-heart text-[#ff1e56]/60 text-[9px] animate-pulse" />
+              <i className="fa-solid fa-heart text-[#ff1e56]/60 text-[8px] max-[374px]:text-[7px] animate-pulse" />
               <span>untuk penggemar anime</span>
             </div>
-            <p className={`text-[9px] min-[360px]:text-[10px] font-bold tracking-wider uppercase
+            <p className={`text-[8px] max-[374px]:text-[7px] min-[360px]:text-[10px] font-bold tracking-wider uppercase
               ${isDark ? 'text-slate-700' : 'text-slate-300'}`}
             >
               © {currentYear} <span className={isDark ? 'text-slate-500' : 'text-slate-400'}>AniStream</span> · All rights reserved
@@ -286,15 +297,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes footerPetalFall {
-          0%   { transform: translateY(-10px) rotate(0deg) scale(1); opacity: 0; }
-          10%  { opacity: 1; }
-          90%  { opacity: 1; }
-          100% { transform: translateY(400px) rotate(120deg) scale(0.6); opacity: 0; }
-        }
-      `}</style>
     </footer>
   );
 }

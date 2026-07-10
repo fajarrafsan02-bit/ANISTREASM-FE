@@ -71,10 +71,9 @@ export default function HeaderLogo({ setActiveTab, scrollToTop, mobileSearchOpen
                         repeat: Infinity,
                         ease: "easeInOut"
                     }}
-                    className="absolute inset-0 bg-gradient-to-tr from-[#ff1e56] to-orange-500 rounded-2xl blur-xl pointer-events-none"
+                    className="absolute inset-0 bg-linear-to-tr from-[#ff1e56] to-orange-500 rounded-2xl blur-xl pointer-events-none"
                 />
 
-                {/* ✅ PENINGKATAN: Bingkai putus-putus berputar lambat secara tak terbatas (futuristik) */}
                 <motion.div
                     animate={{
                         rotate: 360
@@ -101,9 +100,8 @@ export default function HeaderLogo({ setActiveTab, scrollToTop, mobileSearchOpen
                     }}
                     whileTap={{ scale: 0.94, rotate: -4 }}
                     transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                    className="relative w-7.5 h-7.5 sm:w-9 sm:h-9 bg-gradient-to-tr from-[#ff1e56] via-red-600 to-orange-500 rounded-xl flex items-center justify-center shadow-lg shadow-red-500/20 overflow-hidden border border-white/10"
+                    className="relative w-7.5 h-7.5 sm:w-9 sm:h-9 bg-linear-to-tr from-[#ff1e56] via-red-600 to-orange-500 rounded-xl flex items-center justify-center shadow-lg shadow-red-500/20 overflow-hidden border border-white/10"
                 >
-                    {/* ✅ PENINGKATAN: Sapuan kilap gradasi perak (Metallic Shine) yang sangat halus */}
                     <motion.div
                         animate={{
                             x: ["-250%", "250%"]
@@ -114,10 +112,10 @@ export default function HeaderLogo({ setActiveTab, scrollToTop, mobileSearchOpen
                             ease: "easeInOut",
                             repeatDelay: 2
                         }}
-                        className="absolute inset-y-0 w-1/2 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
+                        className="absolute inset-y-0 w-1/2 bg-linear-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
                     />
 
-                    <span className="text-white font-sora font-black text-lg sm:text-xl tracking-tighter drop-shadow-md select-none transform -translate-y-[0.5px]">
+                    <span className="text-white font-sora font-black text-lg sm:text-xl tracking-tighter drop-shadow-md select-none transform translate-y-[0.5px]">
                         A
                     </span>
                 </motion.div>

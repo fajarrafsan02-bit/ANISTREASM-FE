@@ -1,8 +1,6 @@
-// CurrentlyWatching.jsx
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext'; // Pastikan path sesuai
-import CurrentlyWatchingSkeleton from '../../skeletons/profil/CurrentlyWatchingSkeleton'; // ✅ Impor Skeleton
+import { useTheme } from '../../context/ThemeContext'; 
+import CurrentlyWatchingSkeleton from '../../skeletons/profil/CurrentlyWatchingSkeleton'; 
 
 export default function CurrentlyWatching({ shows, loading = true }) { 
     const { theme } = useTheme();
@@ -13,7 +11,7 @@ export default function CurrentlyWatching({ shows, loading = true }) {
         <section className="relative w-full">
             <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                    <div className="w-1.5 h-6 rounded-full bg-gradient-to-b from-[#ec001d] to-[#ff4d63] shadow-[0_0_12px_rgba(236,0,29,0.5)] dark:shadow-[0_0_16px_rgba(236,0,29,0.8)]" />
+                    <div className="w-1.5 h-6 rounded-full bg-linear-to-b from-[#ec001d] to-[#ff4d63] shadow-[0_0_12px_rgba(236,0,29,0.5)] dark:shadow-[0_0_16px_rgba(236,0,29,0.8)]" />
                     <h2 className={`font-sora text-sm md:text-base font-extrabold tracking-wide uppercase transition-colors duration-300 ${
                         isDark ? "text-white" : "text-neutral-900"
                     }`}>
@@ -53,7 +51,7 @@ export default function CurrentlyWatching({ shows, loading = true }) {
                             }`}
                         >
                             <div className="relative aspect-video overflow-hidden">
-                                <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/85 via-black/15 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                                <div className="absolute inset-0 z-10 bg-linear-to-t from-black/85 via-black/15 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
 
                                 <img
                                     alt={show.title}
@@ -117,7 +115,7 @@ export default function CurrentlyWatching({ shows, loading = true }) {
                                         isDark ? "bg-white/10" : "bg-neutral-200"
                                     }`}>
                                         <div
-                                            className="bg-gradient-to-r from-[#ec001d] to-[#ff4d63] h-full rounded-full transition-all duration-700 ease-out relative"
+                                            className="bg-linear-to-r from-[#ec001d] to-[#ff4d63] h-full rounded-full transition-all duration-700 ease-out relative"
                                             style={{ width: `${show.progress}%` }}
                                         >
                                             <div className="absolute right-0 top-0 bottom-0 w-3 bg-white/30 blur-[2px] rounded-full" />

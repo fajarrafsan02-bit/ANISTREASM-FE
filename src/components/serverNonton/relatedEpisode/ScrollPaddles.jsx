@@ -21,13 +21,13 @@ export default function ScrollPaddles({ canScrollLeft, canScrollRight, onScroll 
 
     const fadeGradient = isDark
         ? {
-              left: "bg-gradient-to-r from-[#050203] via-[#050203]/70 via-[#050203]/20 to-transparent",
-              right: "bg-gradient-to-l from-[#050203] via-[#050203]/70 via-[#050203]/20 to-transparent",
-          }
+            left: "bg-gradient-to-r from-[#050203] via-[#050203]/70 via-[#050203]/20 to-transparent",
+            right: "bg-gradient-to-l from-[#050203] via-[#050203]/70 via-[#050203]/20 to-transparent",
+        }
         : {
-              left: "bg-gradient-to-r from-[#faf8f5] via-[#faf8f5]/70 via-[#faf8f5]/20 to-transparent",
-              right: "bg-gradient-to-l from-[#faf8f5] via-[#faf8f5]/70 via-[#faf8f5]/20 to-transparent",
-          };
+            left: "bg-gradient-to-r from-[#faf8f5] via-[#faf8f5]/70 via-[#faf8f5]/20 to-transparent",
+            right: "bg-gradient-to-l from-[#faf8f5] via-[#faf8f5]/70 via-[#faf8f5]/20 to-transparent",
+        };
 
     const paddleBg = (side) => isDark
         ? `${side === "left" ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-black/60 to-transparent hover:from-black/90 text-white/50 hover:text-white`

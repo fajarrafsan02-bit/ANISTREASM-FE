@@ -1,5 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
-// AnimeCardButtons.jsx
 import { useTheme } from "../../../../context/ThemeContext";
 import { useAuth } from "../../../../context/AuthContext";
 import { useAuthModal } from "../../../../context/AuthModalContext";

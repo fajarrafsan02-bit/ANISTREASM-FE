@@ -1,23 +1,22 @@
-// src/hooks/useAnimeDetail.js
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { api } from '../api/axios';          // import instance axios
+import { api } from '../api/axios';   
 
 export default function useAnimeDetail() {
-    const { slug } = useParams();              // ambil slug dari URL
-    const [anime, setAnime] = useState(null); // gunakan null, bukan array
+    const { slug } = useParams();              
+    const [anime, setAnime] = useState(null); 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (!slug) return;                     // jika slug tidak ada, tidak usah fetch
+        if (!slug) return;                    
 
         const fetchData = async () => {
             try {
                 setLoading(true);
                 setError(null);
 
-                const response = await api.get(`/anime/${slug}`); // perbaiki backticks
+                const response = await api.get(`/anime/detail/${slug}`);
 
                 // asumsikan response.data.data berisi object anime detail
                 const mapped = response.data.data;
@@ -36,10 +35,10 @@ export default function useAnimeDetail() {
         };
 
         fetchData();
-    }, [slug]); // jalankan ulang jika slug berubah
+    }, [slug]); 
 
     return {
-        anime,   // object detail anime (bisa null jika belum ada)
+        anime,  
         loading,
         error
     };

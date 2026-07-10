@@ -8,7 +8,6 @@ export default function useAnimeSearch() {
     const [query, setQueryState] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
-    // ✅ Satu state untuk semua fase — hindari race condition antar state
     const [phase, setPhase] = useState("idle"); // 'idle' | 'loading' | 'results' | 'error'
 
     const lastFetchedQuery = useRef("");
@@ -32,7 +31,6 @@ export default function useAnimeSearch() {
     const closeSearch = useCallback(() => {
         isOpenRef.current = false;
         setIsOpen(false);
-        // JANGAN reset phase/results/query — biar history/results tetap kebaca pas dibuka lagi
     }, []);
 
     const searchAnime = useCallback(async (keyword) => {
@@ -42,7 +40,6 @@ export default function useAnimeSearch() {
         if (trimmed === lastFetchedQuery.current && isOpenRef.current && phase === "results") return;
         lastFetchedQuery.current = trimmed;
 
-        // ✅ Set loading SEKALI saja — tidak ada race condition
         setPhase("loading");
         setError(null);
         isOpenRef.current = true;
@@ -77,11 +74,11 @@ export default function useAnimeSearch() {
         query,
         setQuery,
         results,
-        loading: phase === "loading",   // ✅ derive dari phase
+        loading: phase === "loading",   
         error,
         isOpen,
         openSearch,
-        phase,                            // ✅ kirim phase langsung
+        phase,                           
         searchAnime,
         closeSearch,
         handleKeyDown,

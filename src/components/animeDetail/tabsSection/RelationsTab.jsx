@@ -1,4 +1,3 @@
-// RelationsTab.jsx
 import { useTheme } from "../../../context/ThemeContext";
 
 // Skema warna dinamis untuk label relasi agar harmonis di mode terang & gelap
@@ -41,8 +40,8 @@ export default function RelationsTab({ relations = [], tags = [] }) {
             {/* Ambient glow */}
             <div
                 className={`absolute -inset-1 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-700 ${isDark
-                    ? "bg-gradient-to-br from-red-900/20 via-transparent to-red-950/15"
-                    : "bg-gradient-to-br from-rose-200/40 via-transparent to-slate-100/30"
+                    ? "bg-linear-to-br from-red-900/20 via-transparent to-red-950/15"
+                    : "bg-linear-to-br from-rose-200/40 via-transparent to-slate-100/30"
                     }`}
             />
 
@@ -52,7 +51,7 @@ export default function RelationsTab({ relations = [], tags = [] }) {
             >
                 {/* Top gradient line */}
                 <div
-                    className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${isDark ? "via-red-900/40" : "via-slate-300"
+                    className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent ${isDark ? "via-red-900/40" : "via-slate-300"
                         } to-transparent`}
                 />
 
@@ -67,8 +66,8 @@ export default function RelationsTab({ relations = [], tags = [] }) {
                     {/* Header */}
                     <div className="flex items-center gap-2 mb-3.5">
                         <div
-                            className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${isDark
-                                ? "bg-gradient-to-br from-[#1a0a0f] to-[#0f0508] border border-red-950/50 shadow-[0_0_12px_rgba(255,30,86,0.08)]"
+                            className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shrink-0 ${isDark
+                                ? "bg-linear-to-brrom-[#1a0a0f] to-[#0f0508] border border-red-950/50 shadow-[0_0_12px_rgba(255,30,86,0.08)]"
                                 : "bg-white border border-slate-200 shadow-sm"
                                 }`}
                         >
@@ -109,7 +108,7 @@ export default function RelationsTab({ relations = [], tags = [] }) {
                                     >
                                         {/* Cover - Dioptimalkan dimensinya ke w-8 h-11 di HP */}
                                         <div
-                                            className={`relative w-8 h-11 sm:w-12 sm:h-16 rounded-md overflow-hidden flex-shrink-0 transition-colors ${isDark
+                                            className={`relative w-8 h-11 sm:w-12 sm:h-16 rounded-md overflow-hidden shrink-0 transition-colors ${isDark
                                                 ? "bg-[#1a0a0f] border border-[#2a1117] group-hover/card:border-red-900/30"
                                                 : "bg-slate-100 border-slate-200 group-hover/card:border-rose-300/60"
                                                 }`}
@@ -147,7 +146,7 @@ export default function RelationsTab({ relations = [], tags = [] }) {
                                             <div className="flex flex-wrap items-center gap-1 mt-1">
                                                 {/* Lencana Tipe Relasi (Adaptasi, Sequel, dll.) */}
                                                 <span
-                                                    className={`inline-flex items-center text-[8px] sm:text-[10px] font-black tracking-wider uppercase px-1.5 py-[1px] rounded border ${typeClasses}`}
+                                                    className={`inline-flex items-center text-[8px] sm:text-[10px] font-black tracking-wider uppercase px-1.5 py-px rounded border ${typeClasses}`}
                                                 >
                                                     {labelText}
                                                 </span>
@@ -155,7 +154,7 @@ export default function RelationsTab({ relations = [], tags = [] }) {
                                                 {/* ✅ PERBAIKAN: Menambahkan Lencana Format Karya (MANGA, TV, OVA, dll.) secara harmonis & premium */}
                                                 {relation.format && (
                                                     <span
-                                                        className={`inline-flex items-center text-[8px] sm:text-[9px] font-bold tracking-wider uppercase px-1.5 py-[1px] rounded border ${isDark
+                                                        className={`inline-flex items-center text-[8px] sm:text-[9px] font-bold tracking-wider uppercase px-1.5 py-px rounded border ${isDark
                                                             ? "bg-[#1c0c11] border-[#2a1117]/60 text-slate-400"
                                                             : "bg-slate-100 border-slate-200 text-slate-500"
                                                             }`}
@@ -191,7 +190,7 @@ export default function RelationsTab({ relations = [], tags = [] }) {
 
                 {/* Divider */}
                 <div
-                    className={`h-px bg-gradient-to-r from-transparent ${isDark ? "via-[#2a1117]/50" : "via-slate-200"
+                    className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-[#2a1117]/50" : "via-slate-200"
                         } to-transparent mb-4 sm:mb-6`}
                 />
 
@@ -200,8 +199,8 @@ export default function RelationsTab({ relations = [], tags = [] }) {
                     {/* Header */}
                     <div className="flex items-center gap-2 mb-3.5">
                         <div
-                            className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${isDark
-                                ? "bg-gradient-to-br from-[#1a0a0f] to-[#0f0508] border border-red-950/50 shadow-[0_0_12px_rgba(255,30,86,0.08)]"
+                            className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shrink-0 ${isDark
+                                ? "bg-linear-to-br from-[#1a0a0f] to-[#0f0508] border border-red-950/50 shadow-[0_0_12px_rgba(255,30,86,0.08)]"
                                 : "bg-white border-slate-200 shadow-sm"
                                 }`}
                         >

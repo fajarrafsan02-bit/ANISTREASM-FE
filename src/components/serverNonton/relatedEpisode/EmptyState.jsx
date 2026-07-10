@@ -5,7 +5,7 @@ export default function EmptyState() {
     const isDark = theme === "dark";
 
     return (
-        <div className={`py-12 sm:py-16 text-center w-full border border-dashed rounded-2xl bg-gradient-to-b ${
+        <div className={`py-12 sm:py-16 text-center w-full border border-dashed rounded-2xl bg-linear-to-b ${
             isDark
                 ? "border-[#2a1117]/40 from-[#0d0407]/30 to-transparent"
                 : "border-slate-300 from-white to-slate-50"
@@ -13,7 +13,7 @@ export default function EmptyState() {
             <div className="relative inline-flex mb-3 sm:mb-4">
                 <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border flex items-center justify-center ${
                     isDark
-                        ? "bg-gradient-to-br from-[#1a0a0f] to-[#0a0204] border-[#2a1117]/50"
+                        ? "bg-linear-to-br from-[#1a0a0f] to-[#0a0204] border-[#2a1117]/50"
                         : "bg-white border-slate-200 shadow-sm"
                 }`}>
                     <i className={`fa-solid fa-film text-lg sm:text-xl ${isDark ? "text-slate-700" : "text-slate-400"}`} />

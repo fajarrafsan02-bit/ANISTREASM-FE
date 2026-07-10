@@ -43,7 +43,7 @@ export default function ScheduleCard({ anime }) {
     return (
         <article className={`group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer
             ${isDark
-                ? 'bg-gradient-to-b from-[#15080d] via-[#0d0407] to-[#0a0305] border border-[#2a1117]/40 hover:border-[#ff1e56]/30'
+                ? 'bg-linear-to-b from-[#15080d] via-[#0d0407] to-[#0a0305] border border-[#2a1117]/40 hover:border-[#ff1e56]/30'
                 : 'bg-white border border-slate-200/60 hover:border-rose-200'
             }
             hover:shadow-[0_12px_40px_-15px_rgba(0,0,0,0.3)] sm:hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] 
@@ -55,7 +55,7 @@ export default function ScheduleCard({ anime }) {
             />
 
             {/* ═══ COVER SECTION ═══ */}
-            <div className="relative w-full aspect-[16/9] overflow-hidden">
+            <div className="relative w-full aspect-16/9 overflow-hidden">
                 {/* Image */}
                 <img
                     alt={anime.title}
@@ -64,7 +64,7 @@ export default function ScheduleCard({ anime }) {
                 />
 
                 {/* Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500
                     ${isDark ? 'bg-[#ff1e56]/5' : 'bg-rose-500/3'}`}
                 />
@@ -73,7 +73,7 @@ export default function ScheduleCard({ anime }) {
                 {/* Shimmer */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
                     <div className={`absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-in-out
-                        ${isDark ? 'bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12' : 'bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12'}`}
+                        ${isDark ? 'bg-linear-to-r from-transparent via-white/5 to-transparent skew-x-12' : 'bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12'}`}
                     />
                 </div>
 
@@ -129,7 +129,7 @@ export default function ScheduleCard({ anime }) {
 
                 {/* Decorative line */}
                 <div className={`absolute top-0 left-3 right-3 h-px 
-                    ${isDark ? 'bg-gradient-to-r from-transparent via-[#ff1e56]/15 to-transparent' : 'bg-gradient-to-r from-transparent via-slate-200 to-transparent'}`}
+                    ${isDark ? 'bg-linear-to-r from-transparent via-[#ff1e56]/15 to-transparent' : 'bg-linear-to-r from-transparent via-slate-200 to-transparent'}`}
                 />
 
                 {/* Title */}

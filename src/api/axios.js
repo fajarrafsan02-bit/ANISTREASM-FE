@@ -21,7 +21,7 @@ const AUTH_ROUTES = [
     "/users/login",
     "/users/register",
     "/google/login",
-    "/user/refresh",
+    "/users/refresh",
 ];
 
 const isAuthRoute = (url) => AUTH_ROUTES.some(route => url?.includes(route));
@@ -48,13 +48,12 @@ api.interceptors.response.use(
             isRefreshing = true;
 
             try {
-                await api.post("/user/refresh");
+                await api.post("/users/refresh");
                 processQueue(null);
                 return api(originalRequest);
             } catch (refreshError) {
                 processQueue(refreshError);
 
-                // ✅ PERBAIKAN: Hapus sesi jika respon server menunjukkan error autentikasi (401, 403, atau 400 akibat token/cookie hilang)
                 const isAuthError = refreshError.response &&
                     (refreshError.response.status === 401 ||
                         refreshError.response.status === 403 ||

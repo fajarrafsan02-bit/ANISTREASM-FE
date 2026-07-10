@@ -1,9 +1,8 @@
-// HomePage.jsx
 import HeroCarousel from "../../components/Home/hero/HeroCarousel";
 import AnimeSection from "../../components/Home/anime/AnimeSection";
 import HomePremiumBanner from "./HomePremiumBanner";
 import useAnimeHome from "../../hooks/useAnimeHome";
-import HeroCarouselSkeleton from "../../components/Home/hero/HeroCarouselSkeleton";
+import HeroCarouselSkeleton from "../../skeletons/heroCarouselSkeleton/HeroCarouselSkeleton";
 
 import AnimeSectionSkeleton from "../../components/Home/anime/AnimeSectionSkeleton";
 import useAnimeCompleteHome from "../../hooks/useAnimeCompleteHome";

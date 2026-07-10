@@ -11,8 +11,8 @@ export default function HeroBannerSkeleton() {
             {/* ── BACKGROUND ── */}
             <div className={`absolute inset-0 ${
                 isDark
-                    ? "bg-gradient-to-br from-[#1a0a0f] via-[#0d0407] to-black"
-                    : "bg-gradient-to-br from-rose-50 via-white to-slate-50"
+                    ? "bg-linear-to-br from-[#1a0a0f] via-[#0d0407] to-black"
+                    : "bg-linear-to-br from-rose-50 via-white to-slate-50"
             }`} />
 
             {/* Dot Pattern */}
@@ -28,27 +28,27 @@ export default function HeroBannerSkeleton() {
             {/* Vignette */}
             <div className={`absolute inset-0 ${
                 isDark
-                    ? "bg-gradient-to-t from-[#070204] via-transparent to-[#070204]/90"
-                    : "bg-gradient-to-t from-white/80 via-transparent to-white/60"
+                    ? "bg-linear-to-t from-[#070204] via-transparent to-[#070204]/90"
+                    : "bg-linear-to-t from-white/80 via-transparent to-white/60"
             }`} />
             <div className={`absolute inset-0 ${
                 isDark
-                    ? "bg-gradient-to-r from-[#070204]/70 via-transparent to-[#070204]/70"
-                    : "bg-gradient-to-r from-white/50 via-transparent to-white/50"
+                    ? "bg-linear-to-r from-[#070204]/70 via-transparent to-[#070204]/70"
+                    : "bg-linear-to-r from-white/50 via-transparent to-white/50"
             }`} />
 
             {/* Top gradient */}
             <div className={`absolute top-0 left-0 right-0 h-[150px] sm:h-[240px] ${
                 isDark
-                    ? "bg-gradient-to-b from-[#070204] via-[#070204]/60 to-transparent"
-                    : "bg-gradient-to-b from-white via-white/60 to-transparent"
+                    ? "bg-linear-to-b from-[#070204] via-[#070204]/60 to-transparent"
+                    : "bg-linear-to-b from-white via-white/60 to-transparent"
             }`} />
 
             {/* Bottom gradient */}
             <div className={`absolute bottom-0 left-0 right-0 h-[220px] sm:h-[360px] ${
                 isDark
-                    ? "bg-gradient-to-t from-[#070204] via-[#070204]/60 to-transparent"
-                    : "bg-gradient-to-t from-white via-white/60 to-transparent"
+                    ? "bg-linear-to-t from-[#070204] via-[#070204]/60 to-transparent"
+                    : "bg-linear-to-t from-white via-white/60 to-transparent"
             }`} />
 
             {/* ── SKELETON CONTENT ── */}
@@ -84,7 +84,7 @@ export default function HeroBannerSkeleton() {
 
                 {/* Loading dots */}
                 <div className="flex items-center gap-2 mt-2 sm:mt-3">
-                    <div className={`w-4 sm:w-6 h-px bg-gradient-to-r from-transparent ${
+                    <div className={`w-4 sm:w-6 h-px bg-linear-to-r from-transparent ${
                         isDark ? "to-[#ff1e56]/20" : "to-rose-300/40"
                     }`} />
                     <div className="flex gap-1.5 sm:gap-2">
@@ -93,8 +93,8 @@ export default function HeroBannerSkeleton() {
                                 key={i}
                                 className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full da-animate-bounce ${
                                     isDark
-                                        ? "bg-gradient-to-br from-[#ff1e56]/60 to-[#ff1e56]/20 shadow-[0_0_4px_rgba(255,30,86,0.15)]"
-                                        : "bg-gradient-to-br from-rose-400/70 to-rose-300/30 shadow-[0_0_4px_rgba(244,63,94,0.2)]"
+                                        ? "bg-linear-to-br from-[#ff1e56]/60 to-[#ff1e56]/20 shadow-[0_0_4px_rgba(255,30,86,0.15)]"
+                                        : "bg-linear-to-br from-rose-400/70 to-rose-300/30 shadow-[0_0_4px_rgba(244,63,94,0.2)]"
                                 }`}
                                 style={{
                                     animationDelay: `${i * 0.15}s`,
@@ -103,7 +103,7 @@ export default function HeroBannerSkeleton() {
                             />
                         ))}
                     </div>
-                    <div className={`w-4 sm:w-6 h-px bg-gradient-to-l from-transparent ${
+                    <div className={`w-4 sm:w-6 h-px bg-linear-to-l from-transparent ${
                         isDark ? "to-[#ff1e56]/20" : "to-rose-300/40"
                     }`} />
                 </div>
@@ -111,14 +111,14 @@ export default function HeroBannerSkeleton() {
 
             {/* Top line decoration */}
             <div className="absolute top-0 left-0 right-0">
-                <div className={`h-[1.5px] sm:h-[2px] bg-gradient-to-r from-transparent ${
+                <div className={`h-[1.5px] sm:h-[2px] bg-linear-to-r from-transparent ${
                     isDark ? "via-[#ff1e56]/20" : "via-rose-400/30"
                 } to-transparent`} />
             </div>
 
             {/* Scanlines — dark only */}
             {isDark && (
-                <div className="hidden sm:block absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.3)_50%)] bg-[length:100%_4px]" />
+                <div className="hidden sm:block absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.3)_50%)] bg-size-[100%_4px]" />
             )}
         </div>
     );

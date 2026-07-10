@@ -1,5 +1,4 @@
-// HeroBanner.jsx
-import { useTheme } from '../../context/ThemeContext'; // sesuaikan path
+import { useTheme } from '../../context/ThemeContext'; 
 
 export default function HeroBanner({ bannerImage, title = "Anime" }) {
     const { theme } = useTheme();
@@ -27,14 +26,10 @@ export default function HeroBanner({ bannerImage, title = "Anime" }) {
 
             {/* Layer 1: Main image / fallback */}
             {hasBanner ? (
-                <div className="absolute inset-0 scale-105 group-hover:scale-110 transition-transform duration-[1800ms] ease-out">
+                <div className="absolute inset-0 scale-105 group-hover:scale-110 transition-transform duration-1800 ease-out">
                     <img
                         src={bannerImage}
                         alt={title}
-                        /* 
-                          ✅ PERBAIKAN UTAMA: Meningkatkan opasitas dari 30% ke 75%-85% pada tema terang, 
-                          serta menambahkan saturasi & kontras halus agar warna gambar pop-out dan hidup.
-                        */
                         className={`w-full h-full object-cover object-center transition-all duration-1000 ${isDark
                                 ? "opacity-55 sm:opacity-50 group-hover:opacity-60 contrast-[1.05]"
                                 : "opacity-80 sm:opacity-75 group-hover:opacity-85 contrast-[1.08] saturate-[1.12]"
@@ -45,8 +40,8 @@ export default function HeroBanner({ bannerImage, title = "Anime" }) {
             ) : (
                 <div
                     className={`absolute inset-0 ${isDark
-                            ? "bg-gradient-to-br from-[#1a0a0f] via-[#0d0407] to-black"
-                            : "bg-gradient-to-br from-rose-50 via-white to-slate-100"
+                            ? "bg-linear-to-br from-[#1a0a0f] via-[#0d0407] to-black"
+                            : "bg-linear-to-br from-rose-50 via-white to-slate-100"
                         }`}
                 >
                     <div
@@ -63,7 +58,7 @@ export default function HeroBanner({ bannerImage, title = "Anime" }) {
             {/* Layer 2: Ken Burns */}
             <div className="absolute inset-0 animate-ken-burns pointer-events-none" />
 
-            {/* Layer 3: Vignette (✅ PERBAIKAN: Melunakkan kerapatan shadow putih di tema terang agar gambar jernih) */}
+            {/* Layer 3: Vignette  */}
             <div
                 className="absolute inset-0 z-10 pointer-events-none"
                 style={{
@@ -72,38 +67,35 @@ export default function HeroBanner({ bannerImage, title = "Anime" }) {
                         : "inset 0 0 80px 20px rgba(255,255,255,0.45), inset 0 0 160px 40px rgba(255,255,255,0.2)",
                 }}
             />
-
-            {/* Layer 4: Directional gradients (✅ PERBAIKAN: Mengurangi kepekatan topeng gradien putih agar tidak menutup gambar) */}
-            {/* Top */}
             <div
-                className={`absolute top-0 left-0 right-0 h-[120px] sm:h-[160px] md:h-[200px] z-10 bg-gradient-to-b ${isDark
+                className={`absolute top-0 left-0 right-0 h-[120px] sm:h-[160px] md:h-[200px] z-10 bg-linear-to-b ${isDark
                         ? "from-[#070204] via-[#070204]/80 to-transparent"
                         : "from-white via-white/40 to-transparent"
                     }`}
             />
             {/* Bottom */}
             <div
-                className={`absolute bottom-0 left-0 right-0 h-[180px] sm:h-[240px] md:h-[300px] z-10 bg-gradient-to-t ${isDark
+                className={`absolute bottom-0 left-0 right-0 h-[180px] sm:h-[240px] md:h-[300px] z-10 bg-linear-to-t ${isDark
                         ? "from-[#070204] via-[#070204]/75 to-transparent"
                         : "from-white via-white/50 to-transparent"
                     }`}
             />
             {/* Left */}
             <div
-                className={`absolute inset-y-0 left-0 w-[55%] sm:w-[45%] md:w-[40%] z-10 bg-gradient-to-r ${isDark
+                className={`absolute inset-y-0 left-0 w-[55%] sm:w-[45%] md:w-[40%] z-10 bg-linear-to-r ${isDark
                         ? "from-[#070204]/95 via-[#070204]/55 to-transparent"
                         : "from-white/70 via-white/20 to-transparent"
                     }`}
             />
             {/* Right */}
             <div
-                className={`absolute inset-y-0 right-0 w-[30%] sm:w-[28%] md:w-[25%] z-10 bg-gradient-to-l ${isDark ? "from-[#070204]/60 to-transparent" : "from-white/20 to-transparent"
+                className={`absolute inset-y-0 right-0 w-[30%] sm:w-[28%] md:w-[25%] z-10 bg-linear-to-l ${isDark ? "from-[#070204]/60 to-transparent" : "from-white/20 to-transparent"
                     }`}
             />
 
             {/* Layer 5: Scanlines — dark only */}
             {isDark && (
-                <div className="absolute inset-0 z-10 opacity-[0.04] pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.3)_50%)] bg-[length:100%_3px]" />
+                <div className="absolute inset-0 z-10 opacity-[0.04] pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.3)_50%)] bg-size-[100%_3px]" />
             )}
 
             {/* Layer 6: Noise texture */}
@@ -118,13 +110,13 @@ export default function HeroBanner({ bannerImage, title = "Anime" }) {
             {/* Layer 7: Top accent line */}
             <div className="absolute top-0 left-0 right-0 z-20">
                 <div
-                    className={`h-[2px] bg-gradient-to-r from-transparent ${isDark
+                    className={`h-[2px] bg-linear-to-r from-transparent ${isDark
                             ? "via-[#ff1e56] to-transparent shadow-[0_0_20px_rgba(255,30,86,0.8)]"
                             : "via-rose-400/60 to-transparent shadow-[0_0_20px_rgba(244,63,94,0.3)]"
                         }`}
                 />
                 <div
-                    className={`h-[1px] mt-[1px] blur-sm bg-gradient-to-r ${isDark
+                    className={`h-px mt-px blur-sm bg-linear-to-r ${isDark
                             ? "from-[#ff1e56]/50 via-[#ff1e56]/20 to-transparent"
                             : "from-rose-400/30 via-rose-300/10 to-transparent"
                         }`}
@@ -134,7 +126,7 @@ export default function HeroBanner({ bannerImage, title = "Anime" }) {
             {/* Layer 8: Bottom accent line */}
             <div className="absolute bottom-0 left-0 right-0 z-20">
                 <div
-                    className={`h-px bg-gradient-to-r from-transparent ${isDark ? "via-[#2a1117]" : "via-slate-300/50"
+                    className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-[#2a1117]" : "via-slate-300/50"
                         } to-transparent`}
                 />
             </div>
@@ -159,7 +151,7 @@ export default function HeroBanner({ bannerImage, title = "Anime" }) {
 
             {/* Layer 11: Light sweep on hover */}
             <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.02] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1500ms] ease-in-out" />
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/[0.02] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-in-out" />
             </div>
 
             {/* Layer 12: Bottom ambient glow */}

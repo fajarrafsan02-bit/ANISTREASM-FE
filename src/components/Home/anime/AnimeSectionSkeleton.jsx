@@ -84,14 +84,14 @@ export default function AnimeSectionSkeleton({ title = "LAGI TAYANG" }) {
             {/* Anime Cards Grid Skeleton */}
             <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5">
                 {Array.from({ length: 10 }).map((_, i) => (
-                    <AnimeCardSkeleton key={i} index={i} isDark={isDark} isOngoing={isOngoing} accentColor={accentColor} />
+                    <AnimeCardSkeleton key={i} index={i} isDark={isDark} accentColor={accentColor} />
                 ))}
             </div>
         </section>
     );
 }
 
-function AnimeCardSkeleton({ index, isDark, isOngoing, accentColor }) {
+function AnimeCardSkeleton({ index, isDark, accentColor }) {
     const delay = `${index * 80}ms`;
     const color = accentColor === "red" ? "239,68,68" : "16,185,129";
 
@@ -110,7 +110,7 @@ function AnimeCardSkeleton({ index, isDark, isOngoing, accentColor }) {
 
             {/* Border glow */}
             <div
-                className={`absolute -inset-[1px] rounded-xl bg-gradient-to-br opacity-40 ${isDark
+                className={`absolute inset-px rounded-xl bg-linear-to-br opacity-40 ${isDark
                     ? "from-red-500/20 via-transparent to-red-900/10"
                     : "from-slate-300/30 via-transparent to-slate-200/10"
                 }`}
@@ -145,7 +145,7 @@ function AnimeCardSkeleton({ index, isDark, isOngoing, accentColor }) {
                     />
 
                     {/* Scanlines - Desktop only */}
-                    <div className="hidden sm:block absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.3)_50%)] bg-[length:100%_4px]" />
+                    <div className="hidden sm:block absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.3)_50%)] bg-size-[100%_4px]" />
 
                     {/* Rating badge skeleton */}
                     <div className={`absolute top-2 right-2 z-10 w-10 h-5 rounded-md overflow-hidden ${isDark ? "bg-[#1a1a2e]/80" : "bg-white/80"

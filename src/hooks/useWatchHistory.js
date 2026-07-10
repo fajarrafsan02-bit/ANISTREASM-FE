@@ -1,4 +1,3 @@
-// src/hooks/useWatchHistory.js
 import { useCallback, useState, useEffect } from "react";
 import { api } from "../api/axios";
 import { useAuth } from "../context/AuthContext";

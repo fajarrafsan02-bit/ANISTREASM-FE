@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useTheme } from "../../context/ThemeContext"; // sesuaikan path
+import { useTheme } from "../../context/ThemeContext"; 
 
-// Helper untuk mewarnai & memberi ikon khas pada masing-masing File Host otomatis
 const getHostDetails = (title = "", isDark = false) => {
     const lower = title.toLowerCase();
 
@@ -267,7 +266,7 @@ export default function DownloadSection({ formats }) {
                                                             } ${hostStyle.color}`}
                                                     >
                                                         <div className="flex items-center gap-1.5 truncate min-w-0">
-                                                            <i className={`${hostStyle.icon} text-[10px] sm:text-xs flex-shrink-0`} />
+                                                            <i className={`${hostStyle.icon} text-[10px] sm:text-xs shrink-0`} />
                                                             <span className="text-[10px] sm:text-[11px] font-bold truncate">
                                                                 {host.title.trim()}
                                                             </span>

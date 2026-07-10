@@ -17,7 +17,7 @@ export default function InfoGridSkeleton() {
                     }`}
                 >
                     <div
-                        className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${
+                        className={`absolute top-0 left-0 right-0 h-px bg-linear-to-rrom-transparent ${
                             isDark
                                 ? "via-red-900/30"
                                 : "via-slate-300/50"
@@ -83,7 +83,7 @@ export default function InfoGridSkeleton() {
                     }`}
                 >
                     <div
-                        className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${
+                        className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent ${
                             isDark
                                 ? "via-red-900/30"
                                 : "via-slate-300/50"
@@ -143,7 +143,7 @@ export default function InfoGridSkeleton() {
 
                     {/* Divider */}
                     <div
-                        className={`h-px my-3 sm:my-4 bg-gradient-to-r ${
+                        className={`h-px my-3 sm:my-4 bg-linear-to-r ${
                             isDark
                                 ? "from-[#2a1117]/40"
                                 : "from-slate-300"

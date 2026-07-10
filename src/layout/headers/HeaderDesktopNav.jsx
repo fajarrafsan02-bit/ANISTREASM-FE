@@ -91,7 +91,7 @@ export default function HeaderDesktopNav({
         >
             {/* Animated sliding pill */}
             <motion.div
-                className="absolute rounded-full bg-gradient-to-r from-red-500 to-rose-500 pointer-events-none"
+                className="absolute rounded-full bg-linear-to-r from-red-500 to-rose-500 pointer-events-none"
                 initial={false}
                 animate={{
                     left: pillStyle.left,

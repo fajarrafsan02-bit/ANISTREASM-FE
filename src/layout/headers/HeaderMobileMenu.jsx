@@ -1,4 +1,3 @@
-// HeaderMobileMenu.jsx
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { LogIn, LogOut, User } from "lucide-react";
@@ -117,8 +116,8 @@ export default function HeaderMobileMenu({
                                             : "hover:bg-slate-100 active:bg-slate-200"
                                         }`}
                                 >
-                                    <div className="relative flex-shrink-0">
-                                        <div className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-[#ff1e56] to-[#c41e3a] opacity-50 blur-sm animate-pulse" />
+                                    <div className="relative shrink-0">
+                                        <div className="absolute -inset-0.5 rounded-full bg-linear-to-tr from-[#ff1e56] to-[#c41e3a] opacity-50 blur-sm animate-pulse" />
                                         <div
                                             className={`relative w-8 h-8 sm:w-11 sm:h-11 rounded-full overflow-hidden border flex items-center justify-center ${isDark
                                                 ? "bg-[#13080c] border-[#2a1117]"

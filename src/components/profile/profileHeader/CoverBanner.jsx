@@ -1,6 +1,4 @@
-// CoverBanner.jsx
-import React from 'react';
-import { useTheme } from '../../../context/ThemeContext'; // ✅ Mengimpor deteksi tema (sesuaikan path jika berbeda)
+import { useTheme } from '../../../context/ThemeContext';
 
 export default function CoverBanner({
     displayCover,
@@ -30,14 +28,14 @@ export default function CoverBanner({
                         alt="Cover Banner"
                         className={`w-full h-full object-cover transition-all duration-700 ease-out group-hover/banner:scale-[1.02] ${isUploadingCover ? 'blur-sm brightness-50' : ''}`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 opacity-0 group-hover/banner:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-black/10 opacity-0 group-hover/banner:opacity-100 transition-opacity duration-500" />
                 </>
             ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden">
                     <div className={`absolute inset-0 transition-all duration-700 ${
                         isDark 
-                            ? "bg-gradient-to-br from-[#0a0a10] via-[#12121a] to-[#050508] animate-gradientShift" 
-                            : "bg-gradient-to-br from-[#f0f1f6] via-[#e4e6ee] to-[#d8dae6] animate-gradientShift"
+                            ? "bg-linear-to-br from-[#0a0a10] via-[#12121a] to-[#050508] animate-gradientShift" 
+                            : "bg-linear-to-br from-[#f0f1f6] via-[#e4e6ee] to-[#d8dae6] animate-gradientShift"
                     }`}
                     style={{backgroundSize: '200% 200%'}} />
                     
@@ -102,13 +100,13 @@ export default function CoverBanner({
                 </div>
             )}
 
-            <div className={`absolute inset-0 bg-gradient-to-t transition-all duration-500 ${
+            <div className={`absolute inset-0 bg-linear-to-t transition-all duration-500 ${
                 isDark 
                     ? "from-[#07070a] via-[#07070a]/60 to-transparent" 
                     : "from-white via-white/50 to-transparent"
             }`} />
             
-            <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-500/30 to-transparent opacity-50`} />
+            <div className={`absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-red-500/30 to-transparent opacity-50`} />
 
             {/* Overlay Loading Upload */}
             {isUploadingCover && (

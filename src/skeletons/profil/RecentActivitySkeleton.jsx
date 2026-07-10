@@ -1,5 +1,3 @@
-// RecentActivitySkeleton.jsx
-import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function RecentActivitySkeleton() {
@@ -11,7 +9,7 @@ export default function RecentActivitySkeleton() {
             {Array.from({ length: 3 }).map((_, idx) => (
                 <div key={idx} className="flex items-center gap-3.5 -mx-3 px-3 py-2.5 rounded-2xl animate-pulse">
                     {/* Skeleton Kotak Gambar */}
-                    <div className={`w-11 h-11 rounded-xl flex-shrink-0 ${
+                    <div className={`w-11 h-11 rounded-xl shrink-0 ${
                         isDark ? "bg-white/10" : "bg-neutral-200"
                     }`} />
                     

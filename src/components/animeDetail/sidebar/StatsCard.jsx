@@ -55,7 +55,7 @@ export default function StatsCard({ anime }) {
             >
                 {/* Top gradient line */}
                 <div
-                    className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${isDark ? "via-red-900/50" : "via-slate-300"
+                    className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent ${isDark ? "via-red-900/50" : "via-slate-300"
                         } to-transparent`}
                 />
 
@@ -101,18 +101,18 @@ export default function StatsCard({ anime }) {
                             />
 
                             {/* Icon container (✅ PERBAIKAN 4: Ukuran boks dikurangi dari w-8 ke w-7.5 di ponsel) */}
-                            <div className="relative flex-shrink-0">
+                            <div className="relative shrink-0">
                                 <div
                                     className={`w-7.5 h-7.5 sm:w-9 sm:h-9 rounded-lg border flex items-center justify-center shadow-md transition-transform duration-300 group-hover/stat:scale-105 ${isDark
-                                            ? "bg-gradient-to-br from-[#1a0a0f] to-[#0f0508] border-red-950/50"
-                                            : "bg-gradient-to-br from-white to-slate-50 border-slate-200"
+                                            ? "bg-linear-to-br from-[#1a0a0f] to-[#0f0508] border-red-950/50"
+                                            : "bg-linear-to-br from-white to-slate-50 border-slate-200"
                                         }`}
                                     style={{ boxShadow: `0 0 12px ${stat.glow}` }}
                                 >
-                                    <i className={`fa-solid ${stat.icon} text-[10px] sm:text-sm bg-gradient-to-br ${stat.accent} bg-clip-text text-transparent`} />
+                                    <i className={`fa-solid ${stat.icon} text-[10px] sm:text-sm bg-linear-to-br ${stat.accent} bg-clip-text text-transparent`} />
                                 </div>
                                 <div
-                                    className={`absolute -inset-0.5 rounded-lg bg-gradient-to-br ${stat.accent} opacity-20 blur-sm`}
+                                    className={`absolute -inset-0.5 rounded-lg bg-linear-to-br ${stat.accent} opacity-20 blur-sm`}
                                 />
                             </div>
 

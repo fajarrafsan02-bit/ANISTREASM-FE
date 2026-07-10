@@ -72,7 +72,7 @@ export default function ServerSelector({
     return (
         <div
             className={`border-t px-3 sm:px-5 py-3 sm:py-4 transition-colors duration-300 ${isDark
-                    ? "bg-gradient-to-b from-[#0d0508] to-[#0a0305] border-[#2a1117]/40"
+                    ? "bg-linear-to-b from-[#0d0508] to-[#0a0305] border-[#2a1117]/40"
                     : "bg-white border-slate-200"
                 }`}
         >
@@ -80,7 +80,7 @@ export default function ServerSelector({
             <div className="flex items-center gap-2 mb-3">
                 <div
                     className={`w-6 h-6 rounded-lg border flex items-center justify-center shrink-0 ${isDark
-                            ? "bg-gradient-to-br from-[#1a0a0f] to-[#0a0204] border-red-950/30"
+                            ? "bg-linear-to-br from-[#1a0a0f] to-[#0a0204] border-red-950/30"
                             : "bg-white border-slate-200 shadow-sm"
                         }`}
                 >
@@ -123,7 +123,7 @@ export default function ServerSelector({
                                     : "cursor-pointer"
                                 } ${isActive
                                     ? isDark
-                                        ? "bg-gradient-to-r from-[#ff1e56]/15 to-[#ff1e56]/5 border-[#ff1e56]/40 text-[#ff1e56] shadow-lg shadow-red-900/10"
+                                        ? "bg-linear-to-r from-[#ff1e56]/15 to-[#ff1e56]/5 border-[#ff1e56]/40 text-[#ff1e56] shadow-lg shadow-red-900/10"
                                         : "bg-rose-50 border-rose-300 text-[#ff1e56] shadow-sm"
                                     : isDark
                                         ? "bg-[#13080c]/80 border-[#2a1117]/50 text-slate-500 hover:border-[#ff1e56]/25 hover:text-slate-300 hover:bg-[#1a0a0f]"

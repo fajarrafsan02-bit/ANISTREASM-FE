@@ -1,4 +1,3 @@
-// EpisodeCard.jsx
 import { useTheme } from "../../../context/ThemeContext";
 import { getEpisodeBadge, cleanEpisodeTitle } from "../../../utils/relatedUtils";
 
@@ -36,7 +35,7 @@ export default function EpisodeCard({
             )}
 
             <div
-                className={`relative w-full aspect-[16/10] rounded-xl overflow-hidden border transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isActive
+                className={`relative w-full aspect-16/10 rounded-xl overflow-hidden border transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isActive
                     ? isDark
                         ? "border-[#ff1e56]/80 shadow-[inset_0_0_20px_rgba(255,30,86,0.2),0_0_14px_rgba(255,30,86,0.25)]"
                         : "border-rose-400/80 shadow-[inset_0_0_20px_rgba(244,63,94,0.15),0_0_14px_rgba(244,63,94,0.2)]"
@@ -46,7 +45,7 @@ export default function EpisodeCard({
                     }`}
             >
                 {/* DIAGONAL HOLOGRAPHIC SHEEN ── Efek kilau menyapu saat di-hover */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.12] to-transparent -translate-x-full group-hover/ep:translate-x-full transition-transform duration-[1.2s] ease-out z-[15] pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/[0.12] to-transparent -translate-x-full group-hover/ep:translate-x-full transition-transform duration-[1.2s] ease-out z-15 pointer-events-none" />
 
                 {/* NOW RADAR BADGE ── Denyut pendar ganda hijau/merah premium */}
                 {isActive && (
@@ -103,8 +102,8 @@ export default function EpisodeCard({
                 ) : (
                     <div
                         className={`w-full h-full flex items-center justify-center ${isDark
-                            ? "bg-gradient-to-br from-[#1a0a0f] to-[#0d0407]"
-                            : "bg-gradient-to-br from-slate-100 to-slate-200"
+                            ? "bg-linear-to-br from-[#1a0a0f] to-[#0d0407]"
+                            : "bg-linear-to-br from-slate-100 to-slate-200"
                             }`}
                     >
                         <i
@@ -116,7 +115,7 @@ export default function EpisodeCard({
 
                 {/* Gradient overlay */}
                 <div
-                    className={`absolute inset-0 bg-gradient-to-t transition-opacity duration-500 ${isDark
+                    className={`absolute inset-0 bg-linear-to-t transition-opacity duration-500 ${isDark
                         ? "from-neutral-950 via-neutral-900/30 to-transparent"
                         : "from-white/95 via-white/20 to-transparent"
                         } ${isActive ? "opacity-100" : "opacity-75 group-hover/ep:opacity-100"
@@ -149,7 +148,7 @@ export default function EpisodeCard({
                                 }`}
                         />
                         <div
-                            className={`relative w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-[#ff1e56] to-[#c4143a] flex items-center justify-center transition-all duration-300 shadow-xl ${isActive
+                            className={`relative w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-linear-to-br from-[#ff1e56] to-[#c4143a] flex items-center justify-center transition-all duration-300 shadow-xl ${isActive
                                 ? "shadow-[#ff1e56]/40"
                                 : "shadow-black/60 group-hover/play:shadow-[#ff1e56]/50"
                                 }`}
@@ -161,7 +160,7 @@ export default function EpisodeCard({
 
                 {/* Watermark EP Number */}
                 <div
-                    className={`absolute bottom-1 left-2 text-3xl sm:text-4xl font-extrabold z-[5] select-none pointer-events-none leading-none tracking-tighter ${isDark ? "text-white/[0.025]" : "text-slate-900/[0.045]"
+                    className={`absolute bottom-1 left-2 text-3xl sm:text-4xl font-extrabold z-5 select-none pointer-events-none leading-none tracking-tighter ${isDark ? "text-white/[0.025]" : "text-slate-900/[0.045]"
                         }`}
                 >
                     {epBadge.replace("EP ", "")}

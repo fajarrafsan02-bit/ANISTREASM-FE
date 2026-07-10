@@ -76,13 +76,13 @@ export default function StatusCard({ anime }) {
 
             <div
                 className={`relative rounded-xl p-2.5 sm:p-4 shadow-lg sm:shadow-xl overflow-hidden border transition-colors duration-300 ${isDark
-                        ? "bg-[#0d0407]/90 border-[#2a1117]/80 backdrop-blur-xl"
-                        : "bg-white border-slate-200 shadow-sm"
+                    ? "bg-[#0d0407]/90 border-[#2a1117]/80 backdrop-blur-xl"
+                    : "bg-white border-slate-200 shadow-sm"
                     }`}
             >
                 {/* Top gradient line */}
                 <div
-                    className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${isDark ? "via-red-900/40" : "via-slate-300"
+                    className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent ${isDark ? "via-red-900/40" : "via-slate-300"
                         } to-transparent`}
                 />
 
@@ -100,14 +100,10 @@ export default function StatusCard({ anime }) {
                     />
                 ))}
 
-                {/* 
-                  ✅ PERBAIKAN UTAMA: Mengubah dari flex-col menjadi flex-row secara penuh (sejak ukuran mobile terkecil) 
-                  untuk menyelaraskan status indikator di kiri dan status badge di kanan secara simetris dan seimbang.
-                */}
                 <div className="flex flex-row items-center justify-between gap-3 w-full">
                     {/* Left: Status indicator (Teks & Titik Detak Tayang) */}
                     <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                        <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5 flex-shrink-0">
+                        <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5 shrink-0">
                             <span
                                 className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
                                 style={{ backgroundColor: cls.glow.replace('0.15', '0.5') }}
@@ -126,7 +122,7 @@ export default function StatusCard({ anime }) {
 
                     {/* Right: Status badge (Lencana "TAYANG" / "SELESAI") */}
                     <span
-                        className={`inline-flex items-center gap-1.5 border text-[9px] sm:text-[11px] font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-md transition-all duration-300 w-fit flex-shrink-0 ${badgeClass
+                        className={`inline-flex items-center gap-1.5 border text-[9px] sm:text-[11px] font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-md transition-all duration-300 w-fit shrink-0 ${badgeClass
                             }`}
                     >
                         <span className="whitespace-nowrap">{label}</span>

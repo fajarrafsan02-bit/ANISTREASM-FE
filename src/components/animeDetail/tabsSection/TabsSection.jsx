@@ -1,4 +1,3 @@
-// TabsSection.jsx
 import { useTheme } from "../../../context/ThemeContext";
 import TabButton from "./TabButton";
 import CharactersTab from "./CharactersTab";
@@ -18,10 +17,6 @@ export default function TabsSection({ anime, activeTab, onTabChange, commentsApi
 
     return (
         <div className="space-y-4 pt-4">
-            {/*
-              ✅ PERBAIKAN: Mengubah container menjadi Grid 2-kolom di HP ('grid grid-cols-2')
-              dan otomatis kembali menjadi flex sejajar saat layar di atas ukuran 'sm' (desktop).
-            */}
             <div
                 className={`rounded-2xl grid grid-cols-2 sm:flex sm:items-center sm:justify-start gap-1 sm:gap-1.5 p-1 sm:p-1.5 w-full sm:w-fit border select-none ${isDark
                         ? "bg-[#070204] border-[#2a1117]"

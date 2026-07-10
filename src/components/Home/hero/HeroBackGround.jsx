@@ -1,4 +1,3 @@
-// HeroBackground.jsx
 import { memo } from "react";
 import { getImageFilter } from "../hero/HeroStyle";
 
@@ -51,7 +50,7 @@ export default memo(function HeroBackground({
 
             {/* Color mesh overlay - animated */}
             <div
-                className="absolute inset-0 pointer-events-none z-[2]"
+                className="absolute inset-0 pointer-events-none z-2"
                 style={{
                     background: `radial-gradient(ellipse at 30% 40%, ${color}33 0%, transparent 60%),
                                 radial-gradient(ellipse at 70% 60%, ${color}1a 0%, transparent 50%)`,
@@ -63,7 +62,7 @@ export default memo(function HeroBackground({
 
             {/* Cinematic color grade overlay */}
             <div
-                className="absolute inset-0 pointer-events-none z-[2] mix-blend-overlay"
+                className="absolute inset-0 pointer-events-none z-2 mix-blend-overlay"
                 style={{
                     background: `linear-gradient(135deg, ${color}22 0%, transparent 40%, ${color}11 100%)`,
                     opacity: isActive ? 0.8 : 0,
@@ -73,15 +72,15 @@ export default memo(function HeroBackground({
 
             {/* Dramatic vignette - bottom with enhanced gradient */}
             <div
-                className={`absolute inset-0 pointer-events-none z-[3] ${isDark
-                    ? "bg-gradient-to-t from-[#070204] via-[#070204]/80 sm:via-[#070204]/40 via-30% to-transparent"
-                    : "bg-gradient-to-t from-white via-white/80 sm:via-white/40 via-30% to-transparent"
+                className={`absolute inset-0 pointer-events-none z-3 ${isDark
+                    ? "bg-linear-to-t from-[#070204] via-[#070204]/80 sm:via-[#070204]/40 via-30% to-transparent"
+                    : "bg-linear-to-t from-white via-white/80 sm:via-white/40 via-30% to-transparent"
                 }`}
             />
 
             {/* Left vignette for depth */}
             <div
-                className="absolute inset-0 pointer-events-none z-[3]"
+                className="absolute inset-0 pointer-events-none z-3"
                 style={{
                     background: isDark
                         ? 'linear-gradient(to right, rgba(5,5,8,0.6) 0%, transparent 40%)'

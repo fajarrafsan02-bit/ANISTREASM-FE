@@ -33,7 +33,7 @@ export default function CatalogControlDeck({
         <div className="w-full flex flex-col gap-3 mb-8 relative">
             {/* Top decorative line */}
             <div
-                className={`absolute -top-3 left-0 right-0 h-px bg-gradient-to-r from-transparent ${isDark ? 'via-[#2a1117]' : 'via-slate-200'
+                className={`absolute -top-3 left-0 right-0 h-px bg-linear-to-r from-transparent ${isDark ? 'via-[#2a1117]' : 'via-slate-200'
                     } to-transparent`}
             />
 
@@ -45,7 +45,7 @@ export default function CatalogControlDeck({
                         className={`relative flex items-center justify-center gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-xl text-[10px] sm:text-[11px] font-black uppercase tracking-wider border transition-all duration-300 select-none overflow-hidden group w-full sm:w-auto
                             ${isOpen
                                 ? isDark
-                                    ? 'bg-gradient-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_4px_20px_rgba(255,30,86,0.3)]'
+                                    ? 'bg-linear-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_4px_20px_rgba(255,30,86,0.3)]'
                                     : 'bg-slate-900 border-transparent text-white shadow-lg'
                                 : isDark
                                     ? 'border-[#2a1117]/80 bg-[#13080c]/60 text-slate-400 hover:border-[#ff1e56]/25 hover:text-slate-200'
@@ -53,7 +53,7 @@ export default function CatalogControlDeck({
                             }`}
                     >
                         {isOpen && (
-                            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+                            <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                         )}
                         <i className={`fa-solid ${isOpen ? "fa-circle-chevron-up" : "fa-sliders"} text-[10px]`} />
                         <span className="relative z-10">Filter Lanjutan</span>
@@ -127,7 +127,7 @@ export default function CatalogControlDeck({
                 <div
                     className={`relative rounded-2xl border-2 p-3 sm:p-6 flex flex-col gap-4 sm:gap-6 overflow-hidden
                         ${isDark
-                            ? 'border-[#2a1117]/60 bg-gradient-to-br from-[#13080c]/90 to-[#0a0305]/95 backdrop-blur-xl'
+                            ? 'border-[#2a1117]/60 bg-linear-to-br from-[#13080c]/90 to-[#0a0305]/95 backdrop-blur-xl'
                             : 'border-slate-200/80 bg-white shadow-xl shadow-slate-200/30'
                         }`}
                 >
@@ -160,7 +160,7 @@ export default function CatalogControlDeck({
                                             className={`relative px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-black rounded-lg border transition-all duration-300 overflow-hidden
                                                 ${isActive
                                                     ? isDark
-                                                        ? 'bg-gradient-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_2px_10px_rgba(255,30,86,0.25)]'
+                                                        ? 'bg-linear-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_2px_10px_rgba(255,30,86,0.25)]'
                                                         : 'bg-slate-900 border-transparent text-white'
                                                     : isDark
                                                         ? 'border-[#2a1117] bg-[#10070a]/80 text-slate-400 hover:border-[#ff1e56]/20 hover:text-slate-200'
@@ -168,7 +168,7 @@ export default function CatalogControlDeck({
                                                 }`}
                                         >
                                             {isActive && (
-                                                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+                                                <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                                             )}
                                             <span className="relative z-10">{status}</span>
                                         </button>
@@ -197,7 +197,7 @@ export default function CatalogControlDeck({
                                         className={`relative px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-[10px] sm:text-xs font-bold rounded-lg border transition-all duration-300 flex items-center gap-2 overflow-hidden group/genre
                                             ${isSelected
                                                 ? isDark
-                                                    ? 'bg-gradient-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_2px_10px_rgba(255,30,86,0.2)]'
+                                                    ? 'bg-linear-to-r from-[#ff1e56] to-rose-600 border-transparent text-white shadow-[0_2px_10px_rgba(255,30,86,0.2)]'
                                                     : 'bg-slate-900 border-transparent text-white'
                                                 : isDark
                                                     ? 'border-[#2a1117] bg-[#10070a]/80 text-slate-400 hover:border-[#ff1e56]/20 hover:text-slate-200'
@@ -205,7 +205,7 @@ export default function CatalogControlDeck({
                                             }`}
                                     >
                                         {isSelected && (
-                                            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+                                            <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                                         )}
                                         <span className="relative z-10">{genre.title}</span>
                                         {isSelected && <i className="fa-solid fa-check text-[9px] relative z-10" />}
@@ -221,11 +221,11 @@ export default function CatalogControlDeck({
                             onClick={handleApplyAndClose}
                             className={`relative w-full sm:w-auto px-4 sm:px-8 py-2.5 sm:py-3 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] border transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden group
                                 ${isDark
-                                    ? 'bg-gradient-to-r from-[#ff1e56] to-rose-600 border-transparent text-white hover:shadow-[0_4px_25px_rgba(255,30,86,0.35)]'
+                                    ? 'bg-linear-to-r from-[#ff1e56] to-rose-600 border-transparent text-white hover:shadow-[0_4px_25px_rgba(255,30,86,0.35)]'
                                     : 'bg-slate-900 border-transparent text-white hover:bg-slate-800'
                                 }`}
                         >
-                            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                            <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                             <i className="fa-solid fa-check text-[10px] relative z-10" />
                             <span className="relative z-10">Terapkan Filter</span>
                         </button>

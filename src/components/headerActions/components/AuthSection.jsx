@@ -15,13 +15,8 @@ export default function AuthSection({
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const handleLogout = async () => {
-        try {
-            await onLogout();
-            setDropdownOpen(false);
-        } catch (error) {
-            // Error handling tetap di parent via toast
-            throw error;
-        }
+        await onLogout();
+        setDropdownOpen(false);
     };
 
     return (
@@ -121,7 +116,7 @@ export default function AuthSection({
             ) : (
                 <button
                     onClick={() => openModal()}
-                    className="hidden sm:flex items-center gap-2 group bg-gradient-to-r from-red-500 to-red-600 text-white border border-red-400/50 px-4 md:px-6 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-red-500/20 hover:shadow-red-500/40 hover:from-red-600 hover:to-red-700 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 relative z-10"
+                    className="hidden sm:flex items-center gap-2 group bg-linear-to-r from-red-500 to-red-600 text-white border border-red-400/50 px-4 md:px-6 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-red-500/20 hover:shadow-red-500/40 hover:from-red-600 hover:to-red-700 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 relative z-10"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" /><polyline points="10 17 15 12 10 7" /><line x1="15" x2="3" y1="12" y2="12" /></svg>
                     <span>Masuk</span>

@@ -1,4 +1,3 @@
-// AnimeGrid.jsx
 import { useTheme } from "../../../context/ThemeContext";
 import { useState, useEffect } from "react";
 import AnimeCards from "./AnimeCard/AnimeCards";

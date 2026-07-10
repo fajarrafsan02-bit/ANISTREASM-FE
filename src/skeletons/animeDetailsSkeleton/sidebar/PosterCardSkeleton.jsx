@@ -8,28 +8,28 @@ export default function PosterCardSkeleton() {
     return (
         <div className="relative group">
             {/* Ambient glow - Desktop only */}
-            <div className="hidden sm:block absolute -inset-3 rounded-[2rem] blur-2xl opacity-20 bg-gradient-to-br from-[#ff1e56]/20 via-red-900/5 to-transparent" />
+            <div className="hidden sm:block absolute -inset-3 rounded-[2rem] blur-2xl opacity-20 bg-linear-to-br from-[#ff1e56]/20 via-red-900/5 to-transparent" />
 
             {/* Border glow */}
-            <div className={`absolute -inset-[1px] sm:-inset-[2px] rounded-[1.2rem] sm:rounded-[1.3rem] bg-gradient-to-br opacity-50 sm:opacity-60 ${
+            <div className={`absolute inset-px sm:inset-[2px] rounded-[1.2rem] sm:rounded-[1.3rem] bg-linear-to-br opacity-50 sm:opacity-60 ${
                 isDark
                     ? "from-[#ff1e56]/30 via-red-600/10 to-[#8b0a1e]/20"
                     : "from-slate-400/20 via-slate-300/10 to-slate-200/20"
             }`} />
 
             {/* Inner border */}
-            <div className={`absolute -inset-[0.5px] sm:-inset-[1px] rounded-[1.15rem] sm:rounded-[1.25rem] bg-gradient-to-br ${
+            <div className={`absolute inset-[0.5px] sm:inset-[1px] rounded-[1.15rem] sm:rounded-[1.25rem] bg-linear-to-br ${
                 isDark
                     ? "from-[#ff1e56]/15 via-transparent to-[#ff1e56]/5"
                     : "from-slate-300/15 via-transparent to-slate-200/5"
             }`} />
 
             {/* Main card */}
-            <div className={`relative rounded-[1.1rem] sm:rounded-[1.2rem] overflow-hidden aspect-[3/4] transform-gpu ${
+            <div className={`relative rounded-[1.1rem] sm:rounded-[1.2rem] overflow-hidden aspect-3/4 transform-gpu ${
                 isDark ? "bg-[#0a0305]" : "bg-gray-100"
             }`}>
                 {/* Poster placeholder */}
-                <div className={`absolute inset-0 animate-pulse relative overflow-hidden transform-gpu ${
+                <div className={`absolute inset-0 animate-pulse overflow-hidden transform-gpu ${
                     isDark ? "bg-[#2a1117]" : "bg-slate-200"
                 }`}>
                     <ShimmerSkeleton />
@@ -40,7 +40,7 @@ export default function PosterCardSkeleton() {
                 </div>
 
                 {/* Scanlines - Desktop only */}
-                <div className="hidden sm:block absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.3)_50%)] bg-[length:100%_4px]" />
+                <div className="hidden sm:block absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.3)_50%)] bg-size-[100%_4px]" />
 
                 {/* Rank badge */}
                 <div className="absolute top-2 left-2 sm:top-3 sm:left-3 z-10">
@@ -64,12 +64,12 @@ export default function PosterCardSkeleton() {
                 </div>
 
                 {/* Bottom title */}
-                <div className={`absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-10 space-y-1.5 sm:space-y-2 bg-gradient-to-t ${
+                <div className={`absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-10 space-y-1.5 sm:space-y-2 bg-linear-to-t ${
                     isDark
                         ? "from-black via-black/80 to-transparent"
                         : "from-white via-white/80 to-transparent"
                 }`}>
-                    <div className={`h-px bg-gradient-to-r mb-1.5 ${
+                    <div className={`h-px bg-linear-to-r mb-1.5 ${
                         isDark
                             ? "from-[#ff1e56]/20 via-[#ff1e56]/5 to-transparent"
                             : "from-slate-300/40 via-slate-200/20 to-transparent"
@@ -110,7 +110,7 @@ export default function PosterCardSkeleton() {
             </div>
 
             {/* Bottom reflection - Desktop only */}
-            <div className={`hidden sm:block absolute -bottom-4 left-4 right-4 h-8 bg-gradient-to-t blur-xl opacity-20 ${
+            <div className={`hidden sm:block absolute -bottom-4 left-4 right-4 h-8 bg-linear-to-t blur-xl opacity-20 ${
                 isDark ? "from-[#ff1e56]/10" : "from-slate-400/10"
             }`} />
         </div>

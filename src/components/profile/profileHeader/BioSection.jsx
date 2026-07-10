@@ -1,6 +1,4 @@
-// BioSection.jsx
-import React from 'react';
-import { useTheme } from '../../../context/ThemeContext'; // ✅ Mengimpor deteksi tema (sesuaikan path jika berbeda)
+import { useTheme } from '../../../context/ThemeContext';
 
 export default function BioSection({
     bio,
@@ -21,7 +19,7 @@ export default function BioSection({
         <div className="w-full">
             {isEditingBio ? (
                 <div className="relative group animate-in fade-in zoom-in duration-300">
-                    <div className={`absolute -inset-0.5 bg-gradient-to-r rounded-2xl blur-md opacity-75 group-focus-within:opacity-100 transition duration-500 ${isDark ? "from-red-600/30 to-orange-600/30" : "from-red-600/10 to-orange-600/10"
+                    <div className={`absolute -inset-0.5 bg-linear-to-r rounded-2xl blur-md opacity-75 group-focus-within:opacity-100 transition duration-500 ${isDark ? "from-red-600/30 to-orange-600/30" : "from-red-600/10 to-orange-600/10"
                         }`}></div>
 
                     <div className={`relative flex flex-col gap-3 backdrop-blur-xl rounded-2xl p-4 transition-all duration-300 ${isDark
@@ -68,7 +66,7 @@ export default function BioSection({
                                 <button
                                     onClick={onBioSave}
                                     disabled={isSavingBio}
-                                    className={`px-5 py-1.5 rounded-xl text-[10px] font-black bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white transition-all duration-300 flex items-center gap-2 cursor-pointer shadow-lg hover:shadow-[0_0_25px_rgba(220,38,38,0.5)] ${isDark ? "shadow-red-600/20" : "shadow-red-500/20"
+                                    className={`px-5 py-1.5 rounded-xl text-[10px] font-black bg-linear-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white transition-all duration-300 flex items-center gap-2 cursor-pointer shadow-lg hover:shadow-[0_0_25px_rgba(220,38,38,0.5)] ${isDark ? "shadow-red-600/20" : "shadow-red-500/20"
                                         }`}
                                 >
                                     {isSavingBio ? (
@@ -87,7 +85,7 @@ export default function BioSection({
                                 ? "bg-white/[0.02] hover:bg-white/[0.05] border-transparent hover:border-white/5 shadow-none"
                                 : "bg-neutral-50/80 hover:bg-neutral-100/80 border-neutral-100 hover:border-neutral-200/80 shadow-sm hover:shadow-md"
                         }`}>
-                            <span className={`material-symbols-outlined text-2xl opacity-60 font-light -scale-x-100 flex-shrink-0 mt-0.5 transition-all duration-300 ${
+                            <span className={`material-symbols-outlined text-2xl opacity-60 font-light -scale-x-100 shrink-0 mt-0.5 transition-all duration-300 ${
                                 isDark ? "text-red-500/40 group-hover/bio:text-red-400/60" : "text-red-500/20 group-hover/bio:text-red-400/40"
                             }`}>
                                 format_quote
@@ -103,7 +101,7 @@ export default function BioSection({
 
                             <button
                                 onClick={() => setIsEditingBio(true)}
-                                className={`opacity-0 group-hover/bio:opacity-100 p-2 rounded-xl transition-all duration-300 translate-x-2 group-hover/bio:translate-x-0 flex-shrink-0 cursor-pointer ${
+                                className={`opacity-0 group-hover/bio:opacity-100 p-2 rounded-xl transition-all duration-300 translate-x-2 group-hover/bio:translate-x-0 shrink-0 cursor-pointer ${
                                     isDark
                                         ? "bg-white/[0.04] text-neutral-400 hover:text-red-400 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]"
                                         : "bg-neutral-200/50 text-neutral-500 hover:text-red-600 hover:bg-neutral-200"
@@ -118,8 +116,8 @@ export default function BioSection({
                             onClick={() => setIsEditingBio(true)}
                             className={`flex items-center gap-4 px-5 py-3 w-full border rounded-2xl cursor-pointer transition-all duration-400 group/placeholder ${
                                 isDark
-                                    ? "bg-gradient-to-r from-red-500/[0.02] to-transparent hover:from-red-500/[0.06] border-red-500/10 hover:border-red-500/30 shadow-none"
-                                    : "bg-gradient-to-r from-red-50/50 to-transparent hover:from-red-50 border-red-100 hover:border-red-200 shadow-sm hover:shadow-md"
+                                    ? "bg-linear-to-r from-red-500/[0.02] to-transparent hover:from-red-500/[0.06] border-red-500/10 hover:border-red-500/30 shadow-none"
+                                    : "bg-linear-to-r from-red-50/50 to-transparent hover:from-red-50 border-red-100 hover:border-red-200 shadow-sm hover:shadow-md"
                             }`}
                         >
                             <div className={`relative flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 ${

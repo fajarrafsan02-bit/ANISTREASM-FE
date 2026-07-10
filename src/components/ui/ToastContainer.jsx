@@ -5,7 +5,7 @@ export default function ToastContainer({ toasts, onRemove }) {
 
     return (
         <div className="
-            fixed z-[99999] flex flex-col gap-3 pointer-events-none
+            fixed z-99999 flex flex-col gap-3 pointer-events-none
             
             /* Mobile (hingga 320px): Full width dengan margin kiri-kanan kecil, stack dari bawah */
             bottom-4 left-3 right-3

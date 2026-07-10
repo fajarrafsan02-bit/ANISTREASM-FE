@@ -262,8 +262,8 @@ export default function VideoPlayer({
             >
                 {/* Ambient glow */}
                 <div className={`absolute -inset-20 blur-3xl pointer-events-none animate-pulse ${isDark
-                    ? "bg-gradient-to-b from-red-900/5 via-transparent to-red-900/5"
-                    : "bg-gradient-to-b from-rose-200/20 via-transparent to-rose-100/20"
+                    ? "bg-linear-to-b from-red-900/5 via-transparent to-red-900/5"
+                    : "bg-linear-to-b from-rose-200/20 via-transparent to-rose-100/20"
                     }`} />
 
                 {/* Corner frames */}

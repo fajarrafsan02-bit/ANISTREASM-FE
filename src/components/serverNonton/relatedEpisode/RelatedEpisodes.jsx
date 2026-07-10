@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useTheme } from "../../../context/ThemeContext";
 import RelatedHeader from "./RelatedHeader";
 import EpisodeCard from "./EpisodeCard";
 import EmptyState from "./EmptyState";
@@ -9,8 +8,6 @@ import useEpisodeScroll from "./hooks/useEpisodeScroll";
 import useActiveEpisode from "./hooks/useActiveEpisode";
 
 export default function RelatedEpisodes({ episodes = [], currentEpisodeId }) {
-    const { theme } = useTheme();
-    const isDark = theme === "dark";
 
     const location = useLocation();
     const pathSegment = location.pathname.split("/episode/")[1] || "";

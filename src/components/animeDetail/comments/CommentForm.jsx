@@ -21,16 +21,6 @@ export function CommentAvatar({ src, name, size = "md" }) {
     );
 }
 
-/**
- * Form input komentar (dipakai untuk komentar utama, balasan, dan edit).
- * Props:
- *  - onSubmit(content): Promise|void
- *  - avatarSrc, displayName : untuk avatar di kiri (opsional; disembunyikan bila compact)
- *  - placeholder, submitLabel
- *  - posting : disable saat proses kirim
- *  - compact : mode ringkas (balasan/edit) — tanpa avatar, tombol lebih kecil
- *  - autoFocus, initialValue, onCancel (untuk mode edit/balasan)
- */
 export default function CommentForm({
     onSubmit,
     avatarSrc,
@@ -125,11 +115,23 @@ export default function CommentForm({
                         type="button"
                         onClick={handleSubmit}
                         disabled={!canSubmit}
-                        className={`px-4 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed ${
+                        // Tambahkan 'flex items-center justify-center' di bawah ini
+                        className={`px-4 py-1.5 flex items-center justify-center rounded-lg text-[11px] sm:text-xs font-bold transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed ${
                             compact ? "" : ""
-                        } bg-gradient-to-b from-red-500 to-red-700 hover:from-red-400 hover:to-red-600 text-white shadow-md shadow-red-600/20 hover:shadow-red-600/30 active:scale-95`}
+                        } bg-linear-to-b from-red-500 to-red-700 hover:from-red-400 hover:to-red-600 text-white shadow-md shadow-red-600/20 hover:shadow-red-600/30 active:scale-95`}
                     >
-                        {posting ? "..." : submitLabel}
+                        {posting ? (
+                            <>
+                                {/* Animasi Spinner SVG */}
+                                <svg className="animate-spin -ml-1 mr-1.5 h-3.5 w-3.5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                Mengirim...
+                            </>
+                        ) : (
+                            submitLabel
+                        )}
                     </button>
                 </div>
             </div>

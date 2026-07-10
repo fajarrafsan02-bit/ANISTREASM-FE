@@ -32,7 +32,7 @@ export default function AnimeCardImage({ anime, isHovered, isOngoing, isDark, is
 
         // Kalau COMPLETE, masuk ke detail page
         if (anime.status === "COMPLETE") {
-            navigate(`/anime/${animeId}`);
+            navigate(`/anime/detail/${animeId}`);
             return;
         }
 
@@ -56,7 +56,7 @@ export default function AnimeCardImage({ anime, isHovered, isOngoing, isDark, is
             />
 
             {/* Gradient Overlay — lighter to keep image clearer */}
-            <div className={`absolute inset-0 transition-opacity duration-400 ${isHovered ? "opacity-100" : "opacity-50"} bg-gradient-to-t from-black/80 via-black/20 to-black/10`} />
+            <div className={`absolute inset-0 transition-opacity duration-400 ${isHovered ? "opacity-100" : "opacity-50"} bg-linear-to-t from-black/80 via-black/20 to-black/10`} />
 
             {/* Shimmer */}
             <ShimmerOverlay isHovered={isHovered} dark={dark} isMobile={mobile} />
@@ -138,7 +138,7 @@ function PlayButton({ isHovered, dark, isMobile, onPlay }) {
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 400, damping: 25 }}
                         onClick={onPlay}
-                        className={`relative rounded-full bg-gradient-to-br from-red-500 via-red-600 to-red-700 flex items-center justify-center shadow-2xl cursor-pointer ${isMobile ? "w-9 h-9" : "w-12 h-12"} ${dark ? "shadow-red-500/50 ring-2 ring-white/20" : "shadow-red-500/40 ring-2 ring-white/40"}`}
+                        className={`relative rounded-full bg-linear-to-br from-red-500 via-red-600 to-red-700 flex items-center justify-center shadow-2xl cursor-pointer ${isMobile ? "w-9 h-9" : "w-12 h-12"} ${dark ? "shadow-red-500/50 ring-2 ring-white/20" : "shadow-red-500/40 ring-2 ring-white/40"}`}
                     >
                         <span className={`ml-0.5 drop-shadow-lg text-white ${isMobile ? "text-xs" : "text-base"}`}>▶</span>
                     </motion.div>

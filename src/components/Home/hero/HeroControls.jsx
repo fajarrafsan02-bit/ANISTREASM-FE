@@ -20,7 +20,7 @@ export default function HeroControls({
     return (
         <>
             {/* Slide Counter */}
-            <div className="absolute bottom-3 xs:bottom-4 sm:bottom-10 left-3 xs:left-4 sm:left-6 md:left-16 lg:left-24 z-[5] flex items-center gap-1.5 xs:gap-2 sm:gap-3">
+            <div className="absolute bottom-3 xs:bottom-4 sm:bottom-10 left-3 xs:left-4 sm:left-6 md:left-16 lg:left-24 z-5 flex items-center gap-1.5 xs:gap-2 sm:gap-3">
                 <div className="h-4 xs:h-5 sm:h-6 overflow-hidden flex items-center">
                     <AnimatePresence mode="wait">
                         <motion.span
@@ -29,7 +29,7 @@ export default function HeroControls({
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: -10, opacity: 0 }}
                             transition={{ duration: 0.25, ease: "easeInOut" }}
-                            className="text-xs xs:text-sm sm:text-lg font-black font-mono tracking-tight bg-gradient-to-b from-red-500 to-red-600 bg-clip-text text-transparent"
+                            className="text-xs xs:text-sm sm:text-lg font-black font-mono tracking-tight bg-linear-to-b from-red-500 to-red-600 bg-clip-text text-transparent"
                         >
                             {String(currentSlide + 1).padStart(2, "0")}
                         </motion.span>
@@ -43,7 +43,7 @@ export default function HeroControls({
 
             {/* Desktop Thumbnail Strip */}
             <div
-                className={`${glassClasses} absolute bottom-6 sm:bottom-12 left-1/2 -translate-x-1/2 z-[5] hidden md:flex items-center gap-2.5 px-4 py-2.5 rounded-xl`}
+                className={`${glassClasses} absolute bottom-6 sm:bottom-12 left-1/2 -translate-x-1/2 z-5 hidden md:flex items-center gap-2.5 px-4 py-2.5 rounded-xl`}
             >
                 {heroAnime.map((anime, i) => {
                     const isActive = i === currentSlide;
@@ -71,7 +71,7 @@ export default function HeroControls({
                             )}
 
                             {/* Hover overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                             {/* Active progress bar */}
                             {isActive && (
@@ -100,7 +100,7 @@ export default function HeroControls({
             </div>
 
             {/* Mobile Dots */}
-            <div className="absolute bottom-3 xs:bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 z-[5] flex md:hidden gap-1 xs:gap-1.5 sm:gap-2 items-center max-w-[55%] xs:max-w-[60%] flex-wrap justify-center">
+            <div className="absolute bottom-3 xs:bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 z-5 flex md:hidden gap-1 xs:gap-1.5 sm:gap-2 items-center max-w-[55%] xs:max-w-[60%] flex-wrap justify-center">
                 {heroAnime.map((_, i) => (
                     <motion.button
                         key={i}
@@ -123,7 +123,7 @@ export default function HeroControls({
             </div>
 
             {/* Mobile Nav Arrows — sembunyi di 320px (pakai dots + swipe), muncul mulai xs (>=400px) */}
-            <div className="hidden xs:flex md:hidden absolute top-1/2 -translate-y-1/2 left-2 right-2 z-[5] justify-between pointer-events-none">
+            <div className="hidden xs:flex md:hidden absolute top-1/2 -translate-y-1/2 left-2 right-2 z-5 justify-between pointer-events-none">
                 <div className="pointer-events-auto">
                     <HeroNavButton direction="prev" onClick={handlePrev} isDark={isDark} isMobile />
                 </div>
@@ -133,7 +133,7 @@ export default function HeroControls({
             </div>
 
             {/* Bottom Progress Bar — enhanced */}
-            <div className={`absolute bottom-0 left-0 right-0 z-[5] transition-colors duration-500 ${isDark ? "bg-white/5" : "bg-gray-200/50"}`}>
+            <div className={`absolute bottom-0 left-0 right-0 z-5 transition-colors duration-500 ${isDark ? "bg-white/5" : "bg-gray-200/50"}`}>
                 <div className="relative h-[3px] w-full overflow-hidden">
                     <div
                         key={currentSlide}

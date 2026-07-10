@@ -48,14 +48,14 @@ export default function MetadataCard({ anime }) {
             {/* Ambient aura */}
             <div
                 className={`absolute -top-4 -right-4 w-20 h-20 sm:w-24 sm:h-24 blur-[30px] sm:blur-[40px] rounded-full pointer-events-none transition-colors duration-1000 ${isDark
-                        ? "bg-[#ff1e56]/[0.02] group-hover/card:bg-[#ff1e56]/5"
+                        ? "bg-[#ff1e56]/2 group-hover/card:bg-[#ff1e56]/5"
                         : "bg-rose-300/[0.04] group-hover/card:bg-rose-300/8"
                     }`}
             />
 
             {/* Header */}
             <div className="flex items-center gap-2 mb-3.5 select-none">
-                <div className="flex gap-[2px] mt-[1px] shrink-0">
+                <div className="flex gap-[2px] mt-px shrink-0">
                     <span className="w-0.5 h-3 bg-[#ff1e56] rounded-[1px] shadow-[0_0_8px_#ff1e56]" />
                     <span
                         className={`w-0.5 h-2 rounded-[1px] mt-[4px] ${isDark ? "bg-[#ff1e56]/30" : "bg-rose-400/30"
@@ -93,7 +93,7 @@ export default function MetadataCard({ anime }) {
                         {/* ── UJUNG KIRI: Ikon + Label Kategori ── */}
                         <div className="flex items-center gap-2 min-w-0">
                             {/* Icon (Boks ikon mungil 10px di ponsel) */}
-                            <div className="flex-shrink-0 text-[#ff1e56] text-[10px] sm:text-xs">
+                            <div className="shrink-0 text-[#ff1e56] text-[10px] sm:text-xs">
                                 <i className={item.icon} />
                             </div>
 
@@ -109,7 +109,7 @@ export default function MetadataCard({ anime }) {
                         </div>
 
                         {/* ── UJUNG KANAN: Titik Pemisah + Nilai Spesifikasi ── */}
-                        <div className="flex items-center gap-1.5 flex-shrink-0">
+                        <div className="flex items-center gap-1.5 shrink-0">
                             {/* Pembatas Titik Tengah Aksen (Mid-dot) */}
                             <span className={`text-[8px] sm:text-[9px] font-black select-none ${isDark ? "text-[#ff1e56]/50" : "text-rose-400/60"
                                 }`}>
@@ -132,11 +132,11 @@ export default function MetadataCard({ anime }) {
 
             {/* Corner frames */}
             <div
-                className={`absolute top-0 left-0 w-4 h-4 border-t-[1px] border-l-[1px] rounded-tl-[1rem] pointer-events-none ${isDark ? "border-white/[0.04]" : "border-slate-300/25"
+                className={`absolute top-0 left-0 w-4 h-4 border-t border-l rounded-tl-[1rem] pointer-events-none ${isDark ? "border-white/[0.04]" : "border-slate-300/25"
                     }`}
             />
             <div
-                className={`absolute bottom-0 right-0 w-4 h-4 border-b-[1px] border-r-[1px] rounded-br-[1rem] pointer-events-none opacity-40 ${isDark ? "border-[#ff1e56]/20" : "border-rose-400/30"
+                className={`absolute bottom-0 right-0 w-4 h-4 border-b border-r rounded-br-[1rem] pointer-events-none opacity-40 ${isDark ? "border-[#ff1e56]/20" : "border-rose-400/30"
                     }`}
             />
         </div>

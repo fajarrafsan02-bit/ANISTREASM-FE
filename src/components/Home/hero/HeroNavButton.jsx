@@ -13,7 +13,7 @@ export default function HeroNavButton({ direction, onClick, isDark, isMobile = f
         <button
             onClick={onClick}
             className={`
-                ${isMobile ? "" : "group absolute top-1/2 -translate-y-1/2 z-[5]"}
+                ${isMobile ? "" : "group absolute top-1/2 -translate-y-1/2 z-5"}
                 ${sizeClasses}
                 ${colorClasses}
                 rounded-full backdrop-blur-md border flex items-center justify-center

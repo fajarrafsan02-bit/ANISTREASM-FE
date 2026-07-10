@@ -72,15 +72,15 @@ export default memo(function HeroInfoCard({ current, isDark, animationKey }) {
         variants={cardVariants}
         initial="hidden"
         animate="visible"
-        className={`absolute top-28 right-6 md:right-16 lg:right-24 z-[5] hidden md:block rounded-2xl p-5 w-56 border shadow-2xl backdrop-blur-xl transition-colors duration-500 group hover:scale-[1.03] hover:-translate-y-1 ${
+        className={`absolute top-28 right-6 md:right-16 lg:right-24 z-5 hidden md:block rounded-2xl p-5 w-56 border shadow-2xl backdrop-blur-xl transition-colors duration-500 group hover:scale-[1.03] hover:-translate-y-1 ${
           isDark
             ? "bg-black/40 border-white/[0.06] shadow-black/30"
             : "bg-white/60 border-gray-200/40 shadow-black/5"
         }`}
       >
         {/* Animated accent gradient border */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-red-500/0 via-red-500 to-red-500/0 rounded-full overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-linear-to-r from-red-500/0 via-red-500 to-red-500/0 rounded-full overflow-hidden">
+          <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
         </div>
 
         {/* Subtle glow on hover */}
@@ -131,7 +131,7 @@ export default memo(function HeroInfoCard({ current, isDark, animationKey }) {
             </div>
             <div className="w-full h-1.5 rounded-full overflow-hidden bg-white/10">
               <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-300"
+                className="h-full rounded-full bg-linear-to-r from-yellow-500 via-yellow-400 to-yellow-300"
                 initial={{ width: "0%" }}
                 animate={{
                   width: `${Math.min(100, ratingNum * 10)}%`,
@@ -169,7 +169,7 @@ export default memo(function HeroInfoCard({ current, isDark, animationKey }) {
         initial={{ opacity: 0, y: -10, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className={`absolute top-2.5 right-2.5 xs:top-3 xs:right-3 sm:top-4 sm:right-4 z-[5] md:hidden rounded-lg sm:rounded-xl px-2.5 py-1.5 xs:px-3 xs:py-2 sm:px-4 sm:py-2.5 border shadow-xl backdrop-blur-xl transition-all duration-700 ${
+        className={`absolute top-2.5 right-2.5 xs:top-3 xs:right-3 sm:top-4 sm:right-4 z-5 md:hidden rounded-lg sm:rounded-xl px-2.5 py-1.5 xs:px-3 xs:py-2 sm:px-4 sm:py-2.5 border shadow-xl backdrop-blur-xl transition-all duration-700 ${
           isDark
             ? "bg-black/40 border-white/[0.06] shadow-black/20"
             : "bg-white/60 border-gray-200/40 shadow-black/5"

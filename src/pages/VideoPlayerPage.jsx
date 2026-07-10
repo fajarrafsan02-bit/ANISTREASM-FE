@@ -30,15 +30,12 @@ export default function VideoPlayerPage() {
     const [serverLoading, setServerLoading] = useState(false);
     const [serverError, setServerError] = useState(null);
 
-    // ✅ Mencegah double-hit API pada render session yang sama
     const historySavedFor = useRef(null);
 
-    // ✅ Scroll ke atas saat episode berganti
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'instant' });
     }, [normalizedEpisodeId]);
 
-    // ✅ Reset semua state saat episode berganti
     useEffect(() => {
         setSelectedServer(null);
         setActiveStreamUrl(null);
@@ -46,7 +43,6 @@ export default function VideoPlayerPage() {
         setServerLoading(false);
     }, [normalizedEpisodeId]);
 
-    // ✅ Simpan history tontonan dengan pengambilan nomor episode yang 100% Akurat
     useEffect(() => {
         if (!episode) return;
 
@@ -78,7 +74,6 @@ export default function VideoPlayerPage() {
 
     }, [episode, saveHistory, normalizedEpisodeId]);
 
-    // ✅ Set defaultStreamingUrl saat episode masuk
     useEffect(() => {
         if (!episode) return;
         setActiveStreamUrl(episode.defaultStreamingUrl ?? null);
@@ -86,7 +81,6 @@ export default function VideoPlayerPage() {
         setServerError(null);
     }, [episode?.episodeId]);
 
-    // ✅ useCallback — referensi stabil untuk perpindahan server
     const handleChangeServer = useCallback(async (serverId, resolution, serverName) => {
         if (serverLoading) return;
 
@@ -166,7 +160,7 @@ export default function VideoPlayerPage() {
                 />
 
                 {episode && (
-                    <div className={`h-px bg-gradient-to-r my-5 sm:my-6 ${isDark ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent' : 'from-slate-200 via-slate-300/60 to-transparent'
+                    <div className={`h-px bg-linear-to-r my-5 sm:my-6 ${isDark ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent' : 'from-slate-200 via-slate-300/60 to-transparent'
                         }`} />
                 )}
 
@@ -180,7 +174,7 @@ export default function VideoPlayerPage() {
 
                 {effectiveEpisode?.movies?.length > 0 && (
                     <>
-                        <div className={`h-px my-5 sm:my-6 bg-gradient-to-r ${isDark ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent' : 'from-slate-200 via-slate-300/60 to-transparent'
+                        <div className={`h-px my-5 sm:my-6 bg-linear-to-r ${isDark ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent' : 'from-slate-200 via-slate-300/60 to-transparent'
                             }`} />
                         <RelatedMovies movies={effectiveEpisode.movies} />
                     </>
@@ -188,7 +182,7 @@ export default function VideoPlayerPage() {
 
                 {effectiveEpisode?.downloadFormats?.length > 0 && (
                     <>
-                        <div className={`h-px my-5 sm:my-6 bg-gradient-to-r ${isDark ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent' : 'from-slate-200 via-slate-300/60 to-transparent'
+                        <div className={`h-px my-5 sm:my-6 bg-linear-to-r ${isDark ? 'from-[#2a1117]/60 via-[#2a1117]/30 to-transparent' : 'from-slate-200 via-slate-300/60 to-transparent'
                             }`} />
                         <DownloadSection formats={effectiveEpisode.downloadFormats} />
                     </>

@@ -30,8 +30,8 @@ export default function MovieCard({ anime, variant = 'default', onClick }) {
             // 1. Hapus event onClick dari sini dan ubah 'cursor-pointer' menjadi 'cursor-default'
             className={`group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 cursor-default
                 ${isDark
-                    ? 'bg-gradient-to-b from-[#15080d] via-[#0d0407] to-[#0a0305] border border-[#2a1117]/50 hover:border-[#ff1e56]/40'
-                    : 'bg-gradient-to-b from-white via-white to-slate-50/80 border border-slate-200/80 hover:border-rose-300/70'
+                    ? 'bg-linear-to-b from-[#15080d] via-[#0d0407] to-[#0a0305] border border-[#2a1117]/50 hover:border-[#ff1e56]/40'
+                    : 'bg-linear-to-b from-white via-white to-slate-50/80 border border-slate-200/80 hover:border-rose-300/70'
                 }
                 hover:shadow-[0_12px_40px_-15px_rgba(0,0,0,0.3)] sm:hover:shadow-[0_25px_80px_-20px_rgba(0,0,0,0.3)] 
                 hover:-translate-y-1 sm:hover:-translate-y-2.5
@@ -44,7 +44,7 @@ export default function MovieCard({ anime, variant = 'default', onClick }) {
             />
 
             {/* ── COVER SECTION ── */}
-            <div className={`relative w-full overflow-hidden ${isRecent ? 'aspect-[3/4]' : 'aspect-[2/3]'}`}>
+            <div className={`relative w-full overflow-hidden ${isRecent ? 'aspect-3/4' : 'aspect-2/3'}`}>
                 {/* Image with Ken Burns */}
                 <div
                     className="absolute inset-0 bg-cover bg-center transition-all duration-[1.2s] ease-out group-hover:scale-110 group-hover:brightness-110"
@@ -52,8 +52,8 @@ export default function MovieCard({ anime, variant = 'default', onClick }) {
                 />
 
                 {/* Multi-layer cinematic gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/10" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#ff1e56]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-black/10" />
+                <div className="absolute inset-0 bg-linear-to-br from-[#ff1e56]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                 {/* Vignette */}
                 <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.4)]" />
@@ -63,8 +63,8 @@ export default function MovieCard({ anime, variant = 'default', onClick }) {
                     <div
                         className={`absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-in-out skew-x-12
                         ${isDark
-                                ? 'bg-gradient-to-r from-transparent via-white/8 to-transparent'
-                                : 'bg-gradient-to-r from-transparent via-white/30 to-transparent'
+                                ? 'bg-linear-to-r from-transparent via-white/8 to-transparent'
+                                : 'bg-linear-to-r from-transparent via-white/30 to-transparent'
                             }`}
                     />
                 </div>
@@ -174,7 +174,7 @@ export default function MovieCard({ anime, variant = 'default', onClick }) {
                             </div>
                             <div className="w-full h-1 bg-black/30 rounded-full overflow-hidden">
                                 <div
-                                    className="h-full bg-gradient-to-r from-[#ff1e56] to-rose-400 rounded-full transition-all duration-1000"
+                                    className="h-full bg-linear-to-r from-[#ff1e56] to-rose-400 rounded-full transition-all duration-1000"
                                     style={{ width: `${(anime.currentEpisode / anime.totalEpisodes) * 100}%` }}
                                 />
                             </div>
@@ -188,7 +188,7 @@ export default function MovieCard({ anime, variant = 'default', onClick }) {
                 {/* Decorative top line */}
                 <div
                     className={`absolute top-0 left-4 right-4 sm:left-5 sm:right-5 h-px
-                    ${isDark ? 'bg-gradient-to-r from-transparent via-[#ff1e56]/20 to-transparent' : 'bg-gradient-to-r from-transparent via-slate-200 to-transparent'}`}
+                    ${isDark ? 'bg-linear-to-r from-transparent via-[#ff1e56]/20 to-transparent' : 'bg-linear-to-r from-transparent via-slate-200 to-transparent'}`}
                 />
 
                 {/* Genres */}
@@ -248,11 +248,11 @@ export default function MovieCard({ anime, variant = 'default', onClick }) {
                     onClick={onClick}
                     className={`relative w-full py-2 sm:py-3 px-2 sm:px-4 rounded-xl font-black text-[8px] min-[360px]:text-[9px] sm:text-[10px] uppercase tracking-[0.1em] min-[360px]:tracking-[0.15em] sm:tracking-[0.2em] transition-all duration-500 flex items-center justify-center gap-2 overflow-hidden group/btn mt-1 cursor-pointer
                     ${isDark
-                            ? 'bg-gradient-to-r from-[#1a0a10] to-[#13080c] border border-[#2a1117] text-[#ff1e56] hover:border-[#ff1e56]/50'
-                            : 'bg-gradient-to-r from-slate-50 to-white border border-slate-200 text-slate-700 hover:border-rose-300'
+                            ? 'bg-linear-to-r from-[#1a0a10] to-[#13080c] border border-[#2a1117] text-[#ff1e56] hover:border-[#ff1e56]/50'
+                            : 'bg-linear-to-r from-slate-50 to-white border border-slate-200 text-slate-700 hover:border-rose-300'
                         }`}
                 >
-                    <span className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <span className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/10 to-transparent" />
 
                     <span className="relative z-10 transition-colors duration-300 group-hover/btn:text-white">
                         {isRecent ? 'Tonton Sekarang' : 'Lihat Detail'}
@@ -266,7 +266,7 @@ export default function MovieCard({ anime, variant = 'default', onClick }) {
 
                     <span
                         className={`absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500
-                        ${isDark ? 'bg-gradient-to-r from-[#ff1e56] to-rose-600' : 'bg-gradient-to-r from-slate-800 to-slate-900'}`}
+                        ${isDark ? 'bg-linear-to-r from-[#ff1e56] to-rose-600' : 'bg-linear-to-r from-slate-800 to-slate-900'}`}
                     />
                 </button>
             </div>
@@ -292,11 +292,11 @@ export default function MovieCard({ anime, variant = 'default', onClick }) {
             {/* ── SIDE GLOW LINES ── */}
             <div
                 className={`absolute top-1/4 -left-px w-px h-1/2 transition-all duration-500 opacity-0 group-hover:opacity-100
-                ${isDark ? 'bg-gradient-to-b from-transparent via-[#ff1e56]/50 to-transparent' : 'bg-gradient-to-b from-transparent via-rose-400/30 to-transparent'}`}
+                ${isDark ? 'bg-linear-to-b from-transparent via-[#ff1e56]/50 to-transparent' : 'bg-linear-to-b from-transparent via-rose-400/30 to-transparent'}`}
             />
             <div
                 className={`absolute top-1/4 -right-px w-px h-1/2 transition-all duration-500 opacity-0 group-hover:opacity-100
-                ${isDark ? 'bg-gradient-to-b from-transparent via-[#ff1e56]/50 to-transparent' : 'bg-gradient-to-b from-transparent via-rose-400/30 to-transparent'}`}
+                ${isDark ? 'bg-linear-to-b from-transparent via-[#ff1e56]/50 to-transparent' : 'bg-linear-to-b from-transparent via-rose-400/30 to-transparent'}`}
             />
 
             {/* ── BOTTOM AMBIENT ── */}

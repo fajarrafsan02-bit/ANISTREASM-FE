@@ -14,7 +14,7 @@ export default function RelatedHeader({
                 <div
                     className={`relative w-9 h-9 rounded-xl border flex items-center justify-center shadow-lg overflow-hidden ${
                         isDark
-                            ? "bg-gradient-to-br from-[#2a0a12] via-[#1a050a] to-[#0f0205] border-red-900/30 shadow-red-950/20"
+                            ? "bg-linear-to-br from-[#2a0a12] via-[#1a050a] to-[#0f0205] border-red-900/30 shadow-red-950/20"
                             : "bg-white border-slate-200 shadow-sm"
                     }`}
                 >
@@ -52,7 +52,7 @@ export default function RelatedHeader({
                         }`}
                     >
                         <div
-                            className="h-full bg-gradient-to-r from-[#ff1e56] to-[#ff6b8a] rounded-full transition-all duration-500"
+                            className="h-full bg-linear-to-r from-[#ff1e56] to-[#ff6b8a] rounded-full transition-all duration-500"
                             style={{
                                 width: `${Math.min(
                                     (displayProgressNumber / episodesCount) * 100,

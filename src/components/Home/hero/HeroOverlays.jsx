@@ -86,12 +86,12 @@ export default function HeroOverlays({ isDark, isLoaded, currentSlide = 0 }) {
 
             {/* Light leak — dark mode (enhanced) */}
             {isDark && (
-                <div className="absolute top-0 right-0 w-[45vw] h-[45vh] bg-gradient-to-bl from-red-600/20 via-orange-500/10 to-transparent z-3 pointer-events-none blur-[100px] mix-blend-screen" />
+                <div className="absolute top-0 right-0 w-[45vw] h-[45vh] bg-linear-to-bl from-red-600/20 via-orange-500/10 to-transparent z-3 pointer-events-none blur-[100px] mix-blend-screen" />
             )}
 
             {/* Secondary light leak — bottom right */}
             {isDark && (
-                <div className="absolute bottom-0 right-0 w-[30vw] h-[30vh] bg-gradient-to-tl from-red-500/10 via-purple-500/5 to-transparent z-3 pointer-events-none blur-[80px] mix-blend-screen" />
+                <div className="absolute bottom-0 right-0 w-[30vw] h-[30vh] bg-linear-to-tl from-red-500/10 via-purple-500/5 to-transparent z-3 pointer-events-none blur-[80px] mix-blend-screen" />
             )}
 
             {/* Warm vignette — light mode */}

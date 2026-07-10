@@ -16,7 +16,6 @@ export default function ProfileHeader({ animeWatchedCount }) {
     const navigate = useNavigate();
     const isDark = theme === "dark";
 
-    // ✅ Cloudinary URL selalu https:// — tidak perlu prefix API_BASE_URL lagi
     const getImageUrl = (path, fallback) => {
         if (!path) return fallback;
         if (path.startsWith('http') || path.startsWith('blob:') || path.startsWith('data:')) return path;
@@ -204,7 +203,7 @@ export default function ProfileHeader({ animeWatchedCount }) {
                         />
 
                         <div className="flex-1 flex flex-col md:flex-row items-center md:items-end justify-between gap-4 md:gap-6 w-full pb-1">
-                            <div className="flex flex-col items-center md:items-start gap-3 w-full md:w-auto flex-shrink-0">
+                            <div className="flex flex-col items-center md:items-start gap-3 w-full md:w-auto shrink-0">
                                 <div className="space-y-1.5">
                                     <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
                                         <h1 className={`font-sora text-xl min-[360px]:text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-none transition-colors duration-300 ${
@@ -214,8 +213,8 @@ export default function ProfileHeader({ animeWatchedCount }) {
                                         </h1>
                                         <span className={`relative inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[8.5px] min-[360px]:text-[10px] font-mono font-bold tracking-wider uppercase leading-none transition-all duration-300 ${
                                             isDark
-                                                ? "bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.15)]"
-                                                : "bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 text-red-600 shadow-[0_0_10px_rgba(239,68,68,0.05)]"
+                                                ? "bg-linear-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.15)]"
+                                                : "bg-linear-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 text-red-600 shadow-[0_0_10px_rgba(239,68,68,0.05)]"
                                         }`}>
                                             <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                                             PRO MEMBER
@@ -250,7 +249,7 @@ export default function ProfileHeader({ animeWatchedCount }) {
                                 </div>
                             </div>
 
-                            <div className={`hidden md:block w-px self-stretch bg-gradient-to-b from-transparent via-transparent to-transparent my-1 mx-2 transition-colors duration-500 ${
+                            <div className={`hidden md:block w-px self-stretch bg-linear-to-b from-transparent via-transparent to-transparent my-1 mx-2 transition-colors duration-500 ${
                                 isDark ? "via-white/15" : "via-neutral-300"
                             }`}></div>
 
@@ -271,14 +270,14 @@ export default function ProfileHeader({ animeWatchedCount }) {
                         </div>
                     </div>
 
-                    <div className="mt-2 lg:mt-0 flex-shrink-0 w-fit md:w-auto self-center lg:self-end lg:mb-1">
+                    <div className="mt-2 lg:mt-0 shrink-0 w-fit md:w-auto self-center lg:self-end lg:mb-1">
                         <button onClick={handleLogout}
                             className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 border border-red-500/20 hover:border-red-500 hover:text-white px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-black tracking-widest uppercase transition-all duration-300 cursor-pointer group overflow-hidden relative ${
                                 isDark
-                                    ? "bg-gradient-to-r from-red-500/10 to-transparent hover:from-red-600 hover:to-red-500 text-red-400 shadow-none hover:shadow-[0_0_25px_rgba(239,68,68,0.3)]"
-                                    : "bg-gradient-to-r from-red-50/80 to-transparent hover:from-red-600 hover:to-red-500 text-red-600 shadow-sm hover:shadow-[0_4px_20px_rgba(239,68,68,0.25)]"
+                                    ? "bg-linear-to-r from-red-500/10 to-transparent hover:from-red-600 hover:to-red-500 text-red-400 shadow-none hover:shadow-[0_0_25px_rgba(239,68,68,0.3)]"
+                                    : "bg-linear-to-r from-red-50/80 to-transparent hover:from-red-600 hover:to-red-500 text-red-600 shadow-sm hover:shadow-[0_4px_20px_rgba(239,68,68,0.25)]"
                             }`}>
-                            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                            <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                             <span className="material-symbols-outlined text-[16px] sm:text-[18px] group-hover:scale-110 transition-transform relative">logout</span>
                             <span className="relative">LOGOUT</span>
                         </button>

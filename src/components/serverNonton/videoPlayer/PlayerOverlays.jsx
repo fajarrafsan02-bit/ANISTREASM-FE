@@ -45,15 +45,15 @@ export function IframeErrorState({ activeStreamUrl, reloadIframe }) {
         <div
             className={`w-full h-full flex flex-col items-center justify-center gap-4 px-4 sm:px-6 text-center ${
                 isDark
-                    ? "text-slate-400 bg-gradient-to-b from-[#0a0305] to-[#0d0508]"
-                    : "text-slate-600 bg-gradient-to-b from-white to-slate-50"
+                    ? "text-slate-400 bg-linear-to-b from-[#0a0305] to-[#0d0508]"
+                    : "text-slate-600 bg-linear-to-b from-white to-slate-50"
             }`}
         >
             <div className="relative">
                 <div
                     className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border flex items-center justify-center ${
                         isDark
-                            ? "bg-gradient-to-br from-[#1a0a0f] to-[#0a0204] border-[#2a1117]/50"
+                            ? "bg-linear-to-br from-[#1a0a0f] to-[#0a0204] border-[#2a1117]/50"
                             : "bg-white border-slate-200 shadow-sm"
                     }`}
                 >
@@ -81,7 +81,7 @@ export function IframeErrorState({ activeStreamUrl, reloadIframe }) {
             <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                 <button
                     onClick={reloadIframe}
-                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#ff1e56] to-[#c4143a] hover:from-[#ff336a] hover:to-[#d91a4a] text-white font-bold px-4 py-2 rounded-xl text-sm transition-all duration-300 cursor-pointer shadow-sm w-full sm:w-auto"
+                    className="inline-flex items-center justify-center gap-2 bg-linear-to-r from-[#ff1e56] to-[#c4143a] hover:from-[#ff336a] hover:to-[#d91a4a] text-white font-bold px-4 py-2 rounded-xl text-sm transition-all duration-300 cursor-pointer shadow-sm w-full sm:w-auto"
                 >
                     <i className="fa-solid fa-rotate-right" /> Coba Lagi
                 </button>
@@ -111,15 +111,15 @@ export function BlockedState({ activeStreamUrl }) {
         <div
             className={`w-full h-full flex flex-col items-center justify-center gap-4 sm:gap-5 px-4 sm:px-6 text-center ${
                 isDark
-                    ? "text-slate-400 bg-gradient-to-b from-[#0a0305] to-[#0d0508]"
-                    : "text-slate-600 bg-gradient-to-b from-white to-slate-50"
+                    ? "text-slate-400 bg-linear-to-b from-[#0a0305] to-[#0d0508]"
+                    : "text-slate-600 bg-linear-to-b from-white to-slate-50"
             }`}
         >
             <div className="relative">
                 <div
                     className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border flex items-center justify-center shadow-xl ${
                         isDark
-                            ? "bg-gradient-to-br from-[#1a0a0f] to-[#0a0204] border-[#2a1117]/50"
+                            ? "bg-linear-to-br from-[#1a0a0f] to-[#0a0204] border-[#2a1117]/50"
                             : "bg-white border-slate-200"
                     }`}
                 >
@@ -149,7 +149,7 @@ export function BlockedState({ activeStreamUrl }) {
                 href={activeStreamUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#ff1e56] to-[#c4143a] hover:from-[#ff336a] hover:to-[#d91a4a] text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-all duration-300 cursor-pointer shadow-lg shadow-red-900/30 hover:shadow-red-900/50 group/link w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 bg-linear-to-r from-[#ff1e56] to-[#c4143a] hover:from-[#ff336a] hover:to-[#d91a4a] text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-all duration-300 cursor-pointer shadow-lg shadow-red-900/30 hover:shadow-red-900/50 group/link w-full sm:w-auto"
             >
                 <i className="fa-solid fa-arrow-up-right-from-square text-xs transition-transform" />
                 Buka di Tab Baru
@@ -167,15 +167,15 @@ export function EmptyState() {
         <div
             className={`w-full h-full flex flex-col items-center justify-center gap-4 px-4 ${
                 isDark
-                    ? "text-slate-600 bg-gradient-to-b from-[#0a0305] to-[#0d0508]"
-                    : "text-slate-500 bg-gradient-to-b from-white to-slate-50"
+                    ? "text-slate-600 bg-linear-to-b from-[#0a0305] to-[#0d0508]"
+                    : "text-slate-500 bg-linear-to-b from-white to-slate-50"
             }`}
         >
             <div className="relative">
                 <div
                     className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border flex items-center justify-center ${
                         isDark
-                            ? "bg-gradient-to-br from-[#1a0a0f] to-[#0a0204] border-[#2a1117]/40"
+                            ? "bg-linear-to-br from-[#1a0a0f] to-[#0a0204] border-[#2a1117]/40"
                             : "bg-white border-slate-200 shadow-sm"
                     }`}
                 >
@@ -221,7 +221,7 @@ export function NextEpisodeOverlay({ nextEpisode, onNavigate, onClose }) {
                 </p>
                 <button
                     onClick={() => onNavigate(`/episode/${nextEpisode.episodeId}`)}
-                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#ff1e56] to-[#c4143a] hover:from-[#ff336a] hover:to-[#d91a4a] text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-red-900/30 cursor-pointer w-full sm:w-auto"
+                    className="inline-flex items-center justify-center gap-2 bg-linear-to-r from-[#ff1e56] to-[#c4143a] hover:from-[#ff336a] hover:to-[#d91a4a] text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-red-900/30 cursor-pointer w-full sm:w-auto"
                 >
                     <i className="fa-solid fa-forward" /> Episode Selanjutnya
                 </button>

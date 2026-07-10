@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
-import { api } from '../api/axios'; // sesuaikan path instance axios Anda
+import { api } from '../api/axios'; 
 
 export default function useAnimeCatalog() {
     const [activeTab, setActiveTab] = useState('popular');
     const [page, setPage] = useState(1);
     const [order, setOrder] = useState('latest');
-    const [genreId, setGenreId] = useState(''); // ✅ State filter genre server-side
+    const [genreId, setGenreId] = useState(''); 
     const [data, setData] = useState([]);
     const [pagination, setPagination] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -17,17 +17,15 @@ export default function useAnimeCatalog() {
         try {
             let url = '';
 
-            // ✅ Alur 1: Jika genreId aktif, gunakan endpoint genre server-side
             if (genreId) {
                 url = `/anime/genres/${genreId}?page=${page}`;
             } else {
-                // Alur 2: Filter tab standar
                 if (activeTab === 'popular') url = `/anime/popular?page=${page}`;
                 if (activeTab === 'complete') url = `/anime/complete?page=${page}&order=${order}`;
                 if (activeTab === 'ongoing') url = `/anime/ongoing?page=${page}&order=${order}`;
                 if (activeTab === 'recent') url = `/anime/recent?page=${page}`;
-                if (activeTab === 'movies') url = `/anime/movies?page=${page}`; // ✅ Sambungkan Tab Movies
-                if (activeTab === 'all') url = `/anime/all`; // ✅ Sambungkan Tab Indeks A-Z
+                if (activeTab === 'movies') url = `/anime/movies?page=${page}`; 
+                if (activeTab === 'all') url = `/anime/all`;
             }
 
             const res = await api.get(url);
@@ -57,7 +55,7 @@ export default function useAnimeCatalog() {
         setActiveTab(tab);
         setGenreId(''); // Reset filter genre server-side saat pindah tab biasa
         setPage(1);
-        setOrder('latest'); // ✅ PERBAIKAN: Selalu reset state order ke default saat berpindah tab atas
+        setOrder('latest'); 
         setData([]);
     };
 
@@ -71,10 +69,10 @@ export default function useAnimeCatalog() {
         activeTab, changeTab,
         page, setPage,
         order, setOrder,
-        genreId, changeGenre, // ✅ Ekspos fungsi pengubah genre
+        genreId, changeGenre, 
         data, pagination,
         loading, error,
         isRecent: activeTab === 'recent',
-        isAll: activeTab === 'all', // ✅ Penanda jika berada di tab indeks A-Z
+        isAll: activeTab === 'all',
     };
 }

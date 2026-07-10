@@ -4,7 +4,6 @@ export default function AnimeCardInfo({ anime, isHovered, isDark, isMobile }) {
     const { theme } = useTheme();
     const dark = isDark !== undefined ? isDark : theme === "dark";
 
-    // Gunakan kelas CSS responsif secara default, atau gunakan prop isMobile jika didefinisikan secara eksplisit.
     const containerPadding = isMobile
         ? "p-2"
         : isMobile === false
