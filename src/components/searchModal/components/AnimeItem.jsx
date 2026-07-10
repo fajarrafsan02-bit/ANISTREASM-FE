@@ -6,11 +6,18 @@ export default function AnimeItem({ anime, isDark, onClick }) {
 
     return (
         <button
-            onMouseDown={(e) => e.preventDefault()}
-            onClick={onClick}
+            type="button"
+            onPointerDown={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+            }}
+            onClick={(e) => {
+                e.stopPropagation();
+                onClick(e);
+            }}
             className={`
                 w-full flex items-center gap-3 px-3 py-2.5 sm:py-3 text-left rounded-xl
-                transition-all duration-200 hover:scale-[1.01]
+                transition-all duration-200 hover:scale-[1.01] touch-manipulation
                 ${isDark
                     ? "hover:bg-white/[0.03] active:bg-white/[0.06]"
                     : "hover:bg-slate-50 active:bg-slate-100"

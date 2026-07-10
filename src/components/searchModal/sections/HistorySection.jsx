@@ -39,8 +39,15 @@ export default function HistorySection({
                 </div>
                 {isLoggedIn && history.length > 0 && (
                     <button
-                        onMouseDown={(e) => e.preventDefault()}
-                        onClick={onDeleteAll}
+                        type="button"
+                        onPointerDown={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                        }}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onDeleteAll();
+                        }}
                         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider transition-all duration-200 active:scale-95
                             ${isDark
                                 ? "bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20"
@@ -126,11 +133,18 @@ export default function HistorySection({
                             <li key={item.id ?? item.animeId} className="px-2">
                                 <div className="relative flex items-center group rounded-xl transition-all duration-200 hover:scale-[1.01]">
                                     <button
-                                        onMouseDown={(e) => e.preventDefault()}
-                                        onClick={() => onSelectHistory(item)}
+                                        type="button"
+                                        onPointerDown={(e) => {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+                                        }}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            onSelectHistory(item);
+                                        }}
                                         className={`
                                             flex-1 flex items-center gap-3 px-3 py-2.5 sm:py-3 text-left rounded-xl
-                                            transition-all duration-200 min-w-0
+                                            transition-all duration-200 min-w-0 touch-manipulation
                                             ${isDark
                                                 ? "hover:bg-white/[0.03] active:bg-white/[0.06]"
                                                 : "hover:bg-slate-50 active:bg-slate-100"
@@ -182,10 +196,17 @@ export default function HistorySection({
                                     </button>
 
                                     <button
-                                        onMouseDown={(e) => e.preventDefault()}
-                                        onClick={() => onDeleteOne(item.id)}
+                                        type="button"
+                                        onPointerDown={(e) => {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+                                        }}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            onDeleteOne(item.id);
+                                        }}
                                         className={`
-                                            mr-1 p-2 rounded-xl shrink-0
+                                            mr-1 p-2 rounded-xl shrink-0 touch-manipulation
                                             sm:opacity-0 sm:group-hover:opacity-100
                                             transition-all duration-200 active:scale-90
                                             ${isDark

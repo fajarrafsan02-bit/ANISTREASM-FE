@@ -1,5 +1,6 @@
 import { Search, X, Loader2 } from "lucide-react";
 import { useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import SearchModal from "../../searchModal";
 
 export default function MobileSearch({
@@ -21,6 +22,25 @@ export default function MobileSearch({
 }) {
     const mobileSearchRef = useRef(null);
     const inputRef = useRef(null);
+    const location = useLocation();
+
+    const handleSubmit = () => {
+        inputRef.current?.blur();
+        onSubmit();
+    };
+
+    const handleInputKeyDown = (e) => {
+        if (e.key === "Enter") {
+            inputRef.current?.blur();
+        }
+        onKeyDown(e, true);
+    };
+
+    // Tutup search-bar mobile & modal sekaligus (dipakai untuk ESC / klik luar / tombol X)
+    const handleCloseModal = () => {
+        closeSearch();
+        setMobileSearchOpen(false);
+    };
 
     // Auto-focus + buka modal saat expand
     useEffect(() => {
@@ -32,6 +52,9 @@ export default function MobileSearch({
             return () => clearTimeout(timer);
         }
     }, [mobileSearchOpen, openSearch]);
+    useEffect(() => {
+        setMobileSearchOpen(false);
+    }, [location.pathname]);
 
     const smoothTransition = {
         transition: "all 450ms cubic-bezier(0.16, 1, 0.3, 1)"
@@ -71,10 +94,11 @@ export default function MobileSearch({
 
                 {/* Tombol Cari / Loader */}
                 <button
+                    onPointerDown={(e) => e.stopPropagation()}
                     onClick={(e) => {
                         if (mobileSearchOpen) {
                             e.stopPropagation();
-                            onSubmit();
+                            handleSubmit();
                         }
                     }}
                     disabled={localLoading}
@@ -93,7 +117,7 @@ export default function MobileSearch({
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyDown={(e) => onKeyDown(e, true)}
+                    onKeyDown={handleInputKeyDown}
                     placeholder="Cari..."
                     className={`bg-transparent text-[11px] sm:text-xs md:text-sm outline-none min-w-0 font-medium placeholder:text-gray-400 ${isDark ? "text-white" : "text-zinc-900"
                         }`}
@@ -107,7 +131,7 @@ export default function MobileSearch({
                 />
 
                 <button
-                    onMouseDown={(e) => e.preventDefault()}
+                    onPointerDown={(e) => e.stopPropagation()}
                     onClick={(e) => {
                         e.stopPropagation();
                         onCloseMobileSearch();
@@ -134,7 +158,7 @@ export default function MobileSearch({
                 error={searchError}
                 phase={searchPhase}
                 query={searchQuery}
-                onClose={closeSearch}
+                onClose={handleCloseModal}
                 anchorRef={mobileSearchRef}
                 isDark={isDark}
             />

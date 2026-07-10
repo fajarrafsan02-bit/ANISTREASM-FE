@@ -29,8 +29,15 @@ export default function ResultsSection({ isDark, results, query, onSelectAnime, 
                     </div>
                 </div>
                 <button
-                    onMouseDown={(e) => e.preventDefault()}
-                    onClick={onClose}
+                    type="button"
+                    onPointerDown={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                    }}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onClose();
+                    }}
                     className={`
                         p-2 rounded-xl transition-all duration-200 active:scale-90 shrink-0 ml-2
                         ${isDark
@@ -45,12 +52,14 @@ export default function ResultsSection({ isDark, results, query, onSelectAnime, 
 
             <ul className="overflow-y-auto flex-1 overscroll-contain py-1">
                 {results.map((anime, i) => (
-                    <li key={anime.animeId ?? i} className="px-2">
+                    <li key={anime.animeId ?? i} className="px-2 block">
+
                         <AnimeItem
                             anime={anime}
                             isDark={isDark}
                             onClick={() => onSelectAnime(anime)}
                         />
+
                         {i < results.length - 1 && (
                             <div
                                 className={`mx-4 h-px ${isDark ? "bg-white/[0.03]" : "bg-slate-50"}`}

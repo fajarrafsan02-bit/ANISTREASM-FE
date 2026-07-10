@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import useSearchHistory from "../../hooks/useSearchHistory";
 import LoadingState from "./sections/LoadingState";
@@ -15,6 +15,7 @@ export default function SearchModal({
     query,
     onClose,
     isDark,
+    anchorRef,
 }) {
     const modalRef = useRef(null);
     const navigate = useNavigate();
@@ -24,14 +25,26 @@ export default function SearchModal({
 
     useEffect(() => {
         if (!isOpen) return;
+
         const handleEsc = (e) => e.key === "Escape" && onClose();
+        const handlePointerDown = (e) => {
+            const insideModal = modalRef.current?.contains(e.target);
+            const insideAnchor = anchorRef?.current?.contains(e.target);
+            if (!insideModal && !insideAnchor) {
+                onClose();
+            }
+        };
+
         document.addEventListener("keydown", handleEsc);
+        document.addEventListener("pointerdown", handlePointerDown);
         document.body.style.overflow = "hidden";
+
         return () => {
             document.removeEventListener("keydown", handleEsc);
+            document.removeEventListener("pointerdown", handlePointerDown);
             document.body.style.overflow = "";
         };
-    }, [isOpen, onClose]);
+    }, [isOpen, onClose, anchorRef]);
 
     if (!isOpen) return null;
 
@@ -53,19 +66,16 @@ export default function SearchModal({
             });
         }
         navigate(`/anime/detail/${anime.animeId}`);
-        onClose();
     };
 
     const handleSelectHistory = (item) => {
         navigate(`/anime/detail/${item.animeId}`);
-        onClose();
     };
 
     return (
         <>
             <div
-                onClick={onClose}
-                className="fixed inset-0 z-40 md:hidden"
+                className="fixed inset-0 z-40 md:hidden pointer-events-none"
                 style={{
                     background: isDark ? "rgba(0,0,0,0.6)" : "rgba(0,0,0,0.3)",
                     animation: "modalFadeIn 0.2s ease-out",
@@ -74,6 +84,8 @@ export default function SearchModal({
             <div
                 ref={modalRef}
                 tabIndex={-1}
+                onClick={(e) => e.stopPropagation()}
+                onPointerDown={(e) => e.stopPropagation()}
                 className={`
                     fixed z-50
                     left-3 right-3
